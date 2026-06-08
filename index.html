@@ -19,9 +19,12 @@ html,body{
   position:absolute;
   top:0;left:0;
   width:100%;height:100%;
-  display:flex;
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
   align-items:center;
-  justify-content:center;
+  padding:0 4vw;
+  box-sizing:border-box;
+  column-gap:3vw;
   z-index:10;
 }
 
@@ -29,7 +32,70 @@ html,body{
   display:flex;
   flex-direction:column;
   align-items:flex-start;
-  width:min(560px,88vw);
+  width:100%;
+  position:relative;
+  z-index:10;
+}
+
+#context-panel{
+  align-self:start;
+  padding-top:max(6vh,48px);
+  position:relative;
+  z-index:10;
+  width:100%;
+}
+.ctx-item{
+  border-top:1px solid rgba(26,26,24,0.18);
+}
+.ctx-item:last-child{
+  border-bottom:1px solid rgba(26,26,24,0.18);
+}
+.ctx-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:13px 0;
+  cursor:pointer;
+  user-select:none;
+}
+.ctx-label{
+  font-family:'Unbounded',sans-serif;
+  font-size:clamp(8px,0.8vw,11px);
+  font-weight:400;
+  letter-spacing:0.16em;
+  text-transform:uppercase;
+  color:#1a1a18;
+}
+.ctx-arrow{
+  font-family:'Archivo',sans-serif;
+  font-size:18px;
+  font-weight:300;
+  color:#1a1a18;
+  transition:transform 0.4s ease;
+  line-height:1;
+}
+.ctx-item.open .ctx-arrow{
+  transform:rotate(45deg);
+}
+.ctx-body{
+  max-height:0;
+  overflow:hidden;
+  transition:max-height 0.7s cubic-bezier(0.16,1,0.3,1);
+}
+.ctx-item.open .ctx-body{
+  max-height:60vh;
+  overflow-y:auto;
+}
+.ctx-body-inner{
+  font-family:'Archivo',sans-serif;
+  font-size:clamp(10px,0.85vw,12.5px);
+  font-weight:300;
+  line-height:1.85;
+  color:rgba(26,26,24,0.72);
+  letter-spacing:0.01em;
+  padding-bottom:14px;
+}
+#right-col{
   position:relative;
   z-index:10;
 }
@@ -525,6 +591,20 @@ html,body{
 
 <div id="section1">
 <div id="stage">
+  <div id="context-panel">
+    <div class="ctx-item" id="ctx-context">
+      <div class="ctx-header"><span class="ctx-label">Context</span><span class="ctx-arrow">+</span></div>
+      <div class="ctx-body"><div class="ctx-body-inner">On 28 March 2026, we ran the first Aamchi Mumbai Citizen Risk Clinic, a 2.5-hour participatory workshop to map how Mumbaikars respond to systemic climate risks in their city, convened as part of Mumbai Climate Week 2026's Spoke Events. The room brought together organisations working with residents, gig workers, students, teachers, domestic workers, and practitioners working across climate, governance, social protection, and community organising.<br><br>The clinic was held in the aftermath of an extraordinary 2025–26 climate year for Mumbai — a March heat wave that pushed felt temperatures past 47°C, followed by the earliest monsoon in 75 years and 500mm of rainfall in four days in August. We chose this moment deliberately: the city's lived memory of cascading climate risk was active, recent, and unsettled.<br><br>Participants: Dr. Abhishek Fullton (UNICEF), Anish Verghese (Ek Kutumb), Dishant Parmar (YUVA), Dulari Parmar (YUVA), Harshvardhan Sharma (Planet Pact), Hiranya Ganatra (Transitions Research), Jahnavi Mane (WRI), Dr. Lakshmi Lingam (DY Patil Mumbai), Myron Mendes (INECC), Paridhi Mundra (Nazaria Arts Collective), Parveen Sheikh (Community Design Agency, Govandi Arts Foundation), Rohit Lahoti (WRI), Sandhya Naidu (Community Design Agency, Govandi Arts Foundation), Shreya Agarwal (Pratham Education), Siddhi Ashar (Dark Matter Labs), Yamini Srivastava (People's Courage India)</div></div>
+    </div>
+    <div class="ctx-item" id="ctx-intent">
+      <div class="ctx-header"><span class="ctx-label">Intent</span><span class="ctx-arrow">+</span></div>
+      <div class="ctx-body"><div class="ctx-body-inner">To test whether citizen risk intelligence can be surfaced, organised, and made legible as a civic asset. Rather than treating citizen input as testimony, the clinic treated citizen knowledge as the continuous capacity of populations to detect weak signals, adapt behaviour under stress, transmit survival knowledge socially, and update their understanding of how systems fail in real time.<br><br>We posit that citizens are already functioning as a distributed risk sensing infrastructure for the city of Mumbai.</div></div>
+    </div>
+    <div class="ctx-item" id="ctx-risk">
+      <div class="ctx-header"><span class="ctx-label">Risk Field</span><span class="ctx-arrow">+</span></div>
+      <div class="ctx-body"><div class="ctx-body-inner">We chose cyclical flooding and heatwaves as the macro frame of Mumbai's systemic risk field, on the basis that these are the conditions under which the city's systemic failures become most legible to all its local residents across class, caste, gender, infrastructure, and labour.</div></div>
+    </div>
+  </div>
   <div id="poem">
     <div class="row">
       <div class="pl">Mumbai hungers more when it is burning</div>
@@ -638,6 +718,7 @@ html,body{
       </div>
     </div>
   </div>
+  <div id="right-col"></div>
 </div>
 
 
@@ -665,28 +746,18 @@ let wheelLock = false;
 function onWheel(e){
   e.preventDefault();
   if(wheelLock) return;
+  if(e.deltaY <= 0) return;
   wheelLock = true;
   setTimeout(()=>{ wheelLock=false; }, 600);
 
-  if(e.deltaY > 0){
-    const next = current + 1;
-    if(next < loops.length){
-      current = next;
-      loops[current].classList.add('on');
-      if(current===5){ document.getElementById('nasim-profile').classList.add('on'); }
-    }
-  } else {
-    if(current >= 0){
-      loops[current].classList.remove('on');
-      current--;
-    }
-  }
-  hint.style.opacity = current >= loops.length - 1 ? '0' : '1';
-  if(current >= loops.length - 1){
-    window.removeEventListener('wheel', onWheel);
-    document.body.style.overflowY = 'auto';
-    document.documentElement.style.overflowY = 'auto';
-  }
+  loops.forEach(el => el.classList.add('on'));
+  document.getElementById('nasim-profile').classList.add('on');
+  current = loops.length - 1;
+  hint.style.opacity = '0';
+  window.removeEventListener('wheel', onWheel);
+  window.removeEventListener('touchend', onTouchEnd);
+  document.body.style.overflowY = 'auto';
+  document.documentElement.style.overflowY = 'auto';
 }
 
 let touchStartY = 0;
@@ -717,6 +788,15 @@ document.getElementById('stage').addEventListener('click', function(){
 
 window.addEventListener('touchstart', onTouchStart, {passive:true});
 window.addEventListener('touchend', onTouchEnd, {passive:true});
+</script>
+
+<script>
+document.querySelectorAll('.ctx-header').forEach(function(header){
+  header.addEventListener('click', function(){
+    var item = header.parentElement;
+    item.classList.toggle('open');
+  });
+});
 </script>
 
 
