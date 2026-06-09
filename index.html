@@ -104,7 +104,7 @@ body.show-priya{ background:#f0f4fd; }
   background:#0f0f0d;
   display:grid;
   grid-template-columns:1fr 2fr;
-  align-items:start;
+  align-items:stretch;
   gap:6vw;
   padding:100px var(--lm);
   box-sizing:border-box;
@@ -113,6 +113,23 @@ body.show-priya{ background:#f0f4fd; }
 #context-panel{
   width:100%;
   position:relative;
+  display:flex;
+  flex-direction:column;
+}
+#field-hunches{ width:100%; display:flex; flex-direction:column; }
+#ctx-participants{
+  margin-top:auto;
+  padding-top:16px;
+  border-top:1px solid rgba(245,240,220,0.15);
+  font-family:'Archivo',sans-serif;
+  font-size:clamp(9px,0.7vw,11px);
+  color:rgba(245,240,220,0.3);
+  line-height:1.7;
+}
+#hunch-nav{
+  margin-top:auto;
+  padding-top:16px;
+  border-top:1px solid rgba(245,240,220,0.15);
 }
 #ctx-tabs{
   display:flex;
@@ -273,7 +290,7 @@ body.show-priya{ background:#f0f4fd; }
 .hunch-toggle-thumb{ position:absolute; top:3.5px; left:3.5px; width:18px; height:18px; border-radius:50%; background:rgba(245,240,220,0.9); box-shadow:0 1px 3px rgba(0,0,0,0.22); transition:transform 0.28s cubic-bezier(0.34,1.56,0.64,1); pointer-events:none; }
 .hunch-toggle.on .hunch-toggle-thumb{ transform:translateX(17px); }
 .hunch-slide-text{ font-family:'Unbounded',sans-serif; font-size:clamp(28px,2.6vw,40px); font-weight:300; color:rgba(245,240,220,0.9); line-height:1.35; letter-spacing:-0.02em; cursor:pointer; text-align:left; }
-.hunch-dots{ display:flex; gap:14px; margin-top:20px; }
+.hunch-dots{ display:flex; gap:14px; }
 .hunch-dot{ font-family:'Archivo',sans-serif; font-size:clamp(11px,1vw,14px); letter-spacing:0.1em; color:rgba(245,240,220,0.25); cursor:pointer; transition:color 0.3s; user-select:none; }
 .hunch-dot.active{ color:rgba(245,240,220,0.9); }
 #hunch-list-view{ display:none; }
@@ -695,9 +712,10 @@ window.addEventListener('touchend', onTouchEnd, {passive:true});
       <button class="ctx-tab" data-tab="ctx-intent">Intent</button>
       <button class="ctx-tab" data-tab="ctx-risk">Risk Field</button>
     </div>
-    <div class="ctx-content active" id="ctx-context">On 28 March 2026, we ran the first Aamchi Mumbai Citizen Risk Clinic, a 2.5-hour participatory workshop to map how Mumbaikars respond to systemic climate risks in their city, convened as part of Mumbai Climate Week 2026's Spoke Events. The room brought together organisations working with residents, gig workers, students, teachers, domestic workers, and practitioners working across climate, governance, social protection, and community organising.<br><br>The clinic was held in the aftermath of an extraordinary 2025–26 climate year for Mumbai — a March heat wave that pushed felt temperatures past 47°C, followed by the earliest monsoon in 75 years and 500mm of rainfall in four days in August. We chose this moment deliberately: the city's lived memory of cascading climate risk was active, recent, and unsettled.<span class="participants"><br>Dr. Abhishek Fullton (UNICEF) · Anish Verghese (Ek Kutumb) · Dishant Parmar (YUVA) · Dulari Parmar (YUVA) · Harshvardhan Sharma (Planet Pact) · Hiranya Ganatra (Transitions Research) · Jahnavi Mane (WRI) · Dr. Lakshmi Lingam (DY Patil Mumbai) · Myron Mendes (INECC) · Paridhi Mundra (Nazaria Arts Collective) · Parveen Sheikh (Community Design Agency, Govandi Arts Foundation) · Rohit Lahoti (WRI) · Sandhya Naidu (Community Design Agency, Govandi Arts Foundation) · Shreya Agarwal (Pratham Education) · Siddhi Ashar (Dark Matter Labs) · Yamini Srivastava (People's Courage India)</span></div>
+    <div class="ctx-content active" id="ctx-context">On 28 March 2026, we ran the first Aamchi Mumbai Citizen Risk Clinic, a 2.5-hour participatory workshop to map how Mumbaikars respond to systemic climate risks in their city, convened as part of Mumbai Climate Week 2026's Spoke Events. The room brought together organisations working with residents, gig workers, students, teachers, domestic workers, and practitioners working across climate, governance, social protection, and community organising.<br><br>The clinic was held in the aftermath of an extraordinary 2025–26 climate year for Mumbai — a March heat wave that pushed felt temperatures past 47°C, followed by the earliest monsoon in 75 years and 500mm of rainfall in four days in August. We chose this moment deliberately: the city's lived memory of cascading climate risk was active, recent, and unsettled.</div>
     <div class="ctx-content" id="ctx-intent">To test whether citizen risk intelligence can be surfaced, organised, and made legible as a civic asset. Rather than treating citizen input as testimony, the clinic treated citizen knowledge as the continuous capacity of populations to detect weak signals, adapt behaviour under stress, transmit survival knowledge socially, and update their understanding of how systems fail in real time.<br><br>We posit that citizens are already functioning as a distributed risk sensing infrastructure for the city of Mumbai.</div>
     <div class="ctx-content" id="ctx-risk">We chose cyclical flooding and heatwaves as the macro frame of Mumbai's systemic risk field, on the basis that these are the conditions under which the city's systemic failures become most legible to all its local residents across class, caste, gender, infrastructure, and labour.</div>
+    <div id="ctx-participants">Dr. Abhishek Fullton (UNICEF) · Anish Verghese (Ek Kutumb) · Dishant Parmar (YUVA) · Dulari Parmar (YUVA) · Harshvardhan Sharma (Planet Pact) · Hiranya Ganatra (Transitions Research) · Jahnavi Mane (WRI) · Dr. Lakshmi Lingam (DY Patil Mumbai) · Myron Mendes (INECC) · Paridhi Mundra (Nazaria Arts Collective) · Parveen Sheikh (Community Design Agency, Govandi Arts Foundation) · Rohit Lahoti (WRI) · Sandhya Naidu (Community Design Agency, Govandi Arts Foundation) · Shreya Agarwal (Pratham Education) · Siddhi Ashar (Dark Matter Labs) · Yamini Srivastava (People's Courage India)</div>
   </div>
   <div id="field-hunches">
     <div class="hunches-header">
@@ -711,7 +729,6 @@ window.addEventListener('touchend', onTouchEnd, {passive:true});
     </div>
     <div id="hunch-slide-view">
       <div class="hunch-slide-text" id="hunch-slide-text"></div>
-      <div class="hunch-dots" id="hunch-dots"></div>
     </div>
     <ul class="hunch-list" id="hunch-list-view">
       <li class="hunch-item">Climate risk in Mumbai is chronic, not episodic. It is embodied, continuous, longitudinal, and carried in lived memory.</li>
@@ -722,6 +739,7 @@ window.addEventListener('touchend', onTouchEnd, {passive:true});
       <li class="hunch-item">Long social cascades (such as identity erosion, intergenerational trauma, slow breakdown of dignity and routine) accumulate silently.</li>
       <li class="hunch-item">The city may appear functional because vulnerable populations continuously absorb instability through individual coping mechanisms, and create the illusion of resilience.</li>
     </ul>
+    <div id="hunch-nav"><div class="hunch-dots" id="hunch-dots"></div></div>
   </div>
 </div>
 
@@ -756,7 +774,16 @@ document.querySelectorAll('.ctx-tab').forEach(function(tab){
     var d = document.createElement('span');
     d.className = 'hunch-dot' + (i===0?' active':'');
     d.textContent = i+1;
-    d.addEventListener('click', function(){ showHunch(i); startTimer(); });
+    d.addEventListener('click', function(){
+      if(listMode){
+        listMode = false;
+        toggle.classList.remove('on');
+        toggle.setAttribute('aria-checked','false');
+        listView.style.display = 'none';
+        slideView.style.display = '';
+      }
+      showHunch(i); startTimer();
+    });
     dotsWrap.appendChild(d);
   });
 
