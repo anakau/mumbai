@@ -79,6 +79,8 @@ html,body{
   position:relative;
   z-index:10;
 }
+.show-priya #poem{ display:none; }
+.show-priya #poem-priya{ display:flex; }
 
 #priya-hero-profile{
   max-height:0;
@@ -97,7 +99,7 @@ html,body{
   position:relative;
   width:100%;
   min-height:100vh;
-  background:#fdf0e8;
+  background:#0f0f0d;
   display:grid;
   grid-template-columns:1fr 2fr;
   align-items:start;
@@ -113,7 +115,7 @@ html,body{
 #ctx-tabs{
   display:flex;
   gap:0;
-  border-bottom:1px solid rgba(26,26,24,0.15);
+  border-bottom:1px solid rgba(245,240,220,0.15);
   margin-bottom:16px;
 }
 .ctx-tab{
@@ -122,7 +124,7 @@ html,body{
   font-weight:400;
   letter-spacing:0.16em;
   text-transform:uppercase;
-  color:rgba(26,26,24,0.35);
+  color:rgba(245,240,220,0.35);
   background:none;
   border:none;
   padding:0 0 11px 0;
@@ -136,13 +138,13 @@ html,body{
   position:absolute;
   bottom:-1px;left:0;
   width:100%;height:1px;
-  background:#1a1a18;
+  background:rgba(245,240,220,0.9);
   transform:scaleX(0);
   transform-origin:left;
   transition:transform 0.3s ease;
 }
 .ctx-tab.active{
-  color:#1a1a18;
+  color:rgba(245,240,220,0.9);
 }
 .ctx-tab.active::after{
   transform:scaleX(1);
@@ -153,7 +155,7 @@ html,body{
   font-size:clamp(15px,1.2vw,18px);
   font-weight:300;
   line-height:1.85;
-  color:rgba(26,26,24,0.75);
+  color:rgba(245,240,220,0.72);
   letter-spacing:0.01em;
   animation:ctxFade 0.35s ease;
 }
@@ -163,7 +165,7 @@ html,body{
 @keyframes ctxFade{from{opacity:0}to{opacity:1}}
 .participants{
   font-size:clamp(9px,0.7vw,11px);
-  color:rgba(26,26,24,0.45);
+  color:rgba(245,240,220,0.3);
   line-height:1.7;
   display:block;
   margin-top:10px;
@@ -175,7 +177,7 @@ html,body{
   font-weight:400;
   letter-spacing:0.16em;
   text-transform:uppercase;
-  color:rgba(26,26,24,0.4);
+  color:rgba(245,240,220,0.35);
   margin-bottom:28px;
   display:block;
 }
@@ -189,11 +191,11 @@ html,body{
   font-family:'Unbounded',sans-serif;
   font-size:clamp(17px,1.5vw,21px);
   font-weight:300;
-  color:#1a1a18;
+  color:rgba(245,240,220,0.9);
   line-height:1.75;
   letter-spacing:-0.01em;
   padding-left:18px;
-  border-left:1px solid rgba(26,26,24,0.2);
+  border-left:1px solid rgba(245,240,220,0.2);
 }
 
 .row{
@@ -400,7 +402,8 @@ html,body{
   position:relative;
   width:100%;
   min-height:100vh;
-  background:#f5f0dc;
+  background:#c8220a;
+  transition:background 0.5s ease;
   display:flex;
   flex-direction:column;
   align-items:center;
@@ -424,7 +427,7 @@ html,body{
   font-family:'Unbounded',sans-serif;
   font-size:clamp(15px,1.6vw,22px);
   font-weight:400;
-  color:#1a1a18;
+  color:rgba(245,240,220,0.95);
   line-height:1.65;
   letter-spacing:-0.01em;
 }
@@ -445,34 +448,13 @@ html,body{
   gap:12px;
   flex:1;
 }
-.s3-card-img{
-  width:100%;
-  aspect-ratio:1/1;
-  background:#c8220a;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  overflow:hidden;
-  padding:8px;
-  box-sizing:border-box;
-}
-.s3-card-img svg{
-  width:100%;
-  height:100%;
-  display:block;
-}
-.s3-card-img path{ fill:#fff; stroke:none; }
-.s3-card-img.placeholder{
-  background:#e8e0cc;
-}
-.s3-card-img.placeholder svg path{ fill:#c4bfaf; }
-.s3-card:nth-child(2) .s3-card-img{ background:#3d0c3a; }
+.s3-card-img{ display:none; }
 
 .s3-card-name{
   font-family:'Unbounded',sans-serif;
   font-size:11px;
   font-weight:400;
-  color:#1a1a18;
+  color:rgba(245,240,220,0.95);
   letter-spacing:0.06em;
   text-transform:uppercase;
   line-height:1.5;
@@ -481,10 +463,12 @@ html,body{
   font-family:'Archivo',sans-serif;
   font-size:12px;
   font-weight:300;
-  color:#888880;
+  color:rgba(245,240,220,0.6);
   line-height:1.75;
   letter-spacing:0.01em;
 }
+
+.show-priya #section3{ background:#110d2e; }
 
 /* ── PRIYA OVERLAY ── */
 #priya-overlay{
@@ -803,8 +787,7 @@ document.querySelectorAll('.nav-btn').forEach(function(btn){
     document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
     const isNasim = btn.dataset.nav === 'nasim';
-    document.getElementById('poem').style.display = isNasim ? 'flex' : 'none';
-    document.getElementById('poem-priya').style.display = isNasim ? 'none' : 'flex';
+    document.body.classList.toggle('show-priya', !isNasim);
     loops.forEach(el => el.classList.remove('on'));
     priyaLoops.forEach(el => el.classList.remove('on'));
     document.getElementById('nasim-profile').classList.remove('on');
