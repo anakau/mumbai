@@ -188,7 +188,7 @@ body.show-priya{ background:#f0f4fd; }
   counter-reset:hunch;
   display:flex;
   flex-direction:column;
-  gap:60px;
+  gap:36px;
 }
 .hunch-item{
   font-family:'Unbounded',sans-serif;
@@ -201,7 +201,9 @@ body.show-priya{ background:#f0f4fd; }
   display:flex;
   align-items:flex-start;
   gap:20px;
+  padding-bottom:20px;
 }
+.hunch-item:not(:last-child){ border-bottom:1px solid rgba(245,240,220,0.15); }
 .hunch-item::before{
   content:counter(hunch,decimal-leading-zero);
   font-family:'Archivo',sans-serif;
@@ -260,7 +262,7 @@ body.show-priya{ background:#f0f4fd; }
 }
 #poem-priya .loop{ border-left-color:#5533ff; }
 #poem-priya .loop-inner{ color:#5533ff; }
-.hunches-header{ display:flex; align-items:center; margin-bottom:28px; gap:12px; }
+.hunches-header{ display:flex; align-items:center; margin-bottom:28px; gap:12px; border-bottom:1px solid rgba(245,240,220,0.15); padding-bottom:11px; }
 .hunches-header .hunches-label{ margin-bottom:0; }
 .hunch-view-toggle{ display:flex; align-items:center; gap:9px; margin-left:auto; }
 .hv-label{ font-family:'Archivo',sans-serif; font-size:clamp(8px,0.72vw,10px); letter-spacing:0.14em; text-transform:uppercase; color:rgba(245,240,220,0.35); }
@@ -268,7 +270,7 @@ body.show-priya{ background:#f0f4fd; }
 .hunch-toggle.on{ background:rgba(245,240,220,0.55); }
 .hunch-toggle-thumb{ position:absolute; top:3.5px; left:3.5px; width:18px; height:18px; border-radius:50%; background:rgba(245,240,220,0.9); box-shadow:0 1px 3px rgba(0,0,0,0.22); transition:transform 0.28s cubic-bezier(0.34,1.56,0.64,1); pointer-events:none; }
 .hunch-toggle.on .hunch-toggle-thumb{ transform:translateX(17px); }
-.hunch-slide-text{ font-family:'Unbounded',sans-serif; font-size:clamp(28px,2.6vw,40px); font-weight:300; color:rgba(245,240,220,0.9); line-height:1.75; letter-spacing:-0.02em; cursor:pointer; }
+.hunch-slide-text{ font-family:'Unbounded',sans-serif; font-size:clamp(28px,2.6vw,40px); font-weight:300; color:rgba(245,240,220,0.9); line-height:1.75; letter-spacing:-0.02em; cursor:pointer; text-align:left; }
 .hunch-dots{ display:flex; gap:14px; margin-top:20px; }
 .hunch-dot{ font-family:'Archivo',sans-serif; font-size:clamp(11px,1vw,14px); letter-spacing:0.1em; color:rgba(245,240,220,0.25); cursor:pointer; transition:color 0.3s; user-select:none; }
 .hunch-dot.active{ color:rgba(245,240,220,0.9); }
