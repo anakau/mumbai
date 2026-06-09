@@ -79,7 +79,6 @@ html,body{
   position:relative;
   z-index:10;
 }
-#poem-priya.active{ display:flex; }
 
 #priya-hero-profile{
   max-height:0;
@@ -100,7 +99,7 @@ html,body{
   min-height:100vh;
   background:#fdf0e8;
   display:grid;
-  grid-template-columns:1fr 1fr;
+  grid-template-columns:1fr 2fr;
   align-items:start;
   gap:6vw;
   padding:100px var(--lm);
@@ -188,12 +187,12 @@ html,body{
 }
 .hunch-item{
   font-family:'Unbounded',sans-serif;
-  font-size:clamp(11px,0.95vw,14px);
+  font-size:clamp(13px,1.2vw,17px);
   font-weight:300;
   color:#1a1a18;
-  line-height:1.7;
+  line-height:1.75;
   letter-spacing:-0.01em;
-  padding-left:16px;
+  padding-left:18px;
   border-left:1px solid rgba(26,26,24,0.2);
 }
 
@@ -803,10 +802,8 @@ document.querySelectorAll('.nav-btn').forEach(function(btn){
     document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
     const isNasim = btn.dataset.nav === 'nasim';
-    document.getElementById('poem').style.display = isNasim ? '' : 'none';
-    const pp = document.getElementById('poem-priya');
-    pp.style.display = isNasim ? 'none' : '';
-    pp.classList.toggle('active', !isNasim);
+    document.getElementById('poem').style.display = isNasim ? 'flex' : 'none';
+    document.getElementById('poem-priya').style.display = isNasim ? 'none' : 'flex';
     loops.forEach(el => el.classList.remove('on'));
     priyaLoops.forEach(el => el.classList.remove('on'));
     document.getElementById('nasim-profile').classList.remove('on');
