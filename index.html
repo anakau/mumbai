@@ -20,12 +20,9 @@ html,body{
   position:absolute;
   top:0;left:0;
   width:100%;height:100%;
-  display:grid;
-  grid-template-columns:1fr 1fr 1fr;
+  display:flex;
   align-items:center;
-  padding:0 var(--lm);
-  box-sizing:border-box;
-  column-gap:4vw;
+  justify-content:center;
   z-index:10;
 }
 
@@ -33,17 +30,26 @@ html,body{
   display:flex;
   flex-direction:column;
   align-items:flex-start;
-  width:100%;
+  width:min(560px,88vw);
   position:relative;
   z-index:10;
 }
 
-#context-panel{
-  align-self:start;
-  padding-top:calc(var(--logo-h) + 2.2rem);
+#section-clinic{
   position:relative;
-  z-index:10;
   width:100%;
+  min-height:100vh;
+  background:#fdf0e8;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:100px var(--lm);
+  box-sizing:border-box;
+  flex-shrink:0;
+}
+#context-panel{
+  width:min(680px,88vw);
+  position:relative;
 }
 #ctx-tabs{
   display:flex;
@@ -85,23 +91,17 @@ html,body{
 .ctx-content{
   display:none;
   font-family:'Archivo',sans-serif;
-  font-size:clamp(10px,0.85vw,12.5px);
+  font-size:clamp(15px,1.2vw,18px);
   font-weight:300;
   line-height:1.85;
-  color:rgba(26,26,24,0.72);
+  color:rgba(26,26,24,0.75);
   letter-spacing:0.01em;
-  max-height:60vh;
-  overflow-y:auto;
   animation:ctxFade 0.35s ease;
 }
 .ctx-content.active{
   display:block;
 }
 @keyframes ctxFade{from{opacity:0}to{opacity:1}}
-#right-col{
-  position:relative;
-  z-index:10;
-}
 
 .row{
   width:100%;
@@ -594,16 +594,6 @@ html,body{
 
 <div id="section1">
 <div id="stage">
-  <div id="context-panel">
-    <div id="ctx-tabs">
-      <button class="ctx-tab active" data-tab="ctx-context">Context</button>
-      <button class="ctx-tab" data-tab="ctx-intent">Intent</button>
-      <button class="ctx-tab" data-tab="ctx-risk">Risk Field</button>
-    </div>
-    <div class="ctx-content active" id="ctx-context">On 28 March 2026, we ran the first Aamchi Mumbai Citizen Risk Clinic, a 2.5-hour participatory workshop to map how Mumbaikars respond to systemic climate risks in their city, convened as part of Mumbai Climate Week 2026's Spoke Events. The room brought together organisations working with residents, gig workers, students, teachers, domestic workers, and practitioners working across climate, governance, social protection, and community organising.<br><br>The clinic was held in the aftermath of an extraordinary 2025–26 climate year for Mumbai — a March heat wave that pushed felt temperatures past 47°C, followed by the earliest monsoon in 75 years and 500mm of rainfall in four days in August. We chose this moment deliberately: the city's lived memory of cascading climate risk was active, recent, and unsettled.<br><br>Participants: Dr. Abhishek Fullton (UNICEF), Anish Verghese (Ek Kutumb), Dishant Parmar (YUVA), Dulari Parmar (YUVA), Harshvardhan Sharma (Planet Pact), Hiranya Ganatra (Transitions Research), Jahnavi Mane (WRI), Dr. Lakshmi Lingam (DY Patil Mumbai), Myron Mendes (INECC), Paridhi Mundra (Nazaria Arts Collective), Parveen Sheikh (Community Design Agency, Govandi Arts Foundation), Rohit Lahoti (WRI), Sandhya Naidu (Community Design Agency, Govandi Arts Foundation), Shreya Agarwal (Pratham Education), Siddhi Ashar (Dark Matter Labs), Yamini Srivastava (People's Courage India)</div>
-    <div class="ctx-content" id="ctx-intent">To test whether citizen risk intelligence can be surfaced, organised, and made legible as a civic asset. Rather than treating citizen input as testimony, the clinic treated citizen knowledge as the continuous capacity of populations to detect weak signals, adapt behaviour under stress, transmit survival knowledge socially, and update their understanding of how systems fail in real time.<br><br>We posit that citizens are already functioning as a distributed risk sensing infrastructure for the city of Mumbai.</div>
-    <div class="ctx-content" id="ctx-risk">We chose cyclical flooding and heatwaves as the macro frame of Mumbai's systemic risk field, on the basis that these are the conditions under which the city's systemic failures become most legible to all its local residents across class, caste, gender, infrastructure, and labour.</div>
-  </div>
   <div id="poem">
     <div class="row">
       <div class="pl">Mumbai hungers more when it is burning</div>
@@ -640,7 +630,6 @@ html,body{
       </div>
     </div>
   </div>
-  <div id="right-col"></div>
 </div>
 
 
@@ -846,6 +835,20 @@ document.querySelectorAll('.ctx-tab').forEach(function(tab){
 
 
 </div><!-- /section1 -->
+
+<div id="section-clinic">
+  <div id="context-panel">
+    <div id="ctx-tabs">
+      <button class="ctx-tab active" data-tab="ctx-context">Context</button>
+      <button class="ctx-tab" data-tab="ctx-intent">Intent</button>
+      <button class="ctx-tab" data-tab="ctx-risk">Risk Field</button>
+    </div>
+    <div class="ctx-content active" id="ctx-context">On 28 March 2026, we ran the first Aamchi Mumbai Citizen Risk Clinic, a 2.5-hour participatory workshop to map how Mumbaikars respond to systemic climate risks in their city, convened as part of Mumbai Climate Week 2026's Spoke Events. The room brought together organisations working with residents, gig workers, students, teachers, domestic workers, and practitioners working across climate, governance, social protection, and community organising.<br><br>The clinic was held in the aftermath of an extraordinary 2025–26 climate year for Mumbai — a March heat wave that pushed felt temperatures past 47°C, followed by the earliest monsoon in 75 years and 500mm of rainfall in four days in August. We chose this moment deliberately: the city's lived memory of cascading climate risk was active, recent, and unsettled.<br><br>Participants: Dr. Abhishek Fullton (UNICEF), Anish Verghese (Ek Kutumb), Dishant Parmar (YUVA), Dulari Parmar (YUVA), Harshvardhan Sharma (Planet Pact), Hiranya Ganatra (Transitions Research), Jahnavi Mane (WRI), Dr. Lakshmi Lingam (DY Patil Mumbai), Myron Mendes (INECC), Paridhi Mundra (Nazaria Arts Collective), Parveen Sheikh (Community Design Agency, Govandi Arts Foundation), Rohit Lahoti (WRI), Sandhya Naidu (Community Design Agency, Govandi Arts Foundation), Shreya Agarwal (Pratham Education), Siddhi Ashar (Dark Matter Labs), Yamini Srivastava (People's Courage India)</div>
+    <div class="ctx-content" id="ctx-intent">To test whether citizen risk intelligence can be surfaced, organised, and made legible as a civic asset. Rather than treating citizen input as testimony, the clinic treated citizen knowledge as the continuous capacity of populations to detect weak signals, adapt behaviour under stress, transmit survival knowledge socially, and update their understanding of how systems fail in real time.<br><br>We posit that citizens are already functioning as a distributed risk sensing infrastructure for the city of Mumbai.</div>
+    <div class="ctx-content" id="ctx-risk">We chose cyclical flooding and heatwaves as the macro frame of Mumbai's systemic risk field, on the basis that these are the conditions under which the city's systemic failures become most legible to all its local residents across class, caste, gender, infrastructure, and labour.</div>
+  </div>
+</div>
+
 <div id="section2">
   <div id="s2-inner">
     <div id="s2-title">Riding 14 hours a day across Mumbai in extreme heat, Nasim accumulates knowledge no satellite or platform algorithm captures. He knows which neighbourhoods run hotter, which streets flood first, which restaurants will let a rider rest. <span style="color:#c8920a;">He has mapped, through his body, the city's climate risk in real time.</span></div>
