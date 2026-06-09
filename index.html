@@ -7,6 +7,7 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400&family=Archivo:wght@300;400&display=swap');
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{ --lm:1.8vw; --logo-h:calc(1.4rem + clamp(15px,1.6vw,22px)); }
 html,body{
   background:#fdf0e8;
   font-family:'Unbounded',sans-serif;
@@ -22,9 +23,9 @@ html,body{
   display:grid;
   grid-template-columns:1fr 1fr 1fr;
   align-items:center;
-  padding:0 4vw;
+  padding:0 var(--lm);
   box-sizing:border-box;
-  column-gap:3vw;
+  column-gap:4vw;
   z-index:10;
 }
 
@@ -39,7 +40,7 @@ html,body{
 
 #context-panel{
   align-self:start;
-  padding-top:max(6vh,48px);
+  padding-top:calc(var(--logo-h) + 2.2rem);
   position:relative;
   z-index:10;
   width:100%;
@@ -239,7 +240,7 @@ html,body{
 #logo{
   position:fixed;
   top:1.4rem;
-  left:1.8vw;
+  left:var(--lm);
   font-family:'Unbounded',sans-serif;
   font-size:clamp(15px,1.6vw,22px);
   font-weight:400;
