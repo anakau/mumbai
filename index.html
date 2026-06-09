@@ -243,6 +243,18 @@ html,body{
   letter-spacing:0.01em;
   padding:2px 0 4px;
 }
+#poem-priya .loop{ border-left-color:#5533ff; }
+#poem-priya .loop-inner{ color:#5533ff; }
+.hunches-header{ display:flex; align-items:center; margin-bottom:28px; gap:12px; }
+.hunches-header .hunches-label{ margin-bottom:0; }
+.hunch-view-toggle{ display:flex; gap:10px; margin-left:auto; }
+.hv-btn{ font-size:20px; color:rgba(245,240,220,0.3); background:none; border:none; cursor:pointer; padding:0; transition:color 0.2s; line-height:1; font-family:'Archivo',sans-serif; }
+.hv-btn.active{ color:rgba(245,240,220,0.9); }
+.hunch-slide-text{ font-family:'Unbounded',sans-serif; font-size:clamp(28px,2.6vw,40px); font-weight:300; color:rgba(245,240,220,0.9); line-height:1.75; letter-spacing:-0.02em; min-height:160px; cursor:pointer; }
+.hunch-dots{ display:flex; gap:6px; margin-top:24px; }
+.hunch-dot{ width:4px; height:4px; border-radius:50%; background:rgba(245,240,220,0.25); transition:background 0.3s; }
+.hunch-dot.active{ background:rgba(245,240,220,0.9); }
+#hunch-list-view{ display:none; }
 
 #hint{
   position:fixed;bottom:2rem;left:50%;
@@ -340,322 +352,6 @@ html,body{
 }
 
 
-#section2{
-  position:relative;
-  width:100%;
-  min-height:100vh;
-  background:#0f0f0d;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  padding:100px 0;
-  box-sizing:border-box;
-  flex-shrink:0;
-}
-#s2-left, #s2-right{ display:contents; }
-#s2-inner{
-  width:min(560px,88vw);
-  display:flex;
-  flex-direction:column;
-  gap:32px;
-  opacity:0;
-  transform:translateY(28px);
-  transition:opacity 0.9s ease 0.1s, transform 0.9s ease 0.1s;
-}
-#s2-inner.arrive{ opacity:1; transform:translateY(0); }
-#s2-title{
-  font-family:'Unbounded',sans-serif;
-  font-size:clamp(15px,1.6vw,22px);
-  font-weight:400;
-  color:#f5f0dc;
-  line-height:1.65;
-  letter-spacing:-0.01em;
-  display:block;
-}
-#s2-body{
-  font-family:'Archivo',sans-serif;
-  font-size:clamp(15px,1.3vw,17px);
-  font-weight:300;
-  color:rgba(245,240,220,0.78);
-  line-height:1.9;
-  letter-spacing:0.01em;
-}
-#s2-tags{
-  display:flex;
-  flex-wrap:wrap;
-  gap:8px;
-}
-.s2-tag{
-  font-family:'Archivo',sans-serif;
-  font-size:11px;
-  font-weight:400;
-  color:#0f0f0d;
-  background:#c8220a;
-  padding:4px 10px;
-  letter-spacing:0.05em;
-  text-transform:uppercase;
-}
-
-/* ── SECTION 3 ── */
-#section3{
-  position:relative;
-  width:100%;
-  min-height:100vh;
-  background:#c8220a;
-  transition:background 0.5s ease;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  padding:100px 0;
-  box-sizing:border-box;
-  flex-shrink:0;
-}
-#s3-inner{
-  width:min(560px,88vw);
-  display:flex;
-  flex-direction:column;
-  gap:60px;
-  opacity:0;
-  transform:translateY(28px);
-  transition:opacity 0.9s ease 0.1s, transform 0.9s ease 0.1s;
-}
-#s3-inner.arrive{ opacity:1; transform:translateY(0); }
-
-#s3-intro{
-  font-family:'Unbounded',sans-serif;
-  font-size:clamp(15px,1.6vw,22px);
-  font-weight:400;
-  color:rgba(245,240,220,0.95);
-  line-height:1.65;
-  letter-spacing:-0.01em;
-}
-#s3-intro 
-
-/* character cards row */
-#s3-cards{
-  display:flex;
-  flex-direction:row;
-  gap:32px;
-  align-items:flex-start;
-}
-
-.s3-card{
-  display:flex;
-  flex-direction:column;
-  align-items:flex-start;
-  gap:12px;
-  flex:1;
-}
-.s3-card-img{ display:none; }
-
-.s3-card-name{
-  font-family:'Unbounded',sans-serif;
-  font-size:11px;
-  font-weight:400;
-  color:rgba(245,240,220,0.95);
-  letter-spacing:0.06em;
-  text-transform:uppercase;
-  line-height:1.5;
-}
-.s3-card-detail{
-  font-family:'Archivo',sans-serif;
-  font-size:12px;
-  font-weight:300;
-  color:rgba(245,240,220,0.6);
-  line-height:1.75;
-  letter-spacing:0.01em;
-}
-
-.show-priya #section3{ background:#110d2e; }
-
-/* ── PRIYA OVERLAY ── */
-#priya-overlay{
-  position:fixed;
-  top:0;left:0;
-  width:100vw;height:100vh;
-  background:#f0f4fd;
-  z-index:100;
-  display:none;
-  flex-direction:column;
-  overflow-y:auto;
-  overflow-x:hidden;
-}
-#priya-overlay.open{ display:flex; }
-
-/* close button */
-#priya-close{
-  position:fixed;
-  top:1.4rem;right:2vw;
-  font-family:'Archivo',sans-serif;
-  font-size:11px;font-weight:400;
-  letter-spacing:0.12em;
-  text-transform:uppercase;
-  color:#1a1a18;
-  cursor:pointer;
-  z-index:200;
-  background:none;border:none;
-  opacity:0;
-  transition:opacity 0.4s ease;
-}
-#priya-overlay.open ~ #priya-close,
-#priya-overlay.open + #priya-close{ opacity:1; }
-#priya-close.show{ opacity:1; }
-
-/* ── PRIYA SECTION 1: poem ── */
-#priya-s1{
-  position:relative;
-  width:100%;
-  height:100vh;
-  flex-shrink:0;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  overflow:hidden;
-}
-#priya-canvas{
-  position:absolute;
-  top:0;left:0;
-  width:100%;height:100%;
-  pointer-events:none;
-  z-index:0;
-}
-#priya-poem{
-  position:relative;
-  z-index:10;
-  display:flex;
-  flex-direction:column;
-  align-items:flex-start;
-  width:min(560px,88vw);
-}
-.priya-row{ width:100%; display:flex; flex-direction:column; align-items:flex-start; }
-.ppl{
-  font-family:'Unbounded',sans-serif;
-  font-size:clamp(14px,1.55vw,19px);
-  font-weight:300;
-  white-space:nowrap;
-  color:#1a1a18;
-  line-height:1;
-  padding:6px 0;
-  position:relative;z-index:10;
-}
-.ploop{
-  max-height:0;overflow:hidden;opacity:0;
-  transition:max-height 0.9s cubic-bezier(0.16,1,0.3,1), opacity 0.7s ease;
-  margin-left:24px;
-  border-left:1px solid #5533ff;
-  padding-left:14px;
-  margin-top:0;margin-bottom:0;
-  position:relative;z-index:10;
-}
-.ploop.on{ max-height:140px;opacity:1;margin-top:3px;margin-bottom:3px; }
-.ploop-inner{
-  font-family:'Archivo',sans-serif;
-  font-size:14.5px;font-weight:400;
-  line-height:1.9;color:#5533ff;
-  text-align:left;letter-spacing:0.01em;
-  padding:2px 0 4px;
-}
-
-/* ── PRIYA SECTION 2: intelligence ── */
-#priya-s2{
-  width:100%;
-  min-height:100vh;
-  flex-shrink:0;
-  background:#0f0f0d;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:100px 0;
-  box-sizing:border-box;
-}
-#priya-s2-inner{
-  width:min(560px,88vw);
-  display:flex;
-  flex-direction:column;
-  gap:32px;
-  opacity:0;
-  transform:translateY(28px);
-  transition:opacity 0.9s ease 0.1s, transform 0.9s ease 0.1s;
-}
-#priya-s2-inner.arrive{ opacity:1;transform:translateY(0); }
-#priya-s2-title{
-  font-family:'Unbounded',sans-serif;
-  font-size:clamp(15px,1.6vw,22px);
-  font-weight:400;color:#f5f0dc;
-  line-height:1.65;letter-spacing:0.01em;display:block;
-}
-#priya-s2-body{
-  font-family:'Archivo',sans-serif;
-  font-size:clamp(15px,1.3vw,17px);font-weight:300;
-  color:rgba(245,240,220,0.82);line-height:1.9;letter-spacing:0.01em;
-}
-#priya-s2-tags{ display:flex;flex-wrap:wrap;gap:8px; }
-.priya-tag{
-  font-family:'Archivo',sans-serif;font-size:11px;font-weight:400;
-  color:#0f0f0d;background:#c8220a;padding:4px 10px;
-  letter-spacing:0.05em;text-transform:uppercase;
-}
-
-#priya-profile{
-  max-height:0;overflow:hidden;opacity:0;
-  transition:max-height 0.9s cubic-bezier(0.16,1,0.3,1), opacity 0.8s ease;
-  margin-top:0;
-}
-#priya-profile.on{ max-height:200px;opacity:1;margin-top:18px; }
-#priya-profile-wrap{ display:flex;align-items:flex-start;gap:14px; }
-#priya-img{ flex-shrink:0;width:80px;height:80px;background:#3d0c3a;padding:2px;box-sizing:border-box; }
-#priya-img svg{ width:100%;height:100%;display:block; }
-#priya-img path{ fill:#fff;stroke:none; }
-#priya-ptext{ display:flex;flex-direction:column;gap:3px; }
-.priya-pname{
-  font-family:'Unbounded',sans-serif;font-size:10px;font-weight:400;
-  color:#1a1a18;letter-spacing:0.06em;text-transform:uppercase;
-}
-.priya-pdetail{
-  font-family:'Archivo',sans-serif;font-size:11px;font-weight:300;
-  line-height:1.8;color:#1a1a18;letter-spacing:0.01em;
-}
-/* priya section 3 */
-#priya-s3{
-  width:100%;min-height:100vh;flex-shrink:0;
-  background:#f5f0dc;
-  display:flex;flex-direction:column;
-  align-items:center;justify-content:center;
-  padding:100px 0;box-sizing:border-box;
-}
-#priya-s3-inner{
-  width:min(560px,88vw);
-  display:flex;flex-direction:column;gap:60px;
-  opacity:0;transform:translateY(28px);
-  transition:opacity 0.9s ease 0.1s,transform 0.9s ease 0.1s;
-}
-#priya-s3-inner.arrive{ opacity:1;transform:translateY(0); }
-#priya-s3-intro{
-  font-family:'Unbounded',sans-serif;
-  font-size:clamp(15px,1.6vw,22px);font-weight:400;
-  color:#1a1a18;line-height:1.65;letter-spacing:-0.01em;
-}
-#priya-s3-cards{ display:flex;flex-direction:row;gap:32px;align-items:flex-start; }
-.ps3-card{ display:flex;flex-direction:column;align-items:flex-start;gap:12px;flex:1;cursor:pointer; }
-.ps3-card-img{
-  width:100%;aspect-ratio:1/1;background:#3d0c3a;
-  display:flex;align-items:center;justify-content:center;
-  overflow:hidden;padding:8px;box-sizing:border-box;
-}
-.ps3-card-img svg{ width:100%;height:100%;display:block; }
-.ps3-card-img path{ fill:#fff;stroke:none; }
-.ps3-card-img.placeholder{ background:#e8e0cc; }
-.ps3-card-img.placeholder svg path{ fill:#c4bfaf; }
-.ps3-card-name{
-  font-family:'Unbounded',sans-serif;font-size:11px;font-weight:400;
-  color:#1a1a18;letter-spacing:0.06em;text-transform:uppercase;line-height:1.5;
-}
-.ps3-card-detail{
-  font-family:'Archivo',sans-serif;font-size:12px;font-weight:300;
-  color:#888880;line-height:1.75;letter-spacing:0.01em;
-}
 </style>
 </head>
 <body>
@@ -972,8 +668,18 @@ window.addEventListener('touchend', onTouchEnd, {passive:true});
     <div class="ctx-content" id="ctx-risk">We chose cyclical flooding and heatwaves as the macro frame of Mumbai's systemic risk field, on the basis that these are the conditions under which the city's systemic failures become most legible to all its local residents across class, caste, gender, infrastructure, and labour.</div>
   </div>
   <div id="field-hunches">
-    <span class="hunches-label">Field Hunches</span>
-    <ul class="hunch-list">
+    <div class="hunches-header">
+      <span class="hunches-label">Field Hunches</span>
+      <div class="hunch-view-toggle">
+        <button class="hv-btn active" id="hv-slide" title="One at a time">&#9632;</button>
+        <button class="hv-btn" id="hv-list" title="List">&#8801;</button>
+      </div>
+    </div>
+    <div id="hunch-slide-view">
+      <div class="hunch-slide-text" id="hunch-slide-text"></div>
+      <div class="hunch-dots" id="hunch-dots"></div>
+    </div>
+    <ul class="hunch-list" id="hunch-list-view">
       <li class="hunch-item">Climate risk in Mumbai is chronic, not episodic. It is embodied, continuous, longitudinal, and carried in lived memory.</li>
       <li class="hunch-item">The most exposed citizens are not passive, but are forced to adapt at any cost because of class, caste, location, invisibility in the system, and Mumbai's urban identity as an expensive city of dreams that people come to at any cost to succeed.</li>
       <li class="hunch-item">Vulnerability is not a characteristic of people. It is produced by structural choices (such as loan structures, rental enforcement, political power differentials, the language of governance, etc.) and deepens cyclically.</li>
@@ -995,377 +701,72 @@ document.querySelectorAll('.ctx-tab').forEach(function(tab){
   });
 });
 </script>
-
-<div id="section2">
-  <div id="s2-inner">
-    <div id="s2-title">Riding 14 hours a day across Mumbai in extreme heat, Nasim accumulates knowledge no satellite or platform algorithm captures. He knows which neighbourhoods run hotter, which streets flood first, which restaurants will let a rider rest. <span style="color:#c8920a;">He has mapped, through his body, the city's climate risk in real time.</span></div>
-    <div id="s2-body">
-      This is not incidental. It is intelligence — produced daily, at personal cost, and absorbed silently into the platform's operating efficiency. His route adaptations reduce delivery failures. His informal cooling network functions as distributed preventive healthcare. His heat awareness is a live urban sensor the city does not have.<br><br>
-      But none of it is recognised, named, or compensated. Nasim is not classified as a knowledge worker. His expertise has no home. The risk he absorbs is the unpriced subsidy of a revenue model calibrated to demand spikes in both heat and flood seasons.
-    </div>
-    <div id="s2-tags">
-      <span class="s2-tag">Route Intelligence</span>
-      <span class="s2-tag">Heat Mapping</span>
-      <span class="s2-tag">Informal Care Networks</span>
-      <span class="s2-tag">Unrecognised Labour</span>
-    </div>
-  </div>
-</div>
-
-
 <script>
 (function(){
-  const sec2    = document.getElementById('section2');
-  const s2img   = document.getElementById('s2-inner');
-  const s2text  = document.getElementById('s2-inner');
-  let triggered = false;
+  var HUNCHES = [
+    'Climate risk in Mumbai is chronic, not episodic. It is embodied, continuous, longitudinal, and carried in lived memory.',
+    'The most exposed citizens are not passive, but are forced to adapt at any cost because of class, caste, location, invisibility in the system, and Mumbai’s urban identity as an expensive city of dreams that people come to at any cost to succeed.',
+    'Vulnerability is not a characteristic of people. It is produced by structural choices (such as loan structures, rental enforcement, political power differentials, the language of governance, etc.) and deepens cyclically.',
+    'Citizens already hold deep insight into the risks they live with, held in their minds, bodies, and social networks. What is missing is the institutional flow back in the form of formal information, subsidies, insurance, anticipatory support articulated in multiple languages, designed for their needs, and accessible before crisis hits.',
+    'Risks are compounded by their interaction with each other. Single-issue risk tools actively misrepresent that compounding by making each risk appear manageable in isolation.',
+    'Long social cascades (such as identity erosion, intergenerational trauma, slow breakdown of dignity and routine) accumulate silently.',
+    'The city may appear functional because vulnerable populations continuously absorb instability through individual coping mechanisms, and create the illusion of resilience.'
+  ];
+  var slideText = document.getElementById('hunch-slide-text');
+  var dotsWrap  = document.getElementById('hunch-dots');
+  var listView  = document.getElementById('hunch-list-view');
+  var slideView = document.getElementById('hunch-slide-view');
+  var btnSlide  = document.getElementById('hv-slide');
+  var btnList   = document.getElementById('hv-list');
 
-  function checkScroll(){
-    if(triggered) return;
-    const rect = sec2.getBoundingClientRect();
-    if(rect.top < window.innerHeight * 0.85){
-      triggered = true;
-      sec2.classList.add('visible');
-      // slight delay so section fades in first
-      setTimeout(()=>{
-        s2img.classList.add('arrive');
-      }, 100);
-    }
-  }
-
-  window.addEventListener('scroll', checkScroll, {passive:true});
-  // also allow scrolling when all loops open
-  const origWheel = window._nasimWheel;
-})();
-</script>
-
-
-<div id="section3">
-  <div id="s3-inner">
-    <div id="s3-intro">
-      Like Nasim, there is Priya — and across Mumbai, across India,
-      there are millions navigating the same invisible loops.<br><br>
-      Each body a sensor. Each adaptation unrecorded.<br>
-      Each cost absorbed quietly so the system does not have to.
-    </div>
-    <div id="s3-cards">
-      <div class="s3-card">
-        <div class="s3-card-img"></div>
-        <div class="s3-card-name">Nasim, 27</div>
-        <div class="s3-card-detail">Gig Delivery Rider<br>Andheri East, Mumbai</div>
-      </div>
-      <div class="s3-card" style="cursor:pointer">
-        <div class="s3-card-img"></div>
-        <div class="s3-card-name">Priya, 20</div>
-        <div class="s3-card-detail">College Student<br>Bhandup → Andheri, Mumbai</div>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-<script>
-(function(){
-  const sec3 = document.getElementById('section3');
-  const s3in = document.getElementById('s3-inner');
-  let done = false;
-  function check(){
-    if(done) return;
-    const r = sec3.getBoundingClientRect();
-    if(r.top < window.innerHeight * 0.85){
-      done = true;
-      s3in.classList.add('arrive');
-    }
-  }
-  window.addEventListener('scroll', check, {passive:true});
-})();
-</script>
-
-
-<div id="priya-overlay">
-  <div style="position:fixed;top:1.4rem;left:1.8vw;font-family:'Unbounded',sans-serif;font-size:clamp(15px,1.6vw,22px);font-weight:400;letter-spacing:0.10em;color:#1a1a18;text-transform:uppercase;z-index:200;pointer-events:none;">RiskSense</div>
-  
-<div id="priya-s1">
-  <canvas id="priya-canvas"></canvas>
-  <div id="priya-poem">
-    <div class="priya-row">
-      <div class="ppl">Mumbai does not know she arrived eight months ago</div>
-      <div class="ploop" id="pl0"><div class="ploop-inner">She moved from Nashik for college<br>The city did not register her arrival<br>The flood did not wait to find out</div></div>
-    </div>
-    <div class="priya-row">
-      <div class="ppl">The damp comes through the walls regardless</div>
-      <div class="ploop" id="pl1"><div class="ploop-inner">Mould enters every monsoon<br>Landlord does not act — no legal compulsion<br>She buys plants, N95s, dehumidifiers out of her own pocket</div></div>
-    </div>
-    <div class="priya-row">
-      <div class="ppl">Her lungs keep the record the landlord does not</div>
-      <div class="ploop" id="pl2"><div class="ploop-inner">Asthma since she was ten<br>Each season arrives with a body already compromised<br>The landlord's position remains entirely stable</div></div>
-    </div>
-    <div class="priya-row">
-      <div class="ppl">She hides the worst of it so she can stay</div>
-      <div class="ploop" id="pl3"><div class="ploop-inner">If her parents find out she was hospitalised<br>They will make her move back to Nashik<br>She will lose eight months, her networks, her future here</div></div>
-    </div>
-    <div class="priya-row">
-      <div class="ppl">I manage alone before I am found out</div>
-      <div class="ploop" id="pl4"><div class="ploop-inner">College shifts online, inconsistently<br>Power cuts make continuity impossible<br>She falls behind — health, money, and academia at once</div></div>
-    </div>
-    <div class="priya-row">
-      <div class="ppl">I always manage alone before I am found out</div>
-      <div class="ploop" id="pl5"><div class="ploop-inner">The cost of getting sick in Mumbai is reverse migration<br>Every loop she manages alone is the city failing her<br>She carries that failure invisibly so she can stay</div></div>
-    </div>
-  </div>
-</div>
-
-  
-<div id="priya-s2">
-  <div id="priya-s2-inner">
-    <div id="priya-s2-title">Navigating three crises at once — health, housing, and education — Priya has built an invisible infrastructure of survival that no institution sees or supports.</div>
-    <div id="priya-s2-body">
-      She knows which commute routes flood first and in which sequence. She knows how to keep her nebuliser charged through power cuts. She knows which neighbours share solutions for damp walls and which landlords in her building have acted. She knows how to shift online when the college does not yet know it needs to.<br><br>
-      None of this knowledge is recorded. None of it is compensated. It is the daily intelligence of someone who cannot afford to be caught off guard — produced at the cost of her health, her savings, and her silence.
-    </div>
-    <div id="priya-s2-tags">
-      <span class="priya-tag">Health Adaptation</span>
-      <span class="priya-tag">Housing Rights</span>
-      <span class="priya-tag">Educational Continuity</span>
-      <span class="priya-tag">Invisible Infrastructure</span>
-    </div>
-  </div>
-</div>
-
-
-<div id="priya-s3">
-  <div id="priya-s3-inner">
-    <div id="priya-s3-intro">
-      Like Priya, there is Nasim — and across Mumbai, across India,
-      there are millions navigating the same invisible loops.<br><br>
-      Each body a sensor. Each adaptation unrecorded.<br>
-      Each cost absorbed quietly so the system does not have to.
-    </div>
-    <div id="priya-s3-cards">
-      <div class="ps3-card" id="ps3-nasim">
-        <div class="ps3-card-img"></div>
-        <div class="ps3-card-name">Nasim, 27</div>
-        <div class="ps3-card-detail">Gig Delivery Rider<br>Andheri East, Mumbai</div>
-      </div>
-      <div class="ps3-card">
-        <div class="ps3-card-img"></div>
-        <div class="ps3-card-name">Priya, 20</div>
-        <div class="ps3-card-detail">College Student<br>Bhandup → Andheri, Mumbai</div>
-      </div>
-    </div>
-  </div>
-</div>
-
-</div>
-<button id="priya-close">✕ Close</button>
-
-
-<script>
-(function(){
-  // ── open/close ──────────────────────────────────────────────────────────
-  const overlay   = document.getElementById('priya-overlay');
-  const closeBtn  = document.getElementById('priya-close');
-  const priyaCard = document.querySelector('#s3-cards .s3-card:nth-child(2)');
-
-  priyaCard.style.cursor = 'pointer';
-  priyaCard.addEventListener('click', ()=>{
-    overlay.classList.add('open');
-    closeBtn.classList.add('show');
-    document.body.style.overflow = 'hidden';
-    // reset loops
-    ploops.forEach(el=>el.classList.remove('on'));
-    pcurrent = -1;
-  });
-  closeBtn.addEventListener('click', ()=>{
-    overlay.classList.remove('open');
-    closeBtn.classList.remove('show');
-    document.body.style.overflow = '';
+  HUNCHES.forEach(function(_,i){
+    var d = document.createElement('span');
+    d.className = 'hunch-dot' + (i===0?' active':'');
+    dotsWrap.appendChild(d);
   });
 
-  // ── Priya poem wheel/click ──────────────────────────────────────────────
-  const ploops = Array.from({length:6},(_,i)=>document.getElementById('pl'+i));
-  let pcurrent = -1;
-  let pwheelLock = false;
+  var current = 0;
+  var timer = null;
 
-  function popenNext(){
-    const next = pcurrent+1;
-    if(next < ploops.length){
-      pcurrent=next;
-      ploops[pcurrent].classList.add('on');
-      if(pcurrent===5){
-        const pp=document.getElementById('priya-profile');
-        if(pp) pp.classList.add('on');
-      }
-    }
-  }
-  function pcloseOne(){
-    if(pcurrent>=0){
-      if(pcurrent===5){
-        const pp=document.getElementById('priya-profile');
-        if(pp) pp.classList.remove('on');
-      }
-      ploops[pcurrent].classList.remove('on');
-      pcurrent--;
-    }
-  }
-
-  overlay.addEventListener('wheel', e=>{
-    const s1 = document.getElementById('priya-s1');
-    const s1bottom = s1.getBoundingClientRect().bottom;
-    // only intercept when viewing poem section
-    if(s1bottom > 0 && pcurrent < ploops.length-1){
-      e.preventDefault();
-      if(pwheelLock) return;
-      pwheelLock=true;
-      setTimeout(()=>pwheelLock=false,600);
-      if(e.deltaY>0) popenNext();
-      else pcloseOne();
-    }
-  },{passive:false});
-
-  overlay.addEventListener('click', e=>{
-    if(e.target === closeBtn) return;
-    const s1 = document.getElementById('priya-s1');
-    const rect = s1.getBoundingClientRect();
-    // click in poem area opens all
-    if(rect.top <= e.clientY && e.clientY <= rect.bottom){
-      ploops.forEach(el=>el.classList.add('on'));
-      pcurrent=ploops.length-1;
-      const pp=document.getElementById('priya-profile');
-      if(pp) pp.classList.add('on');
-    }
-  });
-
-  // ── Priya intelligence section scroll reveal ────────────────────────────
-  const ps2inner = document.getElementById('priya-s2-inner');
-  overlay.addEventListener('scroll', ()=>{
-    const r = ps2inner.getBoundingClientRect();
-    if(r.top < window.innerHeight*0.85) ps2inner.classList.add('arrive');
-  });
-
-  // ── Priya heatmap — blue/purple palette ────────────────────────────────
-  const canvas = document.getElementById('priya-canvas');
-  const ctx    = canvas.getContext('2d');
-  let W,H,blobs=[],mouse={x:-9999,y:-9999},startTime=null;
-
-  function buildBlobs(){
-    blobs=[];
-    const cols=6,rows=4;
-    for(let r=0;r<rows;r++){
-      for(let c=0;c<cols;c++){
-        blobs.push({
-          fx:(c+0.5)/cols+(Math.random()-0.5)*0.12,
-          fy:(r+0.5)/rows+(Math.random()-0.5)*0.14,
-          fr:0.22+Math.random()*0.14,
-          phase:Math.random()*Math.PI*2,
-          period:8000+Math.random()*6000,
-        });
-      }
-    }
-  }
-
-  // Blue/purple thermal palette
-  function cStr(t,a){
-    t=Math.max(0,Math.min(1,t));
-    let r,g,b;
-    if(t<0.25){const s=t/0.25;r=Math.round(180+s*20);g=Math.round(220-s*40);b=255;}
-    else if(t<0.50){const s=(t-0.25)/0.25;r=Math.round(200-s*120);g=Math.round(180-s*80);b=255;}
-    else if(t<0.75){const s=(t-0.50)/0.25;r=Math.round(80-s*50);g=Math.round(100-s*60);b=255;}
-    else{const s=(t-0.75)/0.25;r=Math.round(30+s*20);g=Math.round(40-s*20);b=255;}
-    return `rgba(${r},${g},${b},${Math.max(0,a).toFixed(3)})`;
-  }
-
-  function drawBlob(b,elapsed){
-    const cx=b.fx*W,cy=b.fy*H;
-    const t_sin=Math.sin((elapsed/b.period)*Math.PI*2+b.phase);
-    const pulse=1+0.08*t_sin;
-    const radius=b.fr*Math.min(W,H)*pulse;
-    const baseHeat=0.105+0.055*t_sin;
-    const dx=(mouse.x-cx)/W,dy=(mouse.y-cy)/H;
-    const prox=Math.max(0,1-Math.sqrt(dx*dx+dy*dy)/0.38);
-    const heat=baseHeat+prox*0.85;
-    const g=ctx.createRadialGradient(cx,cy,0.01,cx,cy,radius);
-    g.addColorStop(0,    cStr(heat,       0.32));
-    g.addColorStop(0.30, cStr(heat*0.78,  0.22));
-    g.addColorStop(0.60, cStr(heat*0.46,  0.13));
-    g.addColorStop(0.85, cStr(heat*0.20,  0.06));
-    g.addColorStop(1.0,  cStr(0,          0));
-    ctx.fillStyle=g;
-    ctx.beginPath();
-    ctx.arc(cx,cy,radius,0,Math.PI*2);
-    ctx.fill();
-  }
-
-  function loop(ts){
-    if(!startTime) startTime=ts;
-    const elapsed=ts-startTime;
-    ctx.fillStyle='rgba(240,244,253,0.18)';
-    ctx.fillRect(0,0,W,H);
-    blobs.forEach(b=>drawBlob(b,elapsed));
-    requestAnimationFrame(loop);
-  }
-
-  function resize(){
-    W=canvas.width=canvas.offsetWidth;
-    H=canvas.height=canvas.offsetHeight;
-    ctx.fillStyle='#f0f4fd';
-    ctx.fillRect(0,0,W,H);
-    buildBlobs();
-  }
-
-  overlay.addEventListener('mousemove',e=>{mouse.x=e.clientX;mouse.y=e.clientY;});
-  
-  // init when first opened
-  priyaCard.addEventListener('click',()=>{
-    setTimeout(()=>{ resize(); requestAnimationFrame(loop); },50);
-  });
-  window.addEventListener('resize',()=>{ if(overlay.classList.contains('open')) resize(); });
-})();
-</script>
-
-
-<script>
-(function(){
-  // Show priya profile when last loop opens
-  const origPwheel = window._priyaWheelAdded;
-
-  // Patch into priya wheel: show profile when pcurrent hits 5
-  // We hook into the overlay scroll to reveal s3
-  const overlay  = document.getElementById('priya-overlay');
-  const ps3inner = document.getElementById('priya-s3-inner');
-  const pprofile = document.getElementById('priya-profile');
-
-  overlay.addEventListener('scroll', ()=>{
-    // s3 reveal
-    if(ps3inner){
-      const r = ps3inner.getBoundingClientRect();
-      if(r.top < window.innerHeight*0.85) ps3inner.classList.add('arrive');
-    }
-  });
-
-  // reveal priya profile when all ploops open — watch for class changes
-  const observer = new MutationObserver(()=>{
-    const ploops = Array.from({length:6},(_,i)=>document.getElementById('pl'+i));
-    const allOpen = ploops.every(el=>el && el.classList.contains('on'));
-    if(allOpen && pprofile) pprofile.classList.add('on');
-    else if(!allOpen && pprofile) pprofile.classList.remove('on');
-  });
-  document.querySelectorAll('.ploop').forEach(el=>{
-    observer.observe(el, {attributes:true, attributeFilter:['class']});
-  });
-
-  // clicking nasim card in priya s3 closes priya overlay and scrolls to top
-  const ps3nasim = document.getElementById('ps3-nasim');
-  if(ps3nasim){
-    ps3nasim.addEventListener('click',()=>{
-      overlay.classList.remove('open');
-      document.getElementById('priya-close').classList.remove('show');
-      document.body.style.overflow='';
-      window.scrollTo({top:0, behavior:'smooth'});
+  function showHunch(idx){
+    current = idx;
+    slideText.textContent = HUNCHES[idx];
+    dotsWrap.querySelectorAll('.hunch-dot').forEach(function(d,i){
+      d.classList.toggle('active', i===idx);
     });
   }
+
+  function advance(){ showHunch((current+1)%HUNCHES.length); }
+
+  function startTimer(){
+    if(timer) clearInterval(timer);
+    timer = setInterval(advance, 4500);
+  }
+
+  showHunch(0);
+  startTimer();
+
+  slideText.addEventListener('click', function(){ advance(); startTimer(); });
+
+  btnSlide.addEventListener('click', function(){
+    if(btnSlide.classList.contains('active')) return;
+    btnSlide.classList.add('active');
+    btnList.classList.remove('active');
+    listView.style.display = 'none';
+    slideView.style.display = '';
+    showHunch(0);
+    startTimer();
+  });
+
+  btnList.addEventListener('click', function(){
+    if(btnList.classList.contains('active')) return;
+    btnList.classList.add('active');
+    btnSlide.classList.remove('active');
+    clearInterval(timer);
+    timer = null;
+    slideView.style.display = 'none';
+    listView.style.display = 'block';
+  });
 })();
 </script>
-
-</body>
-</html>
+</body></html>
