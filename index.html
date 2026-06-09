@@ -14,7 +14,9 @@ html,body{
   color:#1a1a18;
   overflow-x:hidden;
   overflow-y:hidden;
+  transition:background 0.5s ease;
 }
+body.show-priya{ background:#f0f4fd; }
 
 #stage{
   position:absolute;
@@ -183,9 +185,10 @@ html,body{
 }
 .hunch-list{
   list-style:none;
+  counter-reset:hunch;
   display:flex;
   flex-direction:column;
-  gap:20px;
+  gap:44px;
 }
 .hunch-item{
   font-family:'Unbounded',sans-serif;
@@ -196,6 +199,16 @@ html,body{
   letter-spacing:-0.01em;
   padding-left:18px;
   border-left:1px solid rgba(245,240,220,0.2);
+  counter-increment:hunch;
+}
+.hunch-item::before{
+  content:counter(hunch,decimal-leading-zero) '.';
+  font-family:'Archivo',sans-serif;
+  font-size:clamp(8px,0.7vw,10px);
+  letter-spacing:0.12em;
+  color:rgba(245,240,220,0.3);
+  display:block;
+  margin-bottom:9px;
 }
 
 .row{
@@ -247,9 +260,12 @@ html,body{
 #poem-priya .loop-inner{ color:#5533ff; }
 .hunches-header{ display:flex; align-items:center; margin-bottom:28px; gap:12px; }
 .hunches-header .hunches-label{ margin-bottom:0; }
-.hunch-view-toggle{ display:flex; gap:10px; margin-left:auto; }
-.hv-btn{ font-size:20px; color:rgba(245,240,220,0.3); background:none; border:none; cursor:pointer; padding:0; transition:color 0.2s; line-height:1; font-family:'Archivo',sans-serif; }
-.hv-btn.active{ color:rgba(245,240,220,0.9); }
+.hunch-view-toggle{ display:flex; align-items:center; gap:9px; margin-left:auto; }
+.hv-label{ font-family:'Archivo',sans-serif; font-size:clamp(8px,0.72vw,10px); letter-spacing:0.14em; text-transform:uppercase; color:rgba(245,240,220,0.35); }
+.hunch-toggle{ width:42px; height:25px; border-radius:13px; background:rgba(245,240,220,0.18); border:none; cursor:pointer; padding:0; position:relative; transition:background 0.28s ease; flex-shrink:0; }
+.hunch-toggle.on{ background:rgba(245,240,220,0.55); }
+.hunch-toggle-thumb{ position:absolute; top:3.5px; left:3.5px; width:18px; height:18px; border-radius:50%; background:rgba(245,240,220,0.9); box-shadow:0 1px 3px rgba(0,0,0,0.22); transition:transform 0.28s cubic-bezier(0.34,1.56,0.64,1); pointer-events:none; }
+.hunch-toggle.on .hunch-toggle-thumb{ transform:translateX(17px); }
 .hunch-slide-text{ font-family:'Unbounded',sans-serif; font-size:clamp(28px,2.6vw,40px); font-weight:300; color:rgba(245,240,220,0.9); line-height:1.75; letter-spacing:-0.02em; min-height:160px; cursor:pointer; }
 .hunch-dots{ display:flex; gap:6px; margin-top:24px; }
 .hunch-dot{ width:4px; height:4px; border-radius:50%; background:rgba(245,240,220,0.25); transition:background 0.3s; }
@@ -576,7 +592,7 @@ window.addEventListener('touchend', onTouchEnd, {passive:true});
     }
   }
 
-  function cStr(t, a){
+  function cNasim(t, a){
     t=Math.max(0,Math.min(1,t));
     let r,g,b;
     if(t<0.25){const s=t/0.25; r=255;g=Math.round(245-s*35);b=Math.round(215-s*155);}
@@ -584,6 +600,18 @@ window.addEventListener('touchend', onTouchEnd, {passive:true});
     else if(t<0.75){const s=(t-0.50)/0.25; r=255;g=Math.round(105-s*105);b=Math.round(5+s*80);}
     else{const s=(t-0.75)/0.25; r=Math.round(255-s*20);g=0;b=Math.round(85+s*145);}
     return `rgba(${r},${g},${b},${Math.max(0,a).toFixed(3)})`;
+  }
+  function cPriya(t, a){
+    t=Math.max(0,Math.min(1,t));
+    let r,g,b;
+    if(t<0.25){const s=t/0.25;r=Math.round(180+s*20);g=Math.round(220-s*40);b=255;}
+    else if(t<0.50){const s=(t-0.25)/0.25;r=Math.round(200-s*120);g=Math.round(180-s*80);b=255;}
+    else if(t<0.75){const s=(t-0.50)/0.25;r=Math.round(80-s*50);g=Math.round(100-s*60);b=255;}
+    else{const s=(t-0.75)/0.25;r=Math.round(30+s*20);g=Math.round(40-s*20);b=255;}
+    return `rgba(${r},${g},${b},${Math.max(0,a).toFixed(3)})`;
+  }
+  function cStr(t, a){
+    return document.body.classList.contains('show-priya') ? cPriya(t,a) : cNasim(t,a);
   }
 
   function drawBlob(b, elapsed){
@@ -622,9 +650,9 @@ window.addEventListener('touchend', onTouchEnd, {passive:true});
     if(!startTime) startTime=ts;
     const elapsed = ts - startTime;
 
-    // fade to bg colour instead of hard clear — eliminates flicker
+    const priya = document.body.classList.contains('show-priya');
     ctx.globalCompositeOperation = 'source-over';
-    ctx.fillStyle = 'rgba(253,240,232,0.18)';
+    ctx.fillStyle = priya ? 'rgba(240,244,253,0.18)' : 'rgba(253,240,232,0.18)';
     ctx.fillRect(0,0,W,H);
 
     blobs.forEach(b=>drawBlob(b, elapsed));
@@ -635,8 +663,7 @@ window.addEventListener('touchend', onTouchEnd, {passive:true});
   function resize(){
     W=canvas.width=window.innerWidth;
     H=canvas.height=window.innerHeight;
-    // fill with bg colour on resize to avoid flash
-    ctx.fillStyle='#fdf0e8';
+    ctx.fillStyle=document.body.classList.contains('show-priya')?'#f0f4fd':'#fdf0e8';
     ctx.fillRect(0,0,W,H);
     buildBlobs();
   }
@@ -671,8 +698,10 @@ window.addEventListener('touchend', onTouchEnd, {passive:true});
     <div class="hunches-header">
       <span class="hunches-label">Field Hunches</span>
       <div class="hunch-view-toggle">
-        <button class="hv-btn active" id="hv-slide" title="One at a time">&#9632;</button>
-        <button class="hv-btn" id="hv-list" title="List">&#8801;</button>
+        <span class="hv-label">List</span>
+        <button class="hunch-toggle" id="hunch-toggle" role="switch" aria-checked="false">
+          <span class="hunch-toggle-thumb"></span>
+        </button>
       </div>
     </div>
     <div id="hunch-slide-view">
@@ -716,8 +745,7 @@ document.querySelectorAll('.ctx-tab').forEach(function(tab){
   var dotsWrap  = document.getElementById('hunch-dots');
   var listView  = document.getElementById('hunch-list-view');
   var slideView = document.getElementById('hunch-slide-view');
-  var btnSlide  = document.getElementById('hv-slide');
-  var btnList   = document.getElementById('hv-list');
+  var toggle    = document.getElementById('hunch-toggle');
 
   HUNCHES.forEach(function(_,i){
     var d = document.createElement('span');
@@ -748,24 +776,21 @@ document.querySelectorAll('.ctx-tab').forEach(function(tab){
 
   slideText.addEventListener('click', function(){ advance(); startTimer(); });
 
-  btnSlide.addEventListener('click', function(){
-    if(btnSlide.classList.contains('active')) return;
-    btnSlide.classList.add('active');
-    btnList.classList.remove('active');
-    listView.style.display = 'none';
-    slideView.style.display = '';
-    showHunch(0);
-    startTimer();
-  });
-
-  btnList.addEventListener('click', function(){
-    if(btnList.classList.contains('active')) return;
-    btnList.classList.add('active');
-    btnSlide.classList.remove('active');
-    clearInterval(timer);
-    timer = null;
-    slideView.style.display = 'none';
-    listView.style.display = 'block';
+  var listMode = false;
+  toggle.addEventListener('click', function(){
+    listMode = !listMode;
+    toggle.classList.toggle('on', listMode);
+    toggle.setAttribute('aria-checked', listMode ? 'true' : 'false');
+    if(listMode){
+      clearInterval(timer); timer = null;
+      slideView.style.display = 'none';
+      listView.style.display = 'block';
+    } else {
+      listView.style.display = 'none';
+      slideView.style.display = '';
+      showHunch(0);
+      startTimer();
+    }
   });
 })();
 </script>
