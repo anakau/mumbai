@@ -35,20 +35,80 @@ html,body{
   z-index:10;
 }
 
+#navigator-toggle{
+  position:fixed;
+  top:1.4rem;
+  right:var(--lm);
+  display:flex;
+  gap:0;
+  z-index:50;
+}
+.nav-btn{
+  font-family:'Unbounded',sans-serif;
+  font-size:clamp(9px,0.85vw,12px);
+  font-weight:400;
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  color:rgba(26,26,24,0.35);
+  background:none;
+  border:none;
+  cursor:pointer;
+  padding:0 0 2px 0;
+  margin-left:20px;
+  position:relative;
+  transition:color 0.3s ease;
+}
+.nav-btn::after{
+  content:'';
+  position:absolute;
+  bottom:-1px;left:0;
+  width:100%;height:1px;
+  background:#1a1a18;
+  transform:scaleX(0);
+  transform-origin:left;
+  transition:transform 0.3s ease;
+}
+.nav-btn.active{ color:#1a1a18; }
+.nav-btn.active::after{ transform:scaleX(1); }
+
+#poem-priya{
+  display:none;
+  flex-direction:column;
+  align-items:flex-start;
+  width:min(560px,88vw);
+  position:relative;
+  z-index:10;
+}
+#poem-priya.active{ display:flex; }
+
+#priya-hero-profile{
+  max-height:0;
+  overflow:hidden;
+  opacity:0;
+  transition:max-height 0.9s cubic-bezier(0.16,1,0.3,1), opacity 0.8s ease;
+  margin-top:0;
+}
+#priya-hero-profile.on{
+  max-height:80px;
+  opacity:1;
+  margin-top:18px;
+}
+
 #section-clinic{
   position:relative;
   width:100%;
   min-height:100vh;
   background:#fdf0e8;
-  display:flex;
-  align-items:center;
-  justify-content:center;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  align-items:start;
+  gap:6vw;
   padding:100px var(--lm);
   box-sizing:border-box;
   flex-shrink:0;
 }
 #context-panel{
-  width:min(680px,88vw);
+  width:100%;
   position:relative;
 }
 #ctx-tabs{
@@ -102,6 +162,40 @@ html,body{
   display:block;
 }
 @keyframes ctxFade{from{opacity:0}to{opacity:1}}
+.participants{
+  font-size:clamp(9px,0.7vw,11px);
+  color:rgba(26,26,24,0.45);
+  line-height:1.7;
+  display:block;
+  margin-top:10px;
+}
+#field-hunches{ width:100%; }
+.hunches-label{
+  font-family:'Unbounded',sans-serif;
+  font-size:clamp(8px,0.8vw,11px);
+  font-weight:400;
+  letter-spacing:0.16em;
+  text-transform:uppercase;
+  color:rgba(26,26,24,0.4);
+  margin-bottom:28px;
+  display:block;
+}
+.hunch-list{
+  list-style:none;
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+}
+.hunch-item{
+  font-family:'Unbounded',sans-serif;
+  font-size:clamp(11px,0.95vw,14px);
+  font-weight:300;
+  color:#1a1a18;
+  line-height:1.7;
+  letter-spacing:-0.01em;
+  padding-left:16px;
+  border-left:1px solid rgba(26,26,24,0.2);
+}
 
 .row{
   width:100%;
@@ -202,16 +296,7 @@ html,body{
   align-items:flex-start;
   gap:14px;
 }
-#nasim-img{
-  flex-shrink:0;
-  width:80px;
-  height:80px;
-  background:#0f0f0d;
-  padding:2px;
-  box-sizing:border-box;
-}
-#nasim-img svg{ width:100%; height:100%; display:block; }
-#nasim-img path{ fill:#fff; stroke:none; }
+#nasim-img{ display:none; }
 #nasim-text{ display:flex; flex-direction:column; gap:3px; }
 .profile-name{
   font-family:'Unbounded',sans-serif;
@@ -620,13 +705,42 @@ html,body{
       <div class="loop" id="l5"><div class="loop-inner">Each summer starts where the last one left off<br>No recovery window — no off-season<br>Night shifts, less orders — my body tired</div></div>
       <div id="nasim-profile">
         <div id="nasim-profile-wrap">
-          <div id="nasim-img"></div>
           <div id="nasim-text">
             <div class="profile-name">Nasim, 27</div>
             <div class="profile-text">Gig Delivery Rider<br>Andheri East<br>Mumbai</div>
           </div>
         </div>
       </div>
+      </div>
+    </div>
+  </div>
+  <div id="poem-priya">
+    <div class="row">
+      <div class="pl">Mumbai does not know she arrived eight months ago</div>
+      <div class="loop" id="ph0"><div class="loop-inner">She moved from Nashik for college<br>The city did not register her arrival<br>The flood did not wait to find out</div></div>
+    </div>
+    <div class="row">
+      <div class="pl">The damp comes through the walls regardless</div>
+      <div class="loop" id="ph1"><div class="loop-inner">Mould enters every monsoon<br>Landlord does not act — no legal compulsion<br>She buys plants, N95s, dehumidifiers out of her own pocket</div></div>
+    </div>
+    <div class="row">
+      <div class="pl">Her lungs keep the record the landlord does not</div>
+      <div class="loop" id="ph2"><div class="loop-inner">Asthma since she was ten<br>Each season arrives with a body already compromised<br>The landlord's position remains entirely stable</div></div>
+    </div>
+    <div class="row">
+      <div class="pl">She hides the worst of it so she can stay</div>
+      <div class="loop" id="ph3"><div class="loop-inner">If her parents find out she was hospitalised<br>They will make her move back to Nashik<br>She will lose eight months, her networks, her future here</div></div>
+    </div>
+    <div class="row">
+      <div class="pl">I manage alone before I am found out</div>
+      <div class="loop" id="ph4"><div class="loop-inner">College shifts online, inconsistently<br>Power cuts make continuity impossible<br>She falls behind — health, money, and academia at once</div></div>
+    </div>
+    <div class="row">
+      <div class="pl">I always manage alone before I am found out</div>
+      <div class="loop" id="ph5"><div class="loop-inner">The cost of getting sick in Mumbai is reverse migration<br>Every loop she manages alone is the city failing her<br>She carries that failure invisibly so she can stay</div></div>
+      <div id="priya-hero-profile">
+        <div class="profile-name">Priya, 20</div>
+        <div class="profile-text">College Student<br>Bhandup → Andheri<br>Mumbai</div>
       </div>
     </div>
   </div>
@@ -646,12 +760,19 @@ html,body{
 </div>
 
 <div id="logo">RiskSense</div>
+<div id="navigator-toggle">
+  <button class="nav-btn active" data-nav="nasim">Nasim</button>
+  <button class="nav-btn" data-nav="priya">Priya</button>
+</div>
 <div id="hint">scroll</div>
 
 <script>
-const loops = Array.from({length:6}, (_,i)=>document.getElementById('l'+i));
+const loops      = Array.from({length:6}, (_,i)=>document.getElementById('l'+i));
+const priyaLoops = Array.from({length:6}, (_,i)=>document.getElementById('ph'+i));
 const hint  = document.getElementById('hint');
 let current = -1;
+
+function activeNav(){ return document.querySelector('.nav-btn.active').dataset.nav; }
 
 let wheelLock = false;
 function onWheel(e){
@@ -661,8 +782,13 @@ function onWheel(e){
   wheelLock = true;
   setTimeout(()=>{ wheelLock=false; }, 600);
 
-  loops.forEach(el => el.classList.add('on'));
-  document.getElementById('nasim-profile').classList.add('on');
+  if(activeNav() === 'nasim'){
+    loops.forEach(el => el.classList.add('on'));
+    document.getElementById('nasim-profile').classList.add('on');
+  } else {
+    priyaLoops.forEach(el => el.classList.add('on'));
+    document.getElementById('priya-hero-profile').classList.add('on');
+  }
   current = loops.length - 1;
   hint.style.opacity = '0';
   window.removeEventListener('wheel', onWheel);
@@ -670,6 +796,29 @@ function onWheel(e){
   document.body.style.overflowY = 'auto';
   document.documentElement.style.overflowY = 'auto';
 }
+
+document.querySelectorAll('.nav-btn').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    if(btn.classList.contains('active')) return;
+    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const isNasim = btn.dataset.nav === 'nasim';
+    document.getElementById('poem').style.display = isNasim ? '' : 'none';
+    const pp = document.getElementById('poem-priya');
+    pp.style.display = isNasim ? 'none' : '';
+    pp.classList.toggle('active', !isNasim);
+    loops.forEach(el => el.classList.remove('on'));
+    priyaLoops.forEach(el => el.classList.remove('on'));
+    document.getElementById('nasim-profile').classList.remove('on');
+    document.getElementById('priya-hero-profile').classList.remove('on');
+    current = -1;
+    hint.style.opacity = '1';
+    document.body.style.overflowY = 'hidden';
+    document.documentElement.style.overflowY = 'hidden';
+    window.addEventListener('wheel', onWheel, {passive:false});
+    window.addEventListener('touchend', onTouchEnd, {passive:true});
+  });
+});
 
 let touchStartY = 0;
 function onTouchStart(e){ touchStartY = e.touches[0].clientY; }
@@ -684,12 +833,16 @@ window.addEventListener('wheel', onWheel, {passive:false});
 // click anywhere in stage to open ALL loops at once
 document.getElementById('stage').addEventListener('click', function(){
   if(current >= loops.length - 1) return;
-  loops.forEach((el, i) => {
-    el.classList.add('on');
-  });
-  document.getElementById('nasim-profile').classList.add('on');
+  if(activeNav() === 'nasim'){
+    loops.forEach(el => el.classList.add('on'));
+    document.getElementById('nasim-profile').classList.add('on');
+  } else {
+    priyaLoops.forEach(el => el.classList.add('on'));
+    document.getElementById('priya-hero-profile').classList.add('on');
+  }
   current = loops.length - 1;
   window.removeEventListener('wheel', onWheel);
+  window.removeEventListener('touchend', onTouchEnd);
   document.body.style.overflowY = 'auto';
   document.documentElement.style.overflowY = 'auto';
   hint.style.opacity = '0';
@@ -843,9 +996,21 @@ document.querySelectorAll('.ctx-tab').forEach(function(tab){
       <button class="ctx-tab" data-tab="ctx-intent">Intent</button>
       <button class="ctx-tab" data-tab="ctx-risk">Risk Field</button>
     </div>
-    <div class="ctx-content active" id="ctx-context">On 28 March 2026, we ran the first Aamchi Mumbai Citizen Risk Clinic, a 2.5-hour participatory workshop to map how Mumbaikars respond to systemic climate risks in their city, convened as part of Mumbai Climate Week 2026's Spoke Events. The room brought together organisations working with residents, gig workers, students, teachers, domestic workers, and practitioners working across climate, governance, social protection, and community organising.<br><br>The clinic was held in the aftermath of an extraordinary 2025–26 climate year for Mumbai — a March heat wave that pushed felt temperatures past 47°C, followed by the earliest monsoon in 75 years and 500mm of rainfall in four days in August. We chose this moment deliberately: the city's lived memory of cascading climate risk was active, recent, and unsettled.<br><br>Participants: Dr. Abhishek Fullton (UNICEF), Anish Verghese (Ek Kutumb), Dishant Parmar (YUVA), Dulari Parmar (YUVA), Harshvardhan Sharma (Planet Pact), Hiranya Ganatra (Transitions Research), Jahnavi Mane (WRI), Dr. Lakshmi Lingam (DY Patil Mumbai), Myron Mendes (INECC), Paridhi Mundra (Nazaria Arts Collective), Parveen Sheikh (Community Design Agency, Govandi Arts Foundation), Rohit Lahoti (WRI), Sandhya Naidu (Community Design Agency, Govandi Arts Foundation), Shreya Agarwal (Pratham Education), Siddhi Ashar (Dark Matter Labs), Yamini Srivastava (People's Courage India)</div>
+    <div class="ctx-content active" id="ctx-context">On 28 March 2026, we ran the first Aamchi Mumbai Citizen Risk Clinic, a 2.5-hour participatory workshop to map how Mumbaikars respond to systemic climate risks in their city, convened as part of Mumbai Climate Week 2026's Spoke Events. The room brought together organisations working with residents, gig workers, students, teachers, domestic workers, and practitioners working across climate, governance, social protection, and community organising.<br><br>The clinic was held in the aftermath of an extraordinary 2025–26 climate year for Mumbai — a March heat wave that pushed felt temperatures past 47°C, followed by the earliest monsoon in 75 years and 500mm of rainfall in four days in August. We chose this moment deliberately: the city's lived memory of cascading climate risk was active, recent, and unsettled.<span class="participants"><br>Dr. Abhishek Fullton (UNICEF) · Anish Verghese (Ek Kutumb) · Dishant Parmar (YUVA) · Dulari Parmar (YUVA) · Harshvardhan Sharma (Planet Pact) · Hiranya Ganatra (Transitions Research) · Jahnavi Mane (WRI) · Dr. Lakshmi Lingam (DY Patil Mumbai) · Myron Mendes (INECC) · Paridhi Mundra (Nazaria Arts Collective) · Parveen Sheikh (Community Design Agency, Govandi Arts Foundation) · Rohit Lahoti (WRI) · Sandhya Naidu (Community Design Agency, Govandi Arts Foundation) · Shreya Agarwal (Pratham Education) · Siddhi Ashar (Dark Matter Labs) · Yamini Srivastava (People's Courage India)</span></div>
     <div class="ctx-content" id="ctx-intent">To test whether citizen risk intelligence can be surfaced, organised, and made legible as a civic asset. Rather than treating citizen input as testimony, the clinic treated citizen knowledge as the continuous capacity of populations to detect weak signals, adapt behaviour under stress, transmit survival knowledge socially, and update their understanding of how systems fail in real time.<br><br>We posit that citizens are already functioning as a distributed risk sensing infrastructure for the city of Mumbai.</div>
     <div class="ctx-content" id="ctx-risk">We chose cyclical flooding and heatwaves as the macro frame of Mumbai's systemic risk field, on the basis that these are the conditions under which the city's systemic failures become most legible to all its local residents across class, caste, gender, infrastructure, and labour.</div>
+  </div>
+  <div id="field-hunches">
+    <span class="hunches-label">Field Hunches</span>
+    <ul class="hunch-list">
+      <li class="hunch-item">Climate risk in Mumbai is chronic, not episodic. It is embodied, continuous, longitudinal, and carried in lived memory.</li>
+      <li class="hunch-item">The most exposed citizens are not passive, but are forced to adapt at any cost because of class, caste, location, invisibility in the system, and Mumbai's urban identity as an expensive city of dreams that people come to at any cost to succeed.</li>
+      <li class="hunch-item">Vulnerability is not a characteristic of people. It is produced by structural choices (such as loan structures, rental enforcement, political power differentials, the language of governance, etc.) and deepens cyclically.</li>
+      <li class="hunch-item">Citizens already hold deep insight into the risks they live with, held in their minds, bodies, and social networks. What is missing is the institutional flow back in the form of formal information, subsidies, insurance, anticipatory support articulated in multiple languages, designed for their needs, and accessible before crisis hits.</li>
+      <li class="hunch-item">Risks are compounded by their interaction with each other. Single-issue risk tools actively misrepresent that compounding by making each risk appear manageable in isolation.</li>
+      <li class="hunch-item">Long social cascades (such as identity erosion, intergenerational trauma, slow breakdown of dignity and routine) accumulate silently.</li>
+      <li class="hunch-item">The city may appear functional because vulnerable populations continuously absorb instability through individual coping mechanisms, and create the illusion of resilience.</li>
+    </ul>
   </div>
 </div>
 
