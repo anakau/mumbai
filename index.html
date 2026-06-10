@@ -101,15 +101,16 @@ body.show-priya{ background:#f0f4fd; }
   position:relative; width:100%; min-height:100vh; background:#f7f5f0;
   display:grid; grid-template-columns:1fr 1fr 1fr; grid-template-rows:1fr auto auto; align-items:start;
   column-gap:6vw; row-gap:48px; padding:100px var(--lm); box-sizing:border-box; flex-shrink:0;
+  isolation:isolate;
 }
 body.show-priya #section3{ background:#5533ff; }
 #section3::before{
-  content:''; position:absolute; top:0; left:0; pointer-events:none;
+  content:''; position:absolute; top:0; left:0; pointer-events:none; z-index:-1;
   width:calc(var(--lm) + (100% - 2*var(--lm) - 12vw) / 3 + 3vw);
   height:100%;
   background-color:transparent;
   background-image: radial-gradient(circle, rgba(196,151,26,0.55) 1px, transparent 1px);
-  background-size:10px 10px;
+  background-size:22px 22px;
 }
 body.show-priya #section3::before{ background-image: radial-gradient(circle, rgba(85,51,255,0.4) 1px, transparent 1px); }
 #s3-panel{ grid-column:1; grid-row:1; }
@@ -196,6 +197,7 @@ body.show-priya #section3::before{ background-image: radial-gradient(circle, rgb
 .cri-card-back{ transform:rotateY(180deg); background:#c4971a; }
 .cri-card-back-label{ font-family:'Archivo Mono',monospace; font-size:clamp(7px,0.6vw,8px); letter-spacing:0.18em; text-transform:uppercase; color:rgba(0,0,0,0.4); margin-bottom:12px; }
 .cri-card-back .s3-cri-signal-main{ font-family:'Unbounded',sans-serif; font-size:clamp(16px,1.4vw,22px); font-weight:400; letter-spacing:-0.01em; color:#000; line-height:1.35; margin-bottom:12px; }
+.cri-card-back .s3-cri-signal-main.s3-signal-sm{ font-size:clamp(11px,0.95vw,14px); }
 .cri-card-back .s3-cri-signal-impl{ color:rgba(0,0,0,0.65); font-family:'Archivo',sans-serif; font-size:clamp(13px,1.05vw,16px); font-weight:300; line-height:1.5; }
 .cri-list-view{ display:none; }
 .cri-list-view.active{ display:block; }
@@ -213,14 +215,15 @@ body.show-priya #section3::before{ background-image: radial-gradient(circle, rgb
   padding:100px var(--lm);
   box-sizing:border-box;
   flex-shrink:0;
+  isolation:isolate;
 }
 #section-clinic::before{
-  content:''; position:absolute; top:0; left:0; pointer-events:none;
+  content:''; position:absolute; top:0; left:0; pointer-events:none; z-index:-1;
   width:calc(var(--lm) + (100% - 2*var(--lm) - 12vw) / 3 + 3vw);
   height:100%;
   background-color:transparent;
   background-image: radial-gradient(circle, rgba(196,151,26,0.45) 1px, transparent 1px);
-  background-size:10px 10px;
+  background-size:22px 22px;
 }
 #context-panel{ display:contents; }
 #field-hunches{ display:contents; }
@@ -1077,7 +1080,7 @@ window.addEventListener('touchend', onTouchEnd, {passive:true});
             </div>
             <div class="cri-card-back">
               <div class="cri-card-back-label">Signal</div>
-              <span class="s3-cri-signal-main">Social cohesion is climate adaptation infrastructure: decentralised, trust-based, self-organising, and already functioning as an early warning and mutual aid system.</span>
+              <span class="s3-cri-signal-main s3-signal-sm">Social cohesion is climate adaptation infrastructure: decentralised, trust-based, self-organising, and already functioning as an early warning and mutual aid system.</span>
               <span class="s3-cri-signal-impl">Investing in people and relational networks is one of the highest-leverage, lowest-cost climate adaptation moves available.</span>
             </div>
           </div>
