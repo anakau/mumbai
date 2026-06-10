@@ -361,13 +361,18 @@ body.show-priya{ background:#f0f4fd; }
   position:relative;
   height:100vh;
   width:100%;
-  background-color:#fdf0e8;
-  background-image:radial-gradient(circle, rgba(26,26,24,0.09) 1px, transparent 1px);
-  background-size:32px 32px;
+  background:#fdf0e8;
   flex-shrink:0;
 }
-body.show-priya #section1{
-  background-color:#f0f4fd;
+body.show-priya #section1{ background:#f0f4fd; }
+#section1::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  z-index:1;
+  pointer-events:none;
+  background-image:radial-gradient(circle, rgba(26,26,24,0.1) 1px, transparent 1px);
+  background-size:32px 32px;
 }
 
 #logo{
