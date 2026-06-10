@@ -140,22 +140,22 @@ body.show-priya #section3{ background:#5533ff; }
 #ctx-participants{
   grid-column:1; grid-row:3; align-self:start;
   padding-top:16px;
-  border-top:1px solid rgba(245,240,220,0.15);
+  border-top:1px solid rgba(200,34,10,0.2);
   font-family:'Archivo',sans-serif;
   font-size:clamp(9px,0.7vw,11px);
-  color:rgba(245,240,220,0.3);
+  color:rgba(200,34,10,0.4);
   line-height:1.7;
 }
 #hunch-nav{
   grid-column:2; grid-row:3; align-self:start;
   padding-top:16px;
-  border-top:1px solid rgba(245,240,220,0.15);
+  border-top:1px solid rgba(200,34,10,0.2);
 }
 #ctx-tabs{
   grid-column:1; grid-row:1;
   display:flex;
   gap:0;
-  border-bottom:1px solid rgba(245,240,220,0.15);
+  border-bottom:1px solid rgba(200,34,10,0.2);
   margin-bottom:16px;
   min-height:36px;
   align-items:flex-end;
@@ -166,7 +166,7 @@ body.show-priya #section3{ background:#5533ff; }
   font-weight:400;
   letter-spacing:0.16em;
   text-transform:uppercase;
-  color:rgba(245,240,220,0.35);
+  color:rgba(200,34,10,0.45);
   background:none;
   border:none;
   padding:0 0 11px 0;
@@ -180,13 +180,13 @@ body.show-priya #section3{ background:#5533ff; }
   position:absolute;
   bottom:-1px;left:0;
   width:100%;height:1px;
-  background:rgba(245,240,220,0.9);
+  background:#c8220a;
   transform:scaleX(0);
   transform-origin:left;
   transition:transform 0.3s ease;
 }
 .ctx-tab.active{
-  color:rgba(245,240,220,0.9);
+  color:#c8220a;
 }
 .ctx-tab.active::after{
   transform:scaleX(1);
@@ -198,7 +198,7 @@ body.show-priya #section3{ background:#5533ff; }
   font-size:clamp(15px,1.2vw,18px);
   font-weight:300;
   line-height:1.85;
-  color:rgba(245,240,220,0.72);
+  color:rgba(200,34,10,0.8);
   letter-spacing:0.01em;
   animation:ctxFade 0.35s ease;
 }
@@ -208,7 +208,7 @@ body.show-priya #section3{ background:#5533ff; }
 @keyframes ctxFade{from{opacity:0}to{opacity:1}}
 .participants{
   font-size:clamp(9px,0.7vw,11px);
-  color:rgba(245,240,220,0.3);
+  color:rgba(200,34,10,0.4);
   line-height:1.7;
   display:block;
   margin-top:10px;
@@ -219,7 +219,7 @@ body.show-priya #section3{ background:#5533ff; }
   font-weight:400;
   letter-spacing:0.16em;
   text-transform:uppercase;
-  color:rgba(245,240,220,0.35);
+  color:rgba(200,34,10,0.45);
   margin-bottom:28px;
   display:block;
 }
@@ -236,7 +236,7 @@ body.show-priya #section3{ background:#5533ff; }
   font-family:'Unbounded',sans-serif;
   font-size:clamp(17px,1.5vw,21px);
   font-weight:300;
-  color:rgba(245,240,220,0.9);
+  color:#c8220a;
   line-height:1.45;
   letter-spacing:-0.01em;
   counter-increment:hunch;
@@ -245,13 +245,13 @@ body.show-priya #section3{ background:#5533ff; }
   gap:20px;
   padding-bottom:16px;
 }
-.hunch-item:not(:last-child){ border-bottom:1px solid rgba(245,240,220,0.15); }
+.hunch-item:not(:last-child){ border-bottom:1px solid rgba(200,34,10,0.2); }
 .hunch-item::before{
   content:counter(hunch);
   font-family:'Archivo',sans-serif;
   font-size:clamp(8px,0.7vw,10px);
   letter-spacing:0.12em;
-  color:rgba(245,240,220,0.3);
+  color:rgba(200,34,10,0.4);
   flex-shrink:0;
   padding-top:5px;
   min-width:20px;
@@ -304,18 +304,18 @@ body.show-priya #section3{ background:#5533ff; }
 }
 #poem-priya .loop{ border-left-color:#5533ff; }
 #poem-priya .loop-inner{ color:#5533ff; }
-.hunches-header{ grid-column:2; grid-row:1; display:flex; align-items:flex-end; margin-bottom:16px; gap:12px; border-bottom:1px solid rgba(245,240,220,0.15); padding-bottom:11px; }
+.hunches-header{ grid-column:2; grid-row:1; display:flex; align-items:flex-end; margin-bottom:16px; gap:12px; border-bottom:1px solid rgba(200,34,10,0.2); padding-bottom:11px; }
 .hunches-header .hunches-label{ margin-bottom:0; }
 .hunch-view-toggle{ display:flex; align-items:center; gap:9px; margin-left:auto; }
-.hv-label{ font-family:'Archivo',sans-serif; font-size:clamp(8px,0.72vw,10px); letter-spacing:0.14em; text-transform:uppercase; color:rgba(245,240,220,0.35); }
-.hunch-toggle{ width:42px; height:25px; border-radius:13px; background:rgba(245,240,220,0.18); border:none; cursor:pointer; padding:0; position:relative; transition:background 0.28s ease; flex-shrink:0; }
-.hunch-toggle.on{ background:rgba(245,240,220,0.55); }
-.hunch-toggle-thumb{ position:absolute; top:3.5px; left:3.5px; width:18px; height:18px; border-radius:50%; background:rgba(245,240,220,0.9); box-shadow:0 1px 3px rgba(0,0,0,0.22); transition:transform 0.28s cubic-bezier(0.34,1.56,0.64,1); pointer-events:none; }
+.hv-label{ font-family:'Archivo',sans-serif; font-size:clamp(8px,0.72vw,10px); letter-spacing:0.14em; text-transform:uppercase; color:rgba(200,34,10,0.45); }
+.hunch-toggle{ width:42px; height:25px; border-radius:13px; background:rgba(200,34,10,0.15); border:none; cursor:pointer; padding:0; position:relative; transition:background 0.28s ease; flex-shrink:0; }
+.hunch-toggle.on{ background:rgba(200,34,10,0.4); }
+.hunch-toggle-thumb{ position:absolute; top:3.5px; left:3.5px; width:18px; height:18px; border-radius:50%; background:#c8220a; box-shadow:0 1px 3px rgba(0,0,0,0.22); transition:transform 0.28s cubic-bezier(0.34,1.56,0.64,1); pointer-events:none; }
 .hunch-toggle.on .hunch-toggle-thumb{ transform:translateX(17px); }
-.hunch-slide-text{ font-family:'Unbounded',sans-serif; font-size:clamp(28px,2.6vw,40px); font-weight:300; color:rgba(245,240,220,0.9); line-height:1.35; letter-spacing:-0.02em; cursor:pointer; text-align:left; white-space:pre-line; }
+.hunch-slide-text{ font-family:'Unbounded',sans-serif; font-size:clamp(28px,2.6vw,40px); font-weight:300; color:#c8220a; line-height:1.35; letter-spacing:-0.02em; cursor:pointer; text-align:left; }
 .hunch-dots{ display:flex; gap:14px; }
-.hunch-dot{ font-family:'Archivo',sans-serif; font-size:clamp(11px,1vw,14px); letter-spacing:0.1em; color:rgba(245,240,220,0.25); cursor:pointer; transition:color 0.3s; user-select:none; }
-.hunch-dot.active{ color:rgba(245,240,220,0.9); }
+.hunch-dot{ font-family:'Archivo',sans-serif; font-size:clamp(11px,1vw,14px); letter-spacing:0.1em; color:rgba(200,34,10,0.3); cursor:pointer; transition:color 0.3s; user-select:none; }
+.hunch-dot.active{ color:#c8220a; }
 #hunch-slide-view{ grid-column:2; grid-row:2; }
 #hunch-list-view{ grid-column:2; grid-row:2; display:none; }
 
@@ -749,11 +749,11 @@ window.addEventListener('touchend', onTouchEnd, {passive:true});
       <div class="hunch-slide-text" id="hunch-slide-text"></div>
     </div>
     <ul class="hunch-list" id="hunch-list-view">
-      <li class="hunch-item">Climate risk in Mumbai is chronic, not episodic.<br>It is embodied, continuous, longitudinal, and carried in lived memory.</li>
+      <li class="hunch-item">Climate risk in Mumbai is chronic, not episodic. It is embodied, continuous, longitudinal, and carried in lived memory.</li>
       <li class="hunch-item">The most exposed citizens are not passive, but are forced to adapt at any cost because of class, caste, location, invisibility in the system, and Mumbai's urban identity as an expensive city of dreams that people come to at any cost to succeed.</li>
-      <li class="hunch-item">Vulnerability is not a characteristic of people.<br>It is produced by structural choices (such as loan structures, rental enforcement, political power differentials, the language of governance, etc.) and deepens cyclically.</li>
-      <li class="hunch-item">Citizens already hold deep insight into the risks they live with, held in their minds, bodies, and social networks.<br>What is missing is the institutional flow back in the form of formal information, subsidies, insurance, anticipatory support articulated in multiple languages, designed for their needs, and accessible before crisis hits.</li>
-      <li class="hunch-item">Risks are compounded by their interaction with each other.<br>Single-issue risk tools actively misrepresent that compounding by making each risk appear manageable in isolation.</li>
+      <li class="hunch-item">Vulnerability is not a characteristic of people. It is produced by structural choices (such as loan structures, rental enforcement, political power differentials, the language of governance, etc.) and deepens cyclically.</li>
+      <li class="hunch-item">Citizens already hold deep insight into the risks they live with, held in their minds, bodies, and social networks. What is missing is the institutional flow back in the form of formal information, subsidies, insurance, anticipatory support articulated in multiple languages, designed for their needs, and accessible before crisis hits.</li>
+      <li class="hunch-item">Risks are compounded by their interaction with each other. Single-issue risk tools actively misrepresent that compounding by making each risk appear manageable in isolation.</li>
       <li class="hunch-item">Long social cascades (such as identity erosion, intergenerational trauma, slow breakdown of dignity and routine) accumulate silently.</li>
       <li class="hunch-item">The city may appear functional because vulnerable populations continuously absorb instability through individual coping mechanisms, and create the illusion of resilience.</li>
     </ul>
@@ -825,11 +825,11 @@ document.querySelectorAll('.ctx-tab').forEach(function(tab){
 <script>
 (function(){
   var HUNCHES = [
-    "Climate risk in Mumbai is chronic, not episodic.\nIt is embodied, continuous, longitudinal, and carried in lived memory.",
+    "Climate risk in Mumbai is chronic, not episodic. It is embodied, continuous, longitudinal, and carried in lived memory.",
     "The most exposed citizens are not passive, but are forced to adapt at any cost because of class, caste, location, invisibility in the system, and Mumbai’s urban identity as an expensive city of dreams that people come to at any cost to succeed.",
-    "Vulnerability is not a characteristic of people.\nIt is produced by structural choices (such as loan structures, rental enforcement, political power differentials, the language of governance, etc.) and deepens cyclically.",
-    "Citizens already hold deep insight into the risks they live with, held in their minds, bodies, and social networks.\nWhat is missing is the institutional flow back in the form of formal information, subsidies, insurance, anticipatory support articulated in multiple languages, designed for their needs, and accessible before crisis hits.",
-    "Risks are compounded by their interaction with each other.\nSingle-issue risk tools actively misrepresent that compounding by making each risk appear manageable in isolation.",
+    "Vulnerability is not a characteristic of people. It is produced by structural choices (such as loan structures, rental enforcement, political power differentials, the language of governance, etc.) and deepens cyclically.",
+    "Citizens already hold deep insight into the risks they live with, held in their minds, bodies, and social networks. What is missing is the institutional flow back in the form of formal information, subsidies, insurance, anticipatory support articulated in multiple languages, designed for their needs, and accessible before crisis hits.",
+    "Risks are compounded by their interaction with each other. Single-issue risk tools actively misrepresent that compounding by making each risk appear manageable in isolation.",
     "Long social cascades (such as identity erosion, intergenerational trauma, slow breakdown of dignity and routine) accumulate silently.",
     "The city may appear functional because vulnerable populations continuously absorb instability through individual coping mechanisms, and create the illusion of resilience."
   ];
