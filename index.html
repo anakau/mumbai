@@ -128,7 +128,7 @@ body.show-priya #section3{ background:#5533ff; }
   min-height:100vh;
   background:#0f0f0d;
   display:grid;
-  grid-template-columns:1fr 2fr;
+  grid-template-columns:1fr 1fr 1fr;
   grid-template-rows: auto 1fr auto;
   align-items:start;
   column-gap:6vw;
@@ -148,7 +148,7 @@ body.show-priya #section3{ background:#5533ff; }
   line-height:1.7;
 }
 #hunch-nav{
-  grid-column:2; grid-row:3; align-self:start;
+  grid-column:2 / 4; grid-row:3; align-self:start;
   padding-top:16px;
   border-top:1px solid rgba(196,151,26,0.2);
 }
@@ -305,7 +305,7 @@ body.show-priya #section3{ background:#5533ff; }
 }
 #poem-priya .loop{ border-left-color:#5533ff; }
 #poem-priya .loop-inner{ color:#5533ff; }
-.hunches-header{ grid-column:2; grid-row:1; display:flex; align-items:flex-end; margin-bottom:16px; gap:12px; border-bottom:1px solid rgba(196,151,26,0.2); padding-bottom:11px; }
+.hunches-header{ grid-column:2 / 4; grid-row:1; display:flex; align-items:flex-end; margin-bottom:16px; gap:12px; border-bottom:1px solid rgba(196,151,26,0.2); padding-bottom:11px; }
 .hunches-header .hunches-label{ margin-bottom:0; }
 .hunch-view-toggle{ display:flex; align-items:center; gap:9px; margin-left:auto; }
 .hv-label{ font-family:'Archivo',sans-serif; font-size:clamp(8px,0.72vw,10px); letter-spacing:0.14em; text-transform:uppercase; color:rgba(245,240,220,0.35); }
@@ -317,8 +317,8 @@ body.show-priya #section3{ background:#5533ff; }
 .hunch-dots{ display:flex; gap:14px; }
 .hunch-dot{ font-family:'Archivo',sans-serif; font-size:clamp(11px,1vw,14px); letter-spacing:0.1em; color:rgba(245,240,220,0.25); cursor:pointer; transition:color 0.3s; user-select:none; }
 .hunch-dot.active{ color:rgba(245,240,220,0.9); }
-#hunch-slide-view{ grid-column:2; grid-row:2; }
-#hunch-list-view{ grid-column:2; grid-row:2; display:none; }
+#hunch-slide-view{ grid-column:2 / 4; grid-row:2; }
+#hunch-list-view{ grid-column:2 / 4; grid-row:2; display:none; }
 
 
 
