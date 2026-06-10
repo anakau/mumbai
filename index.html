@@ -178,7 +178,7 @@ body.show-priya #section3::before{ background-image: linear-gradient(rgba(85,51,
 .s3-cri-table th{ font-family:'Archivo',sans-serif; font-size:clamp(11px,0.85vw,13px); font-weight:700; color:#000; text-align:left; padding:10px 16px; border-top:1.5px solid rgba(0,0,0,0.15); border-bottom:1.5px solid rgba(0,0,0,0.15); background:rgba(0,0,0,0.04); }
 .s3-cri-table td{ font-family:'Archivo',sans-serif; font-size:clamp(11px,0.85vw,13px); font-weight:300; color:#000; line-height:1.55; padding:14px 16px; border-bottom:1.5px solid rgba(0,0,0,0.12); vertical-align:top; width:50%; }
 .s3-cri-td-name{ font-family:'Unbounded',sans-serif; font-size:clamp(16px,1.4vw,22px); font-weight:400; letter-spacing:-0.01em; display:block; margin-bottom:10px; }
-.s3-cri-td-desc{ font-family:'Archivo',sans-serif; font-size:clamp(11px,0.85vw,13px); font-weight:300; line-height:1.5; display:block; }
+.s3-cri-td-desc{ font-family:'Archivo',sans-serif; font-size:clamp(13px,1.05vw,16px); font-weight:300; line-height:1.5; display:block; }
 .s3-cri-signal-main{ color:#000; display:block; margin-bottom:6px; }
 .s3-cri-signal-impl{ color:rgba(0,0,0,0.5); display:block; font-size:clamp(10px,0.78vw,12px); }
 /* CRI card grid & flip */
@@ -189,16 +189,16 @@ body.show-priya #section3::before{ background-image: linear-gradient(rgba(85,51,
 .cri-view-btn.active{ color:#000; }
 .cri-cards-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:10px; }
 .cri-cards-grid.hidden{ display:none; }
-.cri-card-wrap{ perspective:1000px; height:220px; }
+.cri-card-wrap{ perspective:1000px; height:auto; aspect-ratio:1/1; }
 .cri-card{ width:100%; height:100%; position:relative; transform-style:preserve-3d; transition:transform 0.55s cubic-bezier(0.4,0,0.2,1); }
 .cri-card-wrap:hover .cri-card{ transform:rotateY(180deg); }
-.cri-card-front,.cri-card-back{ position:absolute; inset:0; backface-visibility:hidden; -webkit-backface-visibility:hidden; padding:14px; display:flex; flex-direction:column; justify-content:flex-start; overflow:hidden; }
-.cri-card-front{ border:none; background:#c4971a; }
-.cri-card-front::before{ content:'Intelligence'; font-family:'Unbounded',sans-serif; font-size:clamp(7px,0.6vw,8px); letter-spacing:0.18em; text-transform:uppercase; color:rgba(0,0,0,0.45); display:block; margin-bottom:10px; }
-.cri-card-back{ transform:rotateY(180deg); background:#000; }
-.cri-card-back-label{ font-family:'Unbounded',sans-serif; font-size:clamp(7px,0.6vw,8px); letter-spacing:0.18em; text-transform:uppercase; color:rgba(245,240,220,0.35); margin-bottom:10px; }
-.cri-card-back .s3-cri-signal-main{ font-family:'Unbounded',sans-serif; font-size:clamp(11px,0.9vw,14px); font-weight:300; letter-spacing:-0.01em; color:rgba(245,240,220,0.9); line-height:1.35; margin-bottom:10px; }
-.cri-card-back .s3-cri-signal-impl{ color:rgba(245,240,220,0.5); font-family:'Archivo',sans-serif; font-size:clamp(11px,0.85vw,13px); font-weight:300; line-height:1.5; }
+.cri-card-front,.cri-card-back{ position:absolute; inset:0; backface-visibility:hidden; -webkit-backface-visibility:hidden; padding:18px; display:flex; flex-direction:column; justify-content:flex-start; overflow:hidden; }
+.cri-card-front{ border:none; background:#fff; }
+.cri-card-front::before{ content:'Intelligence'; font-family:'Unbounded',sans-serif; font-size:clamp(7px,0.6vw,8px); letter-spacing:0.18em; text-transform:uppercase; color:rgba(0,0,0,0.35); display:block; margin-bottom:12px; }
+.cri-card-back{ transform:rotateY(180deg); background:#c4971a; }
+.cri-card-back-label{ font-family:'Unbounded',sans-serif; font-size:clamp(7px,0.6vw,8px); letter-spacing:0.18em; text-transform:uppercase; color:rgba(0,0,0,0.4); margin-bottom:12px; }
+.cri-card-back .s3-cri-signal-main{ font-family:'Unbounded',sans-serif; font-size:clamp(12px,1vw,15px); font-weight:300; letter-spacing:-0.01em; color:#000; line-height:1.35; margin-bottom:12px; }
+.cri-card-back .s3-cri-signal-impl{ color:rgba(0,0,0,0.65); font-family:'Archivo',sans-serif; font-size:clamp(13px,1.05vw,16px); font-weight:300; line-height:1.5; }
 .cri-list-view{ display:none; }
 .cri-list-view.active{ display:block; }
 
