@@ -9,7 +9,7 @@
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{ --lm:1.8vw; --logo-h:calc(1.4rem + clamp(15px,1.6vw,22px)); }
 html,body{
-  background:#fdf0e8;
+  background:#f7f5f0;
   font-family:'Unbounded',sans-serif;
   color:#1a1a18;
   overflow-x:hidden;
@@ -87,14 +87,16 @@ body.show-priya #section3::before{ background:#fff; }
 .s3-dl-btn{ display:inline-block; font-family:'Archivo',sans-serif; font-size:clamp(9px,0.7vw,10px); font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:#000; background:transparent; border:none; padding:0; text-decoration:none; white-space:nowrap; flex-shrink:0; transition:color 0.2s; }
 .s3-dl-btn::before{ content:'['; }
 .s3-dl-btn::after{ content:']'; position:static; width:auto; height:auto; background:none; transform:none; transition:none; }
-.s3-dl-btn:hover{ color:rgba(0,0,0,0.5); }
+.s3-dl-btn:hover{ color:#e84800; }
+#section3.s3-priya .s3-dl-btn:hover{ color:#5533ff; }
 .s3-term{ margin-bottom:28px; }
 .s3-term-name{ font-family:'Archivo',sans-serif; font-size:clamp(15px,1.2vw,18px); font-weight:700; color:#000; margin:0 0 6px 0; }
 .s3-term-def{ font-family:'Archivo',sans-serif; font-size:clamp(15px,1.2vw,18px); font-weight:300; color:#000; line-height:1.6; margin:0; }
 .s3-riskfield-label{ font-family:'Archivo Mono',monospace; font-size:clamp(14px,1.2vw,18px); font-weight:300; letter-spacing:-0.01em; color:#000; margin:0 0 14px 0; }
 #s3-tabs{ display:flex; gap:0; border-bottom:1.5px solid rgba(0,0,0,0.15); margin-bottom:16px; min-height:36px; align-items:flex-end; }
 .s3-tab{ font-family:'Archivo Mono',monospace; font-size:clamp(8px,0.8vw,11px); font-weight:400; letter-spacing:0.16em; text-transform:uppercase; color:rgba(0,0,0,0.4); background:none; border:none; padding:0 0 11px 0; margin-right:20px; cursor:pointer; position:relative; transition:color 0.3s ease; text-align:left; }
-.s3-tab::after{ content:''; position:absolute; bottom:-1px; left:0; width:100%; height:2.5px; background:#000; transform:scaleX(0); transform-origin:left; transition:transform 0.3s ease; }
+.s3-tab::after{ content:''; position:absolute; bottom:-1px; left:0; width:100%; height:2.5px; background:#e84800; transform:scaleX(0); transform-origin:left; transition:transform 0.3s ease; }
+#section3.s3-priya .s3-tab::after{ background:#5533ff; }
 .s3-tab.active{ color:#000; }
 .s3-tab.active::after{ transform:scaleX(1); }
 .s3-content{ display:none; font-family:'Archivo',sans-serif; font-size:clamp(15px,1.2vw,18px); font-weight:300; color:#000; line-height:1.65; text-align:left; animation:ctxFade 0.35s ease; }
@@ -111,12 +113,24 @@ body.show-priya #section3::before{ background:#fff; }
 .s3-rc-intro{ font-family:'Unbounded',sans-serif; font-size:clamp(28px,2.6vw,40px); font-weight:300; color:#000; line-height:1.35; letter-spacing:-0.02em; margin:0 0 20px 0; }
 .s3-rc-note{ font-family:'Archivo',sans-serif; font-size:clamp(11px,0.85vw,13px); font-weight:300; color:rgba(0,0,0,0.55); line-height:1.5; margin:0 0 20px 0; }
 .s3-rc-note strong{ font-weight:700; color:#000; }
-#s3-term-tabs{ display:flex; gap:0; border-bottom:1.5px solid rgba(0,0,0,0.15); margin-bottom:16px; min-height:36px; align-items:flex-end; }
-.s3-term-tab{ font-family:'Archivo Mono',monospace; font-size:clamp(8px,0.8vw,11px); font-weight:400; letter-spacing:0.16em; text-transform:uppercase; color:rgba(0,0,0,0.4); background:none; border:none; padding:0 0 11px 0; margin-right:20px; cursor:pointer; position:relative; transition:color 0.3s ease; text-align:left; }
-.s3-term-tab::after{ content:''; position:absolute; bottom:-1px; left:0; width:100%; height:2.5px; background:#000; transform:scaleX(0); transform-origin:left; transition:transform 0.3s ease; }
+#s3-term-tabs,#s3-term-tabs-p{ display:flex; gap:0; border-bottom:1.5px solid rgba(0,0,0,0.15); margin-bottom:16px; min-height:36px; align-items:flex-end; }
+.s3-term-tab,.s3-term-tab-p{ font-family:'Archivo Mono',monospace; font-size:clamp(8px,0.8vw,11px); font-weight:400; letter-spacing:0.16em; text-transform:uppercase; color:rgba(0,0,0,0.4); background:none; border:none; padding:0 0 11px 0; margin-right:20px; cursor:pointer; position:relative; transition:color 0.3s ease; text-align:left; }
+.s3-term-tab::after,.s3-term-tab-p::after{ content:''; position:absolute; bottom:-1px; left:0; width:100%; height:2.5px; background:#e84800; transform:scaleX(0); transform-origin:left; transition:transform 0.3s ease; }
+#section3.s3-priya .s3-term-tab::after,#section3.s3-priya .s3-term-tab-p::after{ background:#5533ff; }
 .s3-term-icon{ height:0.72em; width:auto; vertical-align:middle; margin-right:7px; display:inline-block; }
-.s3-term-tab.active{ color:#000; }
-.s3-term-tab.active::after{ transform:scaleX(1); }
+/* ── Section 3 persona toggle ─────────────────────────────────────────────── */
+#s3-persona-toggle{ display:flex; gap:0; margin-bottom:28px; }
+.s3-ptab{ font-family:'Archivo Mono',monospace; font-size:10px; font-weight:400; letter-spacing:0.12em; text-transform:uppercase; background:transparent; border:1.5px solid rgba(0,0,0,0.25); padding:6px 16px; cursor:pointer; color:rgba(0,0,0,0.4); transition:background 0.15s,color 0.15s,border-color 0.15s; }
+.s3-ptab:first-child{ border-right:none; }
+.s3-ptab.active[data-persona="nasim"]{ background:#e84800; color:#fff; border-color:#e84800; }
+.s3-ptab.active[data-persona="priya"]{ background:#5533ff; color:#fff; border-color:#5533ff; }
+/* Zigzag icon accent colour */
+.s3-term-icon{ color:#e84800; }
+#section3.s3-priya .s3-term-icon{ color:#5533ff; }
+/* CRI card back for Priya */
+#section3.s3-priya .cri-card-back{ background:#5533ff; }
+.s3-term-tab.active,.s3-term-tab-p.active{ color:#000; }
+.s3-term-tab.active::after,.s3-term-tab-p.active::after{ transform:scaleX(1); }
 .s3-term-content{ display:none; animation:ctxFade 0.35s ease; }
 .s3-term-content.active{ display:block; }
 .s3-cascade-label-top{ display:none; }
@@ -128,10 +142,11 @@ body.show-priya #section3::before{ background:#fff; }
 .s3-flow-arrow{ flex-shrink:0; padding:0 6px; color:rgba(0,0,0,0.4); font-size:13px; line-height:1; }
 /* Col2 top-level section toggle */
 #s3-c2-tabs{ display:flex; gap:0; border-bottom:1.5px solid rgba(0,0,0,0.15); margin-bottom:20px; min-height:36px; align-items:flex-end; }
-.s3-c2-tab{ font-family:'Archivo Mono',monospace; font-size:clamp(8px,0.8vw,11px); font-weight:400; letter-spacing:0.16em; text-transform:uppercase; color:rgba(0,0,0,0.4); background:none; border:none; padding:0 0 11px 0; margin-right:20px; cursor:pointer; position:relative; transition:color 0.3s ease; text-align:left; }
-.s3-c2-tab::after{ content:''; position:absolute; bottom:-1px; left:0; width:100%; height:2.5px; background:#000; transform:scaleX(0); transform-origin:left; transition:transform 0.3s ease; }
-.s3-c2-tab.active{ color:#000; }
-.s3-c2-tab.active::after{ transform:scaleX(1); }
+.s3-c2-tab,.s3-c2-tab-p{ font-family:'Archivo Mono',monospace; font-size:clamp(8px,0.8vw,11px); font-weight:400; letter-spacing:0.16em; text-transform:uppercase; color:rgba(0,0,0,0.4); background:none; border:none; padding:0 0 11px 0; margin-right:20px; cursor:pointer; position:relative; transition:color 0.3s ease; text-align:left; }
+.s3-c2-tab::after,.s3-c2-tab-p::after{ content:''; position:absolute; bottom:-1px; left:0; width:100%; height:2.5px; background:#e84800; transform:scaleX(0); transform-origin:left; transition:transform 0.3s ease; }
+#section3.s3-priya .s3-c2-tab::after,#section3.s3-priya .s3-c2-tab-p::after{ background:#5533ff; }
+.s3-c2-tab.active,.s3-c2-tab-p.active{ color:#000; }
+.s3-c2-tab.active::after,.s3-c2-tab-p.active::after{ transform:scaleX(1); }
 .s3-c2-panel{ display:none; animation:ctxFade 0.35s ease; }
 .s3-c2-panel.active{ display:block; }
 /* CRI table */
@@ -188,17 +203,16 @@ body.show-priya #section3::before{ background:#fff; }
 #context-panel{ display:contents; }
 #field-hunches{ display:contents; }
 #ctx-participants{
-  grid-column:1; grid-row:3; align-self:start;
-  padding:14px 10px 14px 10px;
+  position:absolute;
+  bottom:100px;
+  left:var(--lm);
+  width:calc((100% - 2*var(--lm) - 12vw) / 3);
+  padding:14px 0;
   border-top:1.5px solid rgba(245,240,220,0.12);
   font-family:'Archivo',sans-serif;
   font-size:clamp(9px,0.7vw,11px);
   color:rgba(245,240,220,0.5);
   line-height:1.55;
-  background:#000;
-  position:relative;
-  margin:0 -10px;
-  width:calc(100% + 20px);
 }
 #hunch-nav{
   grid-column:2 / 4; grid-row:3; align-self:start;
@@ -440,7 +454,7 @@ body.show-priya #section3::before{ background:#fff; }
   position:relative;
   height:100vh;
   width:100%;
-  background:#fdf0e8;
+  background:#f7f5f0;
   flex-shrink:0;
 }
 body.show-priya #section1{ background:#f0f4fd; }
@@ -706,7 +720,7 @@ function tick(ts){
   const frozenMs=pauseStartTs?(ts-pauseStartTs):0;
   const el=ts-t0-pauseOffset-frozenMs;
   const isPriya=document.body.classList.contains('show-priya');
-  ctx.fillStyle=isPriya?'#f0f4fd':'#fdf0e8';
+  ctx.fillStyle=isPriya?'#f0f4fd':'#f7f5f0';
   ctx.fillRect(0,0,W,H);
   orbs.forEach((o,i)=>{
     if(!o.drag&&!pausedOrb){
@@ -918,8 +932,16 @@ document.fonts.ready.then(()=>{resize();requestAnimationFrame(tick);});
     </div>
   </div>
 
-  <!-- Column 2: Nasim analysis -->
+  <!-- Column 2: Nasim / Priya analysis -->
   <div id="s3-col2">
+    <!-- Persona navigator -->
+    <div id="s3-persona-toggle">
+      <button class="s3-ptab active" data-persona="nasim">Nasim</button>
+      <button class="s3-ptab" data-persona="priya">Priya</button>
+    </div>
+
+    <!-- ── Nasim content ── -->
+    <div class="s3-persona-content" id="s3-nasim-content">
     <div class="s3-col2-hd">
       <div class="s3-nav-name-hd">Nasim</div>
       <div class="s3-nav-role-sub">Gig Delivery Rider</div>
@@ -1199,7 +1221,287 @@ document.fonts.ready.then(()=>{resize();requestAnimationFrame(tick);});
         </table>
       </div>
     </div>
-  </div>
+    </div><!-- /s3-nasim-content -->
+
+    <!-- ── Priya content ── -->
+    <div class="s3-persona-content" id="s3-priya-content" style="display:none">
+    <div class="s3-col2-hd">
+      <div class="s3-nav-name-hd">Priya</div>
+      <div class="s3-nav-role-sub">Student, Migrant Tenant</div>
+    </div>
+    <p class="s3-mapped-by">Mapped by Abhishek Fullton (UNICEF), Dishant Parmar (YUVA), Dulari Parmar (YUVA), and Myron Mendes (INECC)</p>
+
+    <div id="s3-c2-tabs-p">
+      <button class="s3-c2-tab-p active" data-c2p="s3-rc-panel-p">Risk Cascades</button>
+      <button class="s3-c2-tab-p" data-c2p="s3-cri-panel-p">Citizen Risk Intelligence</button>
+    </div>
+
+    <!-- Panel: Risk Cascades (Priya) -->
+    <div class="s3-c2-panel active" id="s3-rc-panel-p">
+      <p class="s3-rc-intro">Climate risk enters through the landlord's inaction, accumulates in the body, and compounds with every monsoon. Each health event triggers a chain across housing, income, academia, and family stability that loops back on itself each season.</p>
+      <div id="s3-term-tabs-p">
+        <button class="s3-term-tab-p active" data-tabp="s3-immediate-p"><svg class="s3-term-icon" viewBox="0 0 28 8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="miter"><polyline points="0,8 2,0 4,8 6,0 8,8 10,0 12,8 14,0 16,8 18,0 20,8 22,0 24,8 26,0 28,8"/></svg>Immediate Term</button>
+        <button class="s3-term-tab-p" data-tabp="s3-medium-p"><svg class="s3-term-icon" viewBox="0 0 28 8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="miter"><polyline points="0,8 4.67,0 9.33,8 14,0 18.67,8 23.33,0 28,8"/></svg>Medium Term</button>
+        <button class="s3-term-tab-p" data-tabp="s3-long-p"><svg class="s3-term-icon" viewBox="0 0 28 8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M0,8 C3.5,8 3.5,0 7,0 C10.5,0 10.5,8 14,8 C17.5,8 17.5,0 21,0 C24.5,0 24.5,8 28,8"/></svg>Long Term</button>
+      </div>
+
+      <div class="s3-term-content active" id="s3-immediate-p">
+        <div class="s3-cascade-label-top">Immediate</div>
+        <div class="s3-flow">
+          <div class="s3-flow-node contrib"><strong>Heavy monsoon rains flood the stairwell and entrance of her building</strong></div>
+          <div class="s3-flow-arrow">→</div>
+          <div class="s3-flow-node">Damp enters flat walls within 48 hours</div>
+          <div class="s3-flow-arrow">→</div>
+          <div class="s3-flow-node">Mould grows. Asthma flares.</div>
+          <div class="s3-flow-arrow">→</div>
+          <div class="s3-flow-node">Cannot attend classes in person</div>
+          <div class="s3-flow-arrow">→</div>
+          <div class="s3-flow-node">College shifts online, inconsistently</div>
+          <div class="s3-flow-arrow">→</div>
+          <div class="s3-flow-node">Power cuts disrupt continuity</div>
+          <div class="s3-flow-arrow">→</div>
+          <div class="s3-flow-node">Falls behind on coursework</div>
+          <div class="s3-flow-arrow">→</div>
+          <div class="s3-flow-node">Academic penalty risk</div>
+          <div class="s3-flow-arrow">↺</div>
+          <div class="s3-flow-node loop-back">Loops back the next monsoon</div>
+        </div>
+      </div>
+
+      <div class="s3-term-content" id="s3-medium-p">
+        <div class="s3-cascade-label-top">Medium</div>
+        <div class="s3-flow">
+          <div class="s3-flow-node contrib"><strong>Landlord does not act on mould. No legal compulsion.</strong></div>
+          <div class="s3-flow-arrow">→</div>
+          <div class="s3-flow-node">She buys N95s, dehumidifiers, and plants out of pocket</div>
+          <div class="s3-flow-arrow">→</div>
+          <div class="s3-flow-node">Monthly costs rise. Savings deplete.</div>
+          <div class="s3-flow-arrow">→</div>
+          <div class="s3-flow-node">Cannot afford health visit</div>
+          <div class="s3-flow-arrow">→</div>
+          <div class="s3-flow-node">Hides symptoms to preserve stability</div>
+          <div class="s3-flow-arrow">→</div>
+          <div class="s3-flow-node">Asthma worsens. Hospitalisation.</div>
+          <div class="s3-flow-arrow">→</div>
+          <div class="s3-flow-node">Hospital bill. Cannot tell parents.</div>
+          <div class="s3-flow-arrow">→</div>
+          <div class="s3-flow-node">Borrows from peers. Repayment stress.</div>
+          <div class="s3-flow-arrow">→</div>
+          <div class="s3-flow-node">Increased financial precarity</div>
+        </div>
+      </div>
+
+      <div class="s3-term-content" id="s3-long-p">
+        <div class="s3-cascade-label-top">Long</div>
+        <div class="s3-flow">
+          <div class="s3-flow-node">Informal rental, no formal lease</div>
+          <div class="s3-flow-arrow">→</div>
+          <div class="s3-flow-node">Cannot document complaints without risk of eviction</div>
+          <div class="s3-flow-arrow">→</div>
+          <div class="s3-flow-node contrib"><strong>Each monsoon the body starts more compromised than the last</strong></div>
+          <div class="s3-flow-arrow">→</div>
+          <div class="s3-flow-node">Scholarship does not cover cost of staying well</div>
+          <div class="s3-flow-arrow">→</div>
+          <div class="s3-flow-node">Parents discover illness</div>
+          <div class="s3-flow-arrow">→</div>
+          <div class="s3-flow-node">Pressure to return to Nashik</div>
+          <div class="s3-flow-arrow">→</div>
+          <div class="s3-flow-node">Reverse migration: loses two years, networks, and future in the city</div>
+        </div>
+      </div>
+    </div><!-- /s3-rc-panel-p -->
+
+    <!-- Panel: Citizen Risk Intelligence (Priya) -->
+    <div class="s3-c2-panel" id="s3-cri-panel-p">
+      <div class="cri-header-row">
+        <p class="s3-rc-intro">The experience of managing health, housing, and academic continuity under climate stress produces intelligence that formal systems cannot see.</p>
+        <div class="cri-view-btns">
+          <button class="cri-view-btn-p active" data-cri-view-p="cards">Cards</button>
+          <button class="cri-view-btn-p" data-cri-view-p="list">List</button>
+        </div>
+      </div>
+
+      <div class="cri-cards-grid" id="cri-cards-grid-p">
+
+        <div class="cri-card-wrap">
+          <div class="cri-card">
+            <div class="cri-card-front">
+              <span class="s3-cri-td-name">Mould mapping</span>
+              <span class="s3-cri-td-desc">Which buildings and flats develop mould during monsoon and how quickly damp enters after flooding</span>
+            </div>
+            <div class="cri-card-back">
+              <div class="cri-card-back-label">Signal</div>
+              <span class="s3-cri-signal-main">Street-level respiratory health data that satellite imagery cannot see.</span>
+              <span class="s3-cri-signal-impl">Can inform ward-level housing inspection schedules and preventive maintenance mandates before mould becomes a health crisis.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="cri-card-wrap">
+          <div class="cri-card">
+            <div class="cri-card-front">
+              <span class="s3-cri-td-name">Landlord accountability gaps</span>
+              <span class="s3-cri-td-desc">How informal rental arrangements and absent tenancy law leave residents unable to demand climate-related repairs</span>
+            </div>
+            <div class="cri-card-back">
+              <div class="cri-card-back-label">Signal</div>
+              <span class="s3-cri-signal-main">Evidence base for climate-proofing rental housing legislation.</span>
+              <span class="s3-cri-signal-impl">A case for habitation standards under monsoon and flood conditions — legally enforceable regardless of lease type.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="cri-card-wrap">
+          <div class="cri-card">
+            <div class="cri-card-front">
+              <span class="s3-cri-td-name">Health-hiding behaviour</span>
+              <span class="s3-cri-td-desc">When and why residents conceal illness to protect housing stability, family relationships, and the right to remain in the city</span>
+            </div>
+            <div class="cri-card-back">
+              <div class="cri-card-back-label">Signal</div>
+              <span class="s3-cri-signal-main s3-signal-sm">Where formal support systems are invisible or inaccessible to migrants — the design gap in city health navigation for non-domiciled residents.</span>
+              <span class="s3-cri-signal-impl">Points to the need for confidential, migrant-accessible health navigation that does not trigger family or housing consequences.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="cri-card-wrap">
+          <div class="cri-card">
+            <div class="cri-card-front">
+              <span class="s3-cri-td-name">Cost of staying well</span>
+              <span class="s3-cri-td-desc">The out-of-pocket spending required to maintain basic health in an exposed rental: masks, dehumidifiers, medicines, visits</span>
+            </div>
+            <div class="cri-card-back">
+              <div class="cri-card-back-label">Signal</div>
+              <span class="s3-cri-signal-main">A household-level climate burden invisible to macro datasets.</span>
+              <span class="s3-cri-signal-impl">Evidence for scholarship extensions, rental subsidies, and climate adaptation stipends for students in informal housing.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="cri-card-wrap">
+          <div class="cri-card">
+            <div class="cri-card-front">
+              <span class="s3-cri-td-name">Power-cut patterns</span>
+              <span class="s3-cri-td-desc">When outages occur during climate events, for how long, and how they compound health and academic continuity simultaneously</span>
+            </div>
+            <div class="cri-card-back">
+              <div class="cri-card-back-label">Signal</div>
+              <span class="s3-cri-signal-main">Temporal data on infrastructure failure that disrupts both cooling and digital access at once.</span>
+              <span class="s3-cri-signal-impl">Inputs for ward-level grid resilience planning and academic continuity policy that treats power access as a climate equity issue.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="cri-card-wrap">
+          <div class="cri-card">
+            <div class="cri-card-front">
+              <span class="s3-cri-td-name">Informal peer care</span>
+              <span class="s3-cri-td-desc">The mutual aid system that moves health information, medicines, and support among students and migrants without institutional backing</span>
+            </div>
+            <div class="cri-card-back">
+              <div class="cri-card-back-label">Signal</div>
+              <span class="s3-cri-signal-main">Trust-based distributed care already operating under stress.</span>
+              <span class="s3-cri-signal-impl">Investing in peer health navigators can activate existing infrastructure rather than building new institutions from scratch.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="cri-card-wrap">
+          <div class="cri-card">
+            <div class="cri-card-front">
+              <span class="s3-cri-td-name">Body as record</span>
+              <span class="s3-cri-td-desc">The cumulative physical record of climate exposure held in the body: lungs, asthma history, seasonal patterns, accumulated stress</span>
+            </div>
+            <div class="cri-card-back">
+              <div class="cri-card-back-label">Signal</div>
+              <span class="s3-cri-signal-main">Longitudinal health data that formal medical records do not capture.</span>
+              <span class="s3-cri-signal-impl">Basis for climate health entitlements for students and informal urban migrants — occupational-adjacent rights grounded in embodied evidence.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="cri-card-wrap">
+          <div class="cri-card">
+            <div class="cri-card-front">
+              <span class="s3-cri-td-name">Reverse migration threshold</span>
+              <span class="s3-cri-td-desc">The tipping point at which illness forces return to origin city, losing urban investment, networks, and two years of life built here</span>
+            </div>
+            <div class="cri-card-back">
+              <div class="cri-card-back-label">Signal</div>
+              <span class="s3-cri-signal-main">A quantifiable climate risk with a measurable intervention window.</span>
+              <span class="s3-cri-signal-impl">Targeted health support, academic accommodation, and housing protections deployed before the threshold is crossed can prevent irreversible migration loss.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="cri-card-wrap">
+          <div class="cri-card">
+            <div class="cri-card-front">
+              <span class="s3-cri-td-name">Academic disruption mapping</span>
+              <span class="s3-cri-td-desc">How floods, heat, and power cuts interrupt study continuity and accumulate into grade risk and dropout pressure over a semester</span>
+            </div>
+            <div class="cri-card-back">
+              <div class="cri-card-back-label">Signal</div>
+              <span class="s3-cri-signal-main">The downstream education cost of climate exposure, term by term.</span>
+              <span class="s3-cri-signal-impl">Evidence for climate-resilient academic policy: automatic extensions, health-related deferrals, and inclusive attendance rules triggered by climate events.</span>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /cri-cards-grid-p -->
+
+      <!-- List view (Priya) -->
+      <div class="cri-list-view" id="cri-list-view-p">
+        <table class="s3-cri-table">
+          <thead>
+            <tr><th>Intelligence</th><th>Signal</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="s3-cri-td-name">Mould mapping</span><span class="s3-cri-td-desc">Which buildings and flats develop mould during monsoon and how quickly</span></td>
+              <td><span class="s3-cri-signal-main">Street-level respiratory health data that satellite imagery cannot see.</span><span class="s3-cri-signal-impl">Can inform ward-level housing inspection schedules and preventive maintenance mandates.</span></td>
+            </tr>
+            <tr>
+              <td><span class="s3-cri-td-name">Landlord accountability gaps</span><span class="s3-cri-td-desc">How informal rental arrangements block residents from demanding climate-related repairs</span></td>
+              <td><span class="s3-cri-signal-main">Evidence base for climate-proofing rental housing legislation.</span><span class="s3-cri-signal-impl">A case for habitation standards under monsoon and flood conditions.</span></td>
+            </tr>
+            <tr>
+              <td><span class="s3-cri-td-name">Health-hiding behaviour</span><span class="s3-cri-td-desc">When and why residents conceal illness to protect housing and family stability</span></td>
+              <td><span class="s3-cri-signal-main">Where formal support systems are invisible or inaccessible to migrants.</span><span class="s3-cri-signal-impl">Points to the need for confidential, migrant-accessible health navigation that does not trigger housing consequences.</span></td>
+            </tr>
+            <tr>
+              <td><span class="s3-cri-td-name">Cost of staying well</span><span class="s3-cri-td-desc">Out-of-pocket spending required to maintain basic health in an exposed rental</span></td>
+              <td><span class="s3-cri-signal-main">A household-level climate burden invisible to macro datasets.</span><span class="s3-cri-signal-impl">Evidence for scholarship extensions, rental subsidies, and climate adaptation stipends for students.</span></td>
+            </tr>
+            <tr>
+              <td><span class="s3-cri-td-name">Power-cut patterns</span><span class="s3-cri-td-desc">When outages compound health and academic impacts during climate events</span></td>
+              <td><span class="s3-cri-signal-main">Temporal data on infrastructure failure disrupting both cooling and digital continuity.</span><span class="s3-cri-signal-impl">Inputs for ward-level grid resilience and academic continuity policy.</span></td>
+            </tr>
+            <tr>
+              <td><span class="s3-cri-td-name">Informal peer care</span><span class="s3-cri-td-desc">The mutual aid system moving health information and support among students without institutional backing</span></td>
+              <td><span class="s3-cri-signal-main">Trust-based distributed care already operating under stress.</span><span class="s3-cri-signal-impl">Investing in peer health navigators can activate existing infrastructure rather than building new institutions.</span></td>
+            </tr>
+            <tr>
+              <td><span class="s3-cri-td-name">Body as record</span><span class="s3-cri-td-desc">The cumulative physical record of climate exposure held in the body over years</span></td>
+              <td><span class="s3-cri-signal-main">Longitudinal health data that formal medical records do not capture.</span><span class="s3-cri-signal-impl">Basis for climate health entitlements for students and informal urban migrants.</span></td>
+            </tr>
+            <tr>
+              <td><span class="s3-cri-td-name">Reverse migration threshold</span><span class="s3-cri-td-desc">The tipping point at which illness forces return to origin city, losing urban investment</span></td>
+              <td><span class="s3-cri-signal-main">A quantifiable climate risk with a measurable intervention window.</span><span class="s3-cri-signal-impl">Health support, academic accommodation, and housing protections before the threshold is crossed can prevent irreversible migration loss.</span></td>
+            </tr>
+            <tr>
+              <td><span class="s3-cri-td-name">Academic disruption mapping</span><span class="s3-cri-td-desc">How floods, heat, and power cuts accumulate into grade risk and dropout pressure</span></td>
+              <td><span class="s3-cri-signal-main">The downstream education cost of climate exposure, term by term.</span><span class="s3-cri-signal-impl">Evidence for climate-resilient academic policy: extensions, health-related deferrals, and climate-triggered attendance rules.</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div><!-- /cri-list-view-p -->
+
+    </div><!-- /s3-cri-panel-p -->
+    </div><!-- /s3-priya-content -->
+
+  </div><!-- /s3-col2 -->
 
   <div id="s3-bold-note">
     <p class="s3-rc-note">Items in <strong>bold</strong> are direct participant contributions from the clinic.</p>
@@ -1236,6 +1538,42 @@ document.querySelectorAll('.cri-view-btn').forEach(function(btn){
     var isCards = btn.dataset.criView === 'cards';
     document.getElementById('cri-cards-grid').classList.toggle('hidden', !isCards);
     document.getElementById('cri-list-view').classList.toggle('active', !isCards);
+  });
+});
+
+document.querySelectorAll('.s3-ptab').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    document.querySelectorAll('.s3-ptab').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    var isNasim = btn.dataset.persona === 'nasim';
+    document.getElementById('s3-nasim-content').style.display = isNasim ? '' : 'none';
+    document.getElementById('s3-priya-content').style.display = isNasim ? 'none' : '';
+    document.getElementById('section3').classList.toggle('s3-priya', !isNasim);
+  });
+});
+document.querySelectorAll('.s3-c2-tab-p').forEach(function(tab){
+  tab.addEventListener('click', function(){
+    document.querySelectorAll('.s3-c2-tab-p').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('#s3-priya-content .s3-c2-panel').forEach(p => p.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById(tab.dataset.c2p).classList.add('active');
+  });
+});
+document.querySelectorAll('.s3-term-tab-p').forEach(function(tab){
+  tab.addEventListener('click', function(){
+    document.querySelectorAll('.s3-term-tab-p').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('#s3-priya-content .s3-term-content').forEach(c => c.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById(tab.dataset.tabp).classList.add('active');
+  });
+});
+document.querySelectorAll('.cri-view-btn-p').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    document.querySelectorAll('.cri-view-btn-p').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    var isCards = btn.dataset.criViewP === 'cards';
+    document.getElementById('cri-cards-grid-p').classList.toggle('hidden', !isCards);
+    document.getElementById('cri-list-view-p').classList.toggle('active', !isCards);
   });
 });
 </script>
