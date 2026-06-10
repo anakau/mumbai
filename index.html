@@ -142,10 +142,13 @@ body.show-priya #section3{ background:#5533ff; }
 .s3-term-tab.active::after{ transform:scaleX(1); }
 .s3-term-content{ display:none; animation:ctxFade 0.35s ease; }
 .s3-term-content.active{ display:block; }
-.s3-cascade-box{ border:1px solid rgba(0,0,0,0.25); padding:16px 18px; background:rgba(255,255,255,0.2); }
-.s3-cascade-box-label{ font-family:'Archivo',sans-serif; font-size:clamp(10px,0.8vw,12px); font-style:italic; font-weight:300; color:rgba(0,0,0,0.5); margin:0 0 8px 0; }
-.s3-cascade-chain{ font-family:'Archivo',sans-serif; font-size:clamp(13px,1.0vw,15px); font-weight:300; color:#000; line-height:1.8; }
-.s3-cascade-chain strong{ font-weight:700; }
+.s3-cascade-label-top{ font-family:'Archivo',sans-serif; font-size:clamp(10px,0.8vw,12px); font-style:italic; font-weight:300; color:rgba(0,0,0,0.5); margin:0 0 10px 0; }
+.s3-flow{ display:flex; flex-direction:column; }
+.s3-flow-node{ border:1px solid rgba(0,0,0,0.25); padding:9px 13px; background:rgba(255,255,255,0.2); font-family:'Archivo',sans-serif; font-size:clamp(11px,0.85vw,13px); font-weight:300; color:#000; line-height:1.55; }
+.s3-flow-node.contrib{ background:rgba(0,0,0,0.07); }
+.s3-flow-node strong{ font-weight:700; }
+.s3-flow-node.loop-back{ font-style:italic; color:rgba(0,0,0,0.5); border-style:dashed; background:transparent; text-align:center; }
+.s3-flow-arrow{ text-align:center; padding:3px 0; color:rgba(0,0,0,0.35); font-size:13px; line-height:1; }
 
 #section-clinic{
   position:relative;
@@ -859,23 +862,71 @@ window.addEventListener('touchend', onTouchEnd, {passive:true});
     </div>
 
     <div class="s3-term-content active" id="s3-immediate">
-      <div class="s3-cascade-box">
-        <div class="s3-cascade-box-label">Immediate</div>
-        <div class="s3-cascade-chain"><strong>Increase in delivery orders as people are home more</strong> → Increased pressure from app of lost income if he takes breaks → Suffers heatstrokes from being in the sun → Has to take breaks during the day to recover and continue → Loss of income → Increase pressure to earn money → Increased need to take orders with heat wave → Loops back to the top</div>
+      <div class="s3-cascade-label-top">Immediate</div>
+      <div class="s3-flow">
+        <div class="s3-flow-node contrib"><strong>Increase in delivery orders as people are home more</strong></div>
+        <div class="s3-flow-arrow">↓</div>
+        <div class="s3-flow-node">Increased pressure from app of lost income if he takes breaks</div>
+        <div class="s3-flow-arrow">↓</div>
+        <div class="s3-flow-node">Suffers heatstrokes from being in the sun</div>
+        <div class="s3-flow-arrow">↓</div>
+        <div class="s3-flow-node">Has to take breaks during the day to recover and continue</div>
+        <div class="s3-flow-arrow">↓</div>
+        <div class="s3-flow-node">Loss of income</div>
+        <div class="s3-flow-arrow">↓</div>
+        <div class="s3-flow-node">Increase pressure to earn money</div>
+        <div class="s3-flow-arrow">↓</div>
+        <div class="s3-flow-node">Increased need to take orders with heat wave</div>
+        <div class="s3-flow-arrow">↺</div>
+        <div class="s3-flow-node loop-back">Loops back to the top</div>
       </div>
     </div>
 
     <div class="s3-term-content" id="s3-medium">
-      <div class="s3-cascade-box">
-        <div class="s3-cascade-box-label">Medium</div>
-        <div class="s3-cascade-chain"><strong>Heat exposure necessitates him to take a break during an order</strong> → delays a delivery → Food spoils or arrives late → Bad review, rating drops → Algorithm deactivates him at a low rating for 48 hours → 48 hours no income, no appeal → Increased financial pressure → Returns to work regardless of continued heat wave → Higher risk of next health incident → Higher risk of next delayed delivery</div>
+      <div class="s3-cascade-label-top">Medium</div>
+      <div class="s3-flow">
+        <div class="s3-flow-node contrib"><strong>Heat exposure necessitates him to take a break during an order</strong></div>
+        <div class="s3-flow-arrow">↓</div>
+        <div class="s3-flow-node">Delays a delivery</div>
+        <div class="s3-flow-arrow">↓</div>
+        <div class="s3-flow-node">Food spoils or arrives late</div>
+        <div class="s3-flow-arrow">↓</div>
+        <div class="s3-flow-node">Bad review, rating drops</div>
+        <div class="s3-flow-arrow">↓</div>
+        <div class="s3-flow-node">Algorithm deactivates him at a low rating for 48 hours</div>
+        <div class="s3-flow-arrow">↓</div>
+        <div class="s3-flow-node">48 hours no income, no appeal</div>
+        <div class="s3-flow-arrow">↓</div>
+        <div class="s3-flow-node">Increased financial pressure</div>
+        <div class="s3-flow-arrow">↓</div>
+        <div class="s3-flow-node">Returns to work regardless of continued heat wave</div>
+        <div class="s3-flow-arrow">↓</div>
+        <div class="s3-flow-node">Higher risk of next health incident</div>
+        <div class="s3-flow-arrow">↓</div>
+        <div class="s3-flow-node">Higher risk of next delayed delivery</div>
       </div>
     </div>
 
     <div class="s3-term-content" id="s3-long">
-      <div class="s3-cascade-box">
-        <div class="s3-cascade-box-label">Long</div>
-        <div class="s3-cascade-chain">Bike bought on loan → Cannot exit platform with loan remaining → Platform sets terms (10-min targets, rating thresholds) → <strong>Nasim cannot refuse conditions set by the platform even during a heatwave</strong> → Increase in delivery orders as people are home more → Conditions remain dangerous leading to more necessitated breaks → Loss of income → Increase pressure to earn money to service the loan → Cannot accumulate savings to exit loan</div>
+      <div class="s3-cascade-label-top">Long</div>
+      <div class="s3-flow">
+        <div class="s3-flow-node">Bike bought on loan</div>
+        <div class="s3-flow-arrow">↓</div>
+        <div class="s3-flow-node">Cannot exit platform with loan remaining</div>
+        <div class="s3-flow-arrow">↓</div>
+        <div class="s3-flow-node">Platform sets terms (10-min targets, rating thresholds)</div>
+        <div class="s3-flow-arrow">↓</div>
+        <div class="s3-flow-node contrib"><strong>Nasim cannot refuse conditions set by the platform even during a heatwave</strong></div>
+        <div class="s3-flow-arrow">↓</div>
+        <div class="s3-flow-node">Increase in delivery orders as people are home more</div>
+        <div class="s3-flow-arrow">↓</div>
+        <div class="s3-flow-node">Conditions remain dangerous leading to more necessitated breaks</div>
+        <div class="s3-flow-arrow">↓</div>
+        <div class="s3-flow-node">Loss of income</div>
+        <div class="s3-flow-arrow">↓</div>
+        <div class="s3-flow-node">Increase pressure to earn money to service the loan</div>
+        <div class="s3-flow-arrow">↓</div>
+        <div class="s3-flow-node">Cannot accumulate savings to exit loan</div>
       </div>
     </div>
   </div>
