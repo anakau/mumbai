@@ -150,6 +150,22 @@ body.show-priya #section3{ background:#5533ff; }
 .s3-flow-node strong{ font-weight:700; }
 .s3-flow-node.loop-back{ font-style:italic; color:rgba(0,0,0,0.6); border-style:dashed; }
 .s3-flow-arrow{ flex-shrink:0; padding:0 6px; color:rgba(0,0,0,0.4); font-size:13px; line-height:1; }
+/* Col2 top-level section toggle */
+#s3-c2-tabs{ display:flex; gap:0; border-bottom:1px solid rgba(0,0,0,0.2); margin-bottom:20px; min-height:36px; align-items:flex-end; }
+.s3-c2-tab{ font-family:'Unbounded',sans-serif; font-size:clamp(8px,0.8vw,11px); font-weight:400; letter-spacing:0.16em; text-transform:uppercase; color:rgba(0,0,0,0.4); background:none; border:none; padding:0 0 11px 0; margin-right:20px; cursor:pointer; position:relative; transition:color 0.3s ease; text-align:left; }
+.s3-c2-tab::after{ content:''; position:absolute; bottom:-1px; left:0; width:100%; height:1px; background:#000; transform:scaleX(0); transform-origin:left; transition:transform 0.3s ease; }
+.s3-c2-tab.active{ color:#000; }
+.s3-c2-tab.active::after{ transform:scaleX(1); }
+.s3-c2-panel{ display:none; animation:ctxFade 0.35s ease; }
+.s3-c2-panel.active{ display:block; }
+/* CRI table */
+.s3-cri-table{ width:100%; border-collapse:collapse; }
+.s3-cri-table th{ font-family:'Archivo',sans-serif; font-size:clamp(11px,0.85vw,13px); font-weight:700; color:#000; text-align:left; padding:10px 16px; border:1px solid rgba(0,0,0,0.2); background:rgba(0,0,0,0.06); }
+.s3-cri-table td{ font-family:'Archivo',sans-serif; font-size:clamp(11px,0.85vw,13px); font-weight:300; color:#000; line-height:1.55; padding:14px 16px; border:1px solid rgba(0,0,0,0.15); vertical-align:top; width:50%; }
+.s3-cri-td-name{ font-weight:700; display:block; margin-bottom:4px; }
+.s3-cri-td-desc{ display:block; }
+.s3-cri-signal-main{ color:#000; display:block; margin-bottom:6px; }
+.s3-cri-signal-impl{ color:rgba(0,0,0,0.5); display:block; font-size:clamp(10px,0.78vw,12px); }
 
 #section-clinic{
   position:relative;
@@ -854,83 +870,142 @@ window.addEventListener('touchend', onTouchEnd, {passive:true});
     </div>
     <p class="s3-mapped-by">Mapped by Abhishek Fullton (UNICEF), Dishant Parmar (YUVA), Dulari Parmar (YUVA), and Myron Mendes (INECC)</p>
 
-    <div class="s3-rc-label">Risk Cascades</div>
-    <p class="s3-rc-intro">Risks interact and compound: each stress event triggers a chain of consequences across health, income, platform terms, and household stability that may loop back on itself and deepens with every cycle.</p>
-    <p class="s3-rc-note">Items in <strong>bold</strong> are direct participant contributions from the clinic.</p>
-
-    <div id="s3-term-tabs">
-      <button class="s3-term-tab active" data-tab="s3-immediate">Immediate Term</button>
-      <button class="s3-term-tab" data-tab="s3-medium">Medium Term</button>
-      <button class="s3-term-tab" data-tab="s3-long">Long Term</button>
+    <!-- Top-level section toggle -->
+    <div id="s3-c2-tabs">
+      <button class="s3-c2-tab active" data-c2="s3-rc-panel">Risk Cascades</button>
+      <button class="s3-c2-tab" data-c2="s3-cri-panel">Citizen Risk Intelligence</button>
     </div>
 
-    <div class="s3-term-content active" id="s3-immediate">
-      <div class="s3-cascade-label-top">Immediate</div>
-      <div class="s3-flow">
-        <div class="s3-flow-node contrib"><strong>Increase in delivery orders as people are home more</strong></div>
-        <div class="s3-flow-arrow">→</div>
-        <div class="s3-flow-node">Increased pressure from app of lost income if he takes breaks</div>
-        <div class="s3-flow-arrow">→</div>
-        <div class="s3-flow-node">Suffers heatstrokes from being in the sun</div>
-        <div class="s3-flow-arrow">→</div>
-        <div class="s3-flow-node">Has to take breaks during the day to recover and continue</div>
-        <div class="s3-flow-arrow">→</div>
-        <div class="s3-flow-node">Loss of income</div>
-        <div class="s3-flow-arrow">→</div>
-        <div class="s3-flow-node">Increase pressure to earn money</div>
-        <div class="s3-flow-arrow">→</div>
-        <div class="s3-flow-node">Increased need to take orders with heat wave</div>
-        <div class="s3-flow-arrow">↺</div>
-        <div class="s3-flow-node loop-back">Loops back to the top</div>
+    <!-- Panel: Risk Cascades -->
+    <div class="s3-c2-panel active" id="s3-rc-panel">
+      <p class="s3-rc-intro">Risks interact and compound: each stress event triggers a chain of consequences across health, income, platform terms, and household stability that may loop back on itself and deepens with every cycle.</p>
+      <p class="s3-rc-note">Items in <strong>bold</strong> are direct participant contributions from the clinic.</p>
+
+      <div id="s3-term-tabs">
+        <button class="s3-term-tab active" data-tab="s3-immediate">Immediate Term</button>
+        <button class="s3-term-tab" data-tab="s3-medium">Medium Term</button>
+        <button class="s3-term-tab" data-tab="s3-long">Long Term</button>
+      </div>
+
+      <div class="s3-term-content active" id="s3-immediate">
+        <div class="s3-cascade-label-top">Immediate</div>
+        <div class="s3-flow">
+          <div class="s3-flow-node contrib"><strong>Increase in delivery orders as people are home more</strong></div>
+          <div class="s3-flow-arrow">→</div>
+          <div class="s3-flow-node">Increased pressure from app of lost income if he takes breaks</div>
+          <div class="s3-flow-arrow">→</div>
+          <div class="s3-flow-node">Suffers heatstrokes from being in the sun</div>
+          <div class="s3-flow-arrow">→</div>
+          <div class="s3-flow-node">Has to take breaks during the day to recover and continue</div>
+          <div class="s3-flow-arrow">→</div>
+          <div class="s3-flow-node">Loss of income</div>
+          <div class="s3-flow-arrow">→</div>
+          <div class="s3-flow-node">Increase pressure to earn money</div>
+          <div class="s3-flow-arrow">→</div>
+          <div class="s3-flow-node">Increased need to take orders with heat wave</div>
+          <div class="s3-flow-arrow">↺</div>
+          <div class="s3-flow-node loop-back">Loops back to the top</div>
+        </div>
+      </div>
+
+      <div class="s3-term-content" id="s3-medium">
+        <div class="s3-cascade-label-top">Medium</div>
+        <div class="s3-flow">
+          <div class="s3-flow-node contrib"><strong>Heat exposure necessitates him to take a break during an order</strong></div>
+          <div class="s3-flow-arrow">→</div>
+          <div class="s3-flow-node">Delays a delivery</div>
+          <div class="s3-flow-arrow">→</div>
+          <div class="s3-flow-node">Food spoils or arrives late</div>
+          <div class="s3-flow-arrow">→</div>
+          <div class="s3-flow-node">Bad review, rating drops</div>
+          <div class="s3-flow-arrow">→</div>
+          <div class="s3-flow-node">Algorithm deactivates him at a low rating for 48 hours</div>
+          <div class="s3-flow-arrow">→</div>
+          <div class="s3-flow-node">48 hours no income, no appeal</div>
+          <div class="s3-flow-arrow">→</div>
+          <div class="s3-flow-node">Increased financial pressure</div>
+          <div class="s3-flow-arrow">→</div>
+          <div class="s3-flow-node">Returns to work regardless of continued heat wave</div>
+          <div class="s3-flow-arrow">→</div>
+          <div class="s3-flow-node">Higher risk of next health incident</div>
+          <div class="s3-flow-arrow">→</div>
+          <div class="s3-flow-node">Higher risk of next delayed delivery</div>
+        </div>
+      </div>
+
+      <div class="s3-term-content" id="s3-long">
+        <div class="s3-cascade-label-top">Long</div>
+        <div class="s3-flow">
+          <div class="s3-flow-node">Bike bought on loan</div>
+          <div class="s3-flow-arrow">→</div>
+          <div class="s3-flow-node">Cannot exit platform with loan remaining</div>
+          <div class="s3-flow-arrow">→</div>
+          <div class="s3-flow-node">Platform sets terms (10-min targets, rating thresholds)</div>
+          <div class="s3-flow-arrow">→</div>
+          <div class="s3-flow-node contrib"><strong>Nasim cannot refuse conditions set by the platform even during a heatwave</strong></div>
+          <div class="s3-flow-arrow">→</div>
+          <div class="s3-flow-node">Increase in delivery orders as people are home more</div>
+          <div class="s3-flow-arrow">→</div>
+          <div class="s3-flow-node">Conditions remain dangerous leading to more necessitated breaks</div>
+          <div class="s3-flow-arrow">→</div>
+          <div class="s3-flow-node">Loss of income</div>
+          <div class="s3-flow-arrow">→</div>
+          <div class="s3-flow-node">Increase pressure to earn money to service the loan</div>
+          <div class="s3-flow-arrow">→</div>
+          <div class="s3-flow-node">Cannot accumulate savings to exit loan</div>
+        </div>
       </div>
     </div>
 
-    <div class="s3-term-content" id="s3-medium">
-      <div class="s3-cascade-label-top">Medium</div>
-      <div class="s3-flow">
-        <div class="s3-flow-node contrib"><strong>Heat exposure necessitates him to take a break during an order</strong></div>
-        <div class="s3-flow-arrow">→</div>
-        <div class="s3-flow-node">Delays a delivery</div>
-        <div class="s3-flow-arrow">→</div>
-        <div class="s3-flow-node">Food spoils or arrives late</div>
-        <div class="s3-flow-arrow">→</div>
-        <div class="s3-flow-node">Bad review, rating drops</div>
-        <div class="s3-flow-arrow">→</div>
-        <div class="s3-flow-node">Algorithm deactivates him at a low rating for 48 hours</div>
-        <div class="s3-flow-arrow">→</div>
-        <div class="s3-flow-node">48 hours no income, no appeal</div>
-        <div class="s3-flow-arrow">→</div>
-        <div class="s3-flow-node">Increased financial pressure</div>
-        <div class="s3-flow-arrow">→</div>
-        <div class="s3-flow-node">Returns to work regardless of continued heat wave</div>
-        <div class="s3-flow-arrow">→</div>
-        <div class="s3-flow-node">Higher risk of next health incident</div>
-        <div class="s3-flow-arrow">→</div>
-        <div class="s3-flow-node">Higher risk of next delayed delivery</div>
-      </div>
-    </div>
-
-    <div class="s3-term-content" id="s3-long">
-      <div class="s3-cascade-label-top">Long</div>
-      <div class="s3-flow">
-        <div class="s3-flow-node">Bike bought on loan</div>
-        <div class="s3-flow-arrow">→</div>
-        <div class="s3-flow-node">Cannot exit platform with loan remaining</div>
-        <div class="s3-flow-arrow">→</div>
-        <div class="s3-flow-node">Platform sets terms (10-min targets, rating thresholds)</div>
-        <div class="s3-flow-arrow">→</div>
-        <div class="s3-flow-node contrib"><strong>Nasim cannot refuse conditions set by the platform even during a heatwave</strong></div>
-        <div class="s3-flow-arrow">→</div>
-        <div class="s3-flow-node">Increase in delivery orders as people are home more</div>
-        <div class="s3-flow-arrow">→</div>
-        <div class="s3-flow-node">Conditions remain dangerous leading to more necessitated breaks</div>
-        <div class="s3-flow-arrow">→</div>
-        <div class="s3-flow-node">Loss of income</div>
-        <div class="s3-flow-arrow">→</div>
-        <div class="s3-flow-node">Increase pressure to earn money to service the loan</div>
-        <div class="s3-flow-arrow">→</div>
-        <div class="s3-flow-node">Cannot accumulate savings to exit loan</div>
-      </div>
+    <!-- Panel: Citizen Risk Intelligence -->
+    <div class="s3-c2-panel" id="s3-cri-panel">
+      <p class="s3-rc-intro">The experience of navigating risk at this intensity produces intelligence with profound implications for policy and investment.</p>
+      <table class="s3-cri-table">
+        <thead>
+          <tr>
+            <th>Intelligence</th>
+            <th>Signal</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="s3-cri-td-name">Heat topology</span><span class="s3-cri-td-desc">Live map of which neighbourhoods are hotspots and how conditions shift across routes throughout the day</span></td>
+            <td><span class="s3-cri-signal-main">Street-level data that ground-truths satellite heat maps.</span><span class="s3-cri-signal-impl">This can inform ward-level cooling infrastructure deployment and Heat Action Plan resource allocation.</span></td>
+          </tr>
+          <tr>
+            <td><span class="s3-cri-td-name">Route passability</span><span class="s3-cri-td-desc">Which roads and infrastructure hold under heat and flood, and what each route costs him physically</span></td>
+            <td><span class="s3-cri-signal-main">Real-time intelligence on how mobility infrastructure performs under climate stress.</span><span class="s3-cri-signal-impl">Rider-mapped infrastructure failure points can feed into municipal maintenance priorities and flood-resilience investment.</span></td>
+          </tr>
+          <tr>
+            <td><span class="s3-cri-td-name">Platform risk calculus</span><span class="s3-cri-td-desc">Which risks to absorb and which to avoid, weighted against rating, income, and the cost of not delivering</span></td>
+            <td><span class="s3-cri-signal-main">Occupational climate exposure mapped at the level of individual decision-making.</span><span class="s3-cri-signal-impl">This decision map is the evidence base for minimum climate protection standards in platform contracts and gig worker insurance products.</span></td>
+          </tr>
+          <tr>
+            <td><span class="s3-cri-td-name">Informal cooling infrastructure</span><span class="s3-cri-td-desc">Which restaurants, dhabas, and stops will offer rest, water, or a fan</span></td>
+            <td><span class="s3-cri-signal-main">A distributed adaptation network already operating at scale.</span><span class="s3-cri-signal-impl">Formal recognition and targeted investment can activate existing infrastructure rather than building from scratch.</span></td>
+          </tr>
+          <tr>
+            <td><span class="s3-cri-td-name">Rider-to-rider network</span><span class="s3-cri-td-desc">The peer-to-peer information and mutual aid system that moves route warnings, risk updates, and support across riders in real time</span></td>
+            <td><span class="s3-cri-signal-main">Social cohesion is climate adaptation infrastructure: decentralised, trust-based, self-organising, and already functioning as an early warning and mutual aid system.</span><span class="s3-cri-signal-impl">Investing in people and relational networks is one of the highest-leverage, lowest-cost climate adaptation moves available.</span></td>
+          </tr>
+          <tr>
+            <td><span class="s3-cri-td-name">Seasonal patterning</span><span class="s3-cri-td-desc">When the worst conditions hit across the day, week, and season, and how to pace himself across a monsoon month versus a heat month</span></td>
+            <td><span class="s3-cri-signal-main">Longitudinal pattern intelligence accumulated in the body and in peer networks.</span><span class="s3-cri-signal-impl">Community-held temporal patterns can calibrate the timing and frequency of early warning alerts.</span></td>
+          </tr>
+          <tr>
+            <td><span class="s3-cri-td-name">Financial cascade mapping</span><span class="s3-cri-td-desc">How a bad day cascades into loan repayment risk, rental risk, and household instability</span></td>
+            <td><span class="s3-cri-signal-main">Climate exposure and financial vulnerability traced together at household level.</span><span class="s3-cri-signal-impl">Anticipatory social protection and microinsurance can be timed and targeted to reach people before the cascade completes.</span></td>
+          </tr>
+          <tr>
+            <td><span class="s3-cri-td-name">Cumulative health monitoring</span><span class="s3-cri-td-desc">Ongoing internal calibration of how much physical stress he is absorbing, and how hard he can push before long-term damage accumulates</span></td>
+            <td><span class="s3-cri-signal-main">Longitudinal health data held in the body.</span><span class="s3-cri-signal-impl">This data makes the case for occupational climate exposure as a qualifying condition for health coverage, disability support, and pension entitlements.</span></td>
+          </tr>
+          <tr>
+            <td><span class="s3-cri-td-name">Dignity navigation</span><span class="s3-cri-td-desc">Managing customer interactions, complaints, and platform ratings under conditions of physical stress</span></td>
+            <td><span class="s3-cri-signal-main">The cognitive and emotional labour of climate risk absorption, made visible.</span><span class="s3-cri-signal-impl">Social protection design can expand to treat dignity, mental health, and identity as climate vulnerabilities that deserve direct investment.</span></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 
@@ -948,6 +1023,14 @@ document.querySelectorAll('.ctx-tab').forEach(function(tab){
     document.querySelectorAll('.ctx-content').forEach(c => c.classList.remove('active'));
     tab.classList.add('active');
     document.getElementById(tab.dataset.tab).classList.add('active');
+  });
+});
+document.querySelectorAll('.s3-c2-tab').forEach(function(tab){
+  tab.addEventListener('click', function(){
+    document.querySelectorAll('.s3-c2-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.s3-c2-panel').forEach(p => p.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById(tab.dataset.c2).classList.add('active');
   });
 });
 </script>
