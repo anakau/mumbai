@@ -98,143 +98,28 @@ body.show-priya{ background:#f0f4fd; }
 }
 
 #section3{
-  position:relative;
-  width:100%;
-  min-height:100vh;
-  background:#7c3828;
-  display:grid;
-  grid-template-columns:1fr 1fr 1fr;
-  align-items:start;
-  column-gap:6vw;
-  padding:100px var(--lm);
-  box-sizing:border-box;
-  flex-shrink:0;
+  position:relative; width:100%; min-height:100vh; background:#7c3828;
+  display:grid; grid-template-columns:1fr 1fr 1fr; align-items:start;
+  column-gap:6vw; padding:100px var(--lm); box-sizing:border-box; flex-shrink:0;
 }
 body.show-priya #section3{ background:#2a2752; }
-
-/* ---- S3 shared ---- */
-.s3-col-hd{
-  font-family:'Unbounded',sans-serif;
-  font-size:clamp(8px,0.8vw,11px);
-  font-weight:400;
-  letter-spacing:0.16em;
-  text-transform:uppercase;
-  color:rgba(245,240,220,0.35);
-  padding-bottom:11px;
-  border-bottom:1px solid rgba(245,240,220,0.15);
-  margin-bottom:16px;
-}
-.s3-section-title{
-  font-family:'Unbounded',sans-serif;
-  font-size:clamp(16px,1.5vw,22px);
-  font-weight:300;
-  letter-spacing:-0.01em;
-  color:rgba(245,240,220,0.88);
-  margin:0 0 12px 0;
-}
-.s3-intro{
-  font-family:'Archivo',sans-serif;
-  font-size:clamp(13px,1.0vw,15px);
-  font-weight:300;
-  color:rgba(245,240,220,0.5);
-  line-height:1.8;
-  margin:0 0 36px 0;
-}
-
-/* ---- Portfolio Instruments ---- */
+.s3-intro{ font-family:'Archivo',sans-serif; font-size:clamp(13px,1.0vw,15px); font-weight:300; color:rgba(245,240,220,0.5); line-height:1.8; margin:0 0 28px 0; }
 .s3-instrument{ margin-bottom:28px; }
-.s3-instrument-name{
-  font-family:'Archivo',sans-serif;
-  font-size:clamp(12px,1.0vw,14px);
-  font-weight:700;
-  color:rgba(245,240,220,0.88);
-  margin:0 0 6px 0;
-}
-.s3-instrument-desc{
-  font-family:'Archivo',sans-serif;
-  font-size:clamp(12px,1.0vw,14px);
-  font-weight:300;
-  color:rgba(245,240,220,0.5);
-  line-height:1.75;
-  margin:0 0 12px 0;
-}
-.s3-dl-btn{
-  display:inline-block;
-  font-family:'Archivo',sans-serif;
-  font-size:clamp(9px,0.7vw,10px);
-  letter-spacing:0.14em;
-  text-transform:uppercase;
-  color:rgba(245,240,220,0.45);
-  border:1px solid rgba(245,240,220,0.2);
-  padding:5px 13px;
-  text-decoration:none;
-  transition:color 0.2s,border-color 0.2s;
-}
+.s3-instrument-name{ font-family:'Archivo',sans-serif; font-size:clamp(12px,1.0vw,14px); font-weight:700; color:rgba(245,240,220,0.88); margin:0 0 6px 0; }
+.s3-instrument-desc{ font-family:'Archivo',sans-serif; font-size:clamp(12px,1.0vw,14px); font-weight:300; color:rgba(245,240,220,0.5); line-height:1.75; margin:0 0 12px 0; }
+.s3-dl-btn{ display:inline-block; font-family:'Archivo',sans-serif; font-size:clamp(9px,0.7vw,10px); letter-spacing:0.14em; text-transform:uppercase; color:rgba(245,240,220,0.45); border:1px solid rgba(245,240,220,0.2); padding:5px 13px; text-decoration:none; transition:color 0.2s,border-color 0.2s; }
 .s3-dl-btn:hover{ color:rgba(245,240,220,0.9); border-color:rgba(245,240,220,0.5); }
-
-/* ---- Emerging Terminology ---- */
 .s3-term{ margin-bottom:28px; }
-.s3-term-name{
-  font-family:'Archivo',sans-serif;
-  font-size:clamp(12px,1.0vw,14px);
-  font-weight:700;
-  color:rgba(245,240,220,0.88);
-  margin:0 0 6px 0;
-}
-.s3-term-def{
-  font-family:'Archivo',sans-serif;
-  font-size:clamp(12px,1.0vw,14px);
-  font-weight:300;
-  color:rgba(245,240,220,0.5);
-  line-height:1.75;
-  margin:0;
-}
-
-/* ---- Risk Field tabs ---- */
-#s3-rf-tabs{
-  display:flex;
-  gap:0;
-  border-bottom:1px solid rgba(245,240,220,0.15);
-  margin-bottom:16px;
-  min-height:36px;
-  align-items:flex-end;
-}
-.s3-rf-tab{
-  font-family:'Unbounded',sans-serif;
-  font-size:clamp(8px,0.8vw,11px);
-  font-weight:400;
-  letter-spacing:0.16em;
-  text-transform:uppercase;
-  color:rgba(245,240,220,0.35);
-  background:none;
-  border:none;
-  padding:0 0 11px 0;
-  margin-right:20px;
-  cursor:pointer;
-  position:relative;
-  transition:color 0.3s;
-}
-.s3-rf-tab::after{
-  content:'';
-  position:absolute;
-  bottom:-1px; left:0;
-  width:100%; height:1px;
-  background:rgba(245,240,220,0.9);
-  transform:scaleX(0);
-  transform-origin:left;
-  transition:transform 0.3s;
-}
-.s3-rf-tab.active{ color:rgba(245,240,220,0.9); }
-.s3-rf-tab.active::after{ transform:scaleX(1); }
-.s3-rf-content{
-  display:none;
-  font-family:'Archivo',sans-serif;
-  font-size:clamp(13px,1.0vw,15px);
-  font-weight:300;
-  color:rgba(245,240,220,0.5);
-  line-height:1.8;
-}
-.s3-rf-content.active{ display:block; }
+.s3-term-name{ font-family:'Archivo',sans-serif; font-size:clamp(12px,1.0vw,14px); font-weight:700; color:rgba(245,240,220,0.88); margin:0 0 6px 0; }
+.s3-term-def{ font-family:'Archivo',sans-serif; font-size:clamp(12px,1.0vw,14px); font-weight:300; color:rgba(245,240,220,0.5); line-height:1.75; margin:0; }
+.s3-riskfield-label{ font-family:'Unbounded',sans-serif; font-size:clamp(14px,1.2vw,18px); font-weight:300; letter-spacing:-0.01em; color:rgba(245,240,220,0.75); margin:0 0 14px 0; }
+#s3-tabs{ display:flex; gap:0; border-bottom:1px solid rgba(245,240,220,0.15); margin-bottom:16px; min-height:36px; align-items:flex-end; }
+.s3-tab{ font-family:'Unbounded',sans-serif; font-size:clamp(8px,0.8vw,11px); font-weight:400; letter-spacing:0.16em; text-transform:uppercase; color:rgba(245,240,220,0.35); background:none; border:none; padding:0 0 11px 0; margin-right:20px; cursor:pointer; position:relative; transition:color 0.3s ease; }
+.s3-tab::after{ content:''; position:absolute; bottom:-1px; left:0; width:100%; height:1px; background:rgba(245,240,220,0.9); transform:scaleX(0); transform-origin:left; transition:transform 0.3s ease; }
+.s3-tab.active{ color:rgba(245,240,220,0.9); }
+.s3-tab.active::after{ transform:scaleX(1); }
+.s3-content{ display:none; font-family:'Archivo',sans-serif; font-size:clamp(13px,1.0vw,15px); font-weight:300; color:rgba(245,240,220,0.5); line-height:1.8; animation:ctxFade 0.35s ease; }
+.s3-content.active{ display:block; }
 
 #section-clinic{
   position:relative;
@@ -878,65 +763,50 @@ window.addEventListener('touchend', onTouchEnd, {passive:true});
 
 <div id="section3">
 
-  <!-- Column 1: Portfolio Instruments -->
-  <div id="s3-instruments">
-    <div class="s3-col-hd">Portfolio Instruments</div>
-    <p class="s3-intro">The instruments below are drawn from the RiskSense portfolio and were deployed in Mumbai for the first time. The portfolio is live, evolving, and shaped by each new context we work in.</p>
-
-    <div class="s3-instrument">
-      <h3 class="s3-instrument-name">Risk Clinic</h3>
-      <p class="s3-instrument-desc">A structured participatory workshop for surfacing how communities navigate systemic risk in real time.</p>
-      <a href="#" class="s3-dl-btn">Download Template</a>
+  <div id="s3-panel">
+    <div id="s3-tabs">
+      <button class="s3-tab active" data-tab="s3-instruments">Portfolio Instruments</button>
+      <button class="s3-tab" data-tab="s3-terminology">Emerging Terminology</button>
+      <button class="s3-tab" data-tab="s3-riskfield">Risk Field</button>
     </div>
 
-    <div class="s3-instrument">
-      <h3 class="s3-instrument-name">Cascade Mapping</h3>
-      <p class="s3-instrument-desc">A facilitated tool for tracing how risks interact and amplify across a community's social, economic, and infrastructural systems.</p>
-      <a href="#" class="s3-dl-btn">Download Template</a>
+    <div class="s3-content active" id="s3-instruments">
+      <p class="s3-intro">The instruments below are drawn from the RiskSense portfolio and were deployed in Mumbai for the first time. The portfolio is live, evolving, and shaped by each new context we work in.</p>
+      <div class="s3-instrument">
+        <h3 class="s3-instrument-name">Risk Clinic</h3>
+        <p class="s3-instrument-desc">A structured participatory workshop for surfacing how communities navigate systemic risk in real time.</p>
+        <a href="#" class="s3-dl-btn">Download Template</a>
+      </div>
+      <div class="s3-instrument">
+        <h3 class="s3-instrument-name">Cascade Mapping</h3>
+        <p class="s3-instrument-desc">A facilitated tool for tracing how risks interact and amplify across a community's social, economic, and infrastructural systems.</p>
+        <a href="#" class="s3-dl-btn">Download Template</a>
+      </div>
+      <div class="s3-instrument">
+        <h3 class="s3-instrument-name">Decision Timeline</h3>
+        <p class="s3-instrument-desc">A visual mapping instrument that reconstructs how individuals and households make decisions under compounding stress — before, during, and after a risk event.</p>
+        <a href="#" class="s3-dl-btn">Download Template</a>
+      </div>
     </div>
 
-    <div class="s3-instrument">
-      <h3 class="s3-instrument-name">Decision Timeline</h3>
-      <p class="s3-instrument-desc">A visual mapping instrument that reconstructs how individuals and households make decisions under compounding stress — before, during, and after a risk event.</p>
-      <a href="#" class="s3-dl-btn">Download Template</a>
-    </div>
-  </div>
-
-  <!-- Column 2: Emerging Terminology -->
-  <div id="s3-terminology">
-    <div class="s3-col-hd">Emerging Terminology</div>
-
-    <div class="s3-term">
-      <h3 class="s3-term-name">Citizen Risk Intelligence</h3>
-      <p class="s3-term-def">The live, embodied, and continuously updated knowledge that individuals hold about how their city fails under stress.</p>
-    </div>
-
-    <div class="s3-term">
-      <h3 class="s3-term-name">Civic Signal</h3>
-      <p class="s3-term-def">An inference drawn from citizen risk intelligence that carries implications for policy, infrastructure, or investment.</p>
+    <div class="s3-content" id="s3-terminology">
+      <div class="s3-term">
+        <h3 class="s3-term-name">Citizen Risk Intelligence</h3>
+        <p class="s3-term-def">The live, embodied, and continuously updated knowledge that individuals hold about how their city fails under stress.</p>
+      </div>
+      <div class="s3-term">
+        <h3 class="s3-term-name">Civic Signal</h3>
+        <p class="s3-term-def">An inference drawn from citizen risk intelligence that carries implications for policy, infrastructure, or investment.</p>
+      </div>
+      <div class="s3-term">
+        <h3 class="s3-term-name">Risk Cascade</h3>
+        <p class="s3-term-def">A chain of compounding consequences triggered by a single stress event, where each outcome becomes the condition for the next, often looping back on itself.</p>
+      </div>
     </div>
 
-    <div class="s3-term">
-      <h3 class="s3-term-name">Risk Cascade</h3>
-      <p class="s3-term-def">A chain of compounding consequences triggered by a single stress event, where each outcome becomes the condition for the next, often looping back on itself.</p>
-    </div>
-  </div>
-
-  <!-- Column 3: Risk Field -->
-  <div id="s3-riskfield">
-    <div id="s3-rf-tabs">
-      <button class="s3-rf-tab active" data-tab="rf-hypothesis">Revised Hypothesis</button>
-      <button class="s3-rf-tab" data-tab="rf-tab2">Placeholder</button>
-      <button class="s3-rf-tab" data-tab="rf-tab3">Placeholder</button>
-    </div>
-    <div class="s3-rf-content active" id="rf-hypothesis">
+    <div class="s3-content" id="s3-riskfield">
+      <div class="s3-riskfield-label">Revised Hypothesis</div>
       <p>Placeholder — full text for Revised Hypothesis coming soon.</p>
-    </div>
-    <div class="s3-rf-content" id="rf-tab2">
-      <p>Placeholder content.</p>
-    </div>
-    <div class="s3-rf-content" id="rf-tab3">
-      <p>Placeholder content.</p>
     </div>
   </div>
 
@@ -955,13 +825,13 @@ document.querySelectorAll('.ctx-tab').forEach(function(tab){
 <script>
 (function(){
   var HUNCHES = [
-    ‘Climate risk in Mumbai is chronic, not episodic.\nIt is embodied, continuous, longitudinal, and carried in lived memory.’,
-    ‘The most exposed citizens are not passive, but are forced to adapt at any cost because of class, caste, location, invisibility in the system, and Mumbai’s urban identity as an expensive city of dreams that people come to at any cost to succeed.’,
-    ‘Vulnerability is not a characteristic of people.\nIt is produced by structural choices (such as loan structures, rental enforcement, political power differentials, the language of governance, etc.) and deepens cyclically.’,
-    ‘Citizens already hold deep insight into the risks they live with, held in their minds, bodies, and social networks.\nWhat is missing is the institutional flow back in the form of formal information, subsidies, insurance, anticipatory support articulated in multiple languages, designed for their needs, and accessible before crisis hits.’,
-    ‘Risks are compounded by their interaction with each other.\nSingle-issue risk tools actively misrepresent that compounding by making each risk appear manageable in isolation.’,
-    ‘Long social cascades (such as identity erosion, intergenerational trauma, slow breakdown of dignity and routine) accumulate silently.’,
-    ‘The city may appear functional because vulnerable populations continuously absorb instability through individual coping mechanisms, and create the illusion of resilience.’
+    "Climate risk in Mumbai is chronic, not episodic.\nIt is embodied, continuous, longitudinal, and carried in lived memory.",
+    "The most exposed citizens are not passive, but are forced to adapt at any cost because of class, caste, location, invisibility in the system, and Mumbai’s urban identity as an expensive city of dreams that people come to at any cost to succeed.",
+    "Vulnerability is not a characteristic of people.\nIt is produced by structural choices (such as loan structures, rental enforcement, political power differentials, the language of governance, etc.) and deepens cyclically.",
+    "Citizens already hold deep insight into the risks they live with, held in their minds, bodies, and social networks.\nWhat is missing is the institutional flow back in the form of formal information, subsidies, insurance, anticipatory support articulated in multiple languages, designed for their needs, and accessible before crisis hits.",
+    "Risks are compounded by their interaction with each other.\nSingle-issue risk tools actively misrepresent that compounding by making each risk appear manageable in isolation.",
+    "Long social cascades (such as identity erosion, intergenerational trauma, slow breakdown of dignity and routine) accumulate silently.",
+    "The city may appear functional because vulnerable populations continuously absorb instability through individual coping mechanisms, and create the illusion of resilience."
   ];
   var slideText = document.getElementById('hunch-slide-text');
   var dotsWrap  = document.getElementById('hunch-dots');
@@ -1036,10 +906,10 @@ document.querySelectorAll('.ctx-tab').forEach(function(tab){
   });
 })();
 
-document.querySelectorAll('.s3-rf-tab').forEach(function(tab){
+document.querySelectorAll('.s3-tab').forEach(function(tab){
   tab.addEventListener('click', function(){
-    document.querySelectorAll('.s3-rf-tab').forEach(t => t.classList.remove('active'));
-    document.querySelectorAll('.s3-rf-content').forEach(c => c.classList.remove('active'));
+    document.querySelectorAll('.s3-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.s3-content').forEach(c => c.classList.remove('active'));
     tab.classList.add('active');
     document.getElementById(tab.dataset.tab).classList.add('active');
   });
