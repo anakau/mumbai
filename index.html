@@ -220,7 +220,16 @@ body.show-priya{ background:#f0f4fd; }
   padding-bottom:20px;
 }
 .hunch-item:not(:last-child){ border-bottom:1px solid rgba(245,240,220,0.15); }
-.hunch-item::before{ content:none; }
+.hunch-item::before{
+  content:counter(hunch);
+  font-family:'Archivo',sans-serif;
+  font-size:clamp(8px,0.7vw,10px);
+  letter-spacing:0.12em;
+  color:rgba(245,240,220,0.3);
+  flex-shrink:0;
+  padding-top:5px;
+  min-width:20px;
+}
 
 .row{
   width:100%;
@@ -789,6 +798,7 @@ document.querySelectorAll('.ctx-tab').forEach(function(tab){
   slideText.addEventListener('mouseenter', function(){ if(timer){ clearInterval(timer); timer=null; } });
   slideText.addEventListener('mouseleave', function(){ if(!listMode) startTimer(); });
 
+  var hunchNav = document.getElementById('hunch-nav');
   var listMode = false;
   toggle.addEventListener('click', function(){
     listMode = !listMode;
@@ -798,9 +808,11 @@ document.querySelectorAll('.ctx-tab').forEach(function(tab){
       clearInterval(timer); timer = null;
       slideView.style.display = 'none';
       listView.style.display = 'block';
+      hunchNav.style.display = 'none';
     } else {
       listView.style.display = 'none';
       slideView.style.display = '';
+      hunchNav.style.display = '';
       showHunch(0);
       startTimer();
     }
