@@ -122,6 +122,28 @@ body.show-priya #section3{ background:#5533ff; }
 .s3-content{ display:none; font-family:'Archivo',sans-serif; font-size:clamp(15px,1.2vw,18px); font-weight:300; color:#000; line-height:1.8; text-align:left; animation:ctxFade 0.35s ease; }
 .s3-content.active{ display:block; }
 
+/* ---- Section 3 column 2 ---- */
+.s3-method-note{ font-family:'Archivo',sans-serif; font-size:clamp(11px,0.85vw,13px); font-weight:300; color:rgba(0,0,0,0.6); line-height:1.7; margin:0 0 32px 0; }
+.s3-method-note strong{ font-weight:700; color:#000; }
+.s3-nav-name-hd{ font-family:'Unbounded',sans-serif; font-size:clamp(14px,1.2vw,18px); font-weight:400; color:#000; letter-spacing:-0.01em; margin:0 0 3px 0; }
+.s3-nav-role-sub{ font-family:'Archivo',sans-serif; font-size:clamp(12px,0.9vw,14px); font-weight:300; color:rgba(0,0,0,0.6); margin:0 0 8px 0; }
+.s3-mapped-by{ font-family:'Archivo',sans-serif; font-size:clamp(10px,0.75vw,12px); font-weight:300; color:rgba(0,0,0,0.5); line-height:1.65; margin:0 0 36px 0; }
+.s3-rc-label{ font-family:'Unbounded',sans-serif; font-size:clamp(8px,0.8vw,11px); font-weight:400; letter-spacing:0.16em; text-transform:uppercase; color:rgba(0,0,0,0.4); margin:0 0 14px 0; }
+.s3-rc-intro{ font-family:'Archivo',sans-serif; font-size:clamp(15px,1.2vw,18px); font-weight:300; color:#000; line-height:1.8; margin:0 0 10px 0; }
+.s3-rc-note{ font-family:'Archivo',sans-serif; font-size:clamp(11px,0.85vw,13px); font-weight:300; color:rgba(0,0,0,0.55); line-height:1.65; margin:0 0 20px 0; }
+.s3-rc-note strong{ font-weight:700; color:#000; }
+#s3-term-tabs{ display:flex; gap:0; border-bottom:1px solid rgba(0,0,0,0.2); margin-bottom:16px; min-height:36px; align-items:flex-end; }
+.s3-term-tab{ font-family:'Unbounded',sans-serif; font-size:clamp(8px,0.8vw,11px); font-weight:400; letter-spacing:0.16em; text-transform:uppercase; color:rgba(0,0,0,0.4); background:none; border:none; padding:0 0 11px 0; margin-right:20px; cursor:pointer; position:relative; transition:color 0.3s ease; text-align:left; }
+.s3-term-tab::after{ content:''; position:absolute; bottom:-1px; left:0; width:100%; height:1px; background:#000; transform:scaleX(0); transform-origin:left; transition:transform 0.3s ease; }
+.s3-term-tab.active{ color:#000; }
+.s3-term-tab.active::after{ transform:scaleX(1); }
+.s3-term-content{ display:none; animation:ctxFade 0.35s ease; }
+.s3-term-content.active{ display:block; }
+.s3-cascade-box{ border:1px solid rgba(0,0,0,0.25); padding:16px 18px; background:rgba(255,255,255,0.2); }
+.s3-cascade-box-label{ font-family:'Archivo',sans-serif; font-size:clamp(10px,0.8vw,12px); font-style:italic; font-weight:300; color:rgba(0,0,0,0.5); margin:0 0 8px 0; }
+.s3-cascade-chain{ font-family:'Archivo',sans-serif; font-size:clamp(13px,1.0vw,15px); font-weight:300; color:#000; line-height:1.8; }
+.s3-cascade-chain strong{ font-weight:700; }
+
 #section-clinic{
   position:relative;
   width:100%;
@@ -817,6 +839,46 @@ window.addEventListener('touchend', onTouchEnd, {passive:true});
     </div>
   </div>
 
+  <!-- Column 2: Nasim analysis -->
+  <div id="s3-col2">
+    <p class="s3-method-note"><strong>A Note on Method:</strong> This section features our synthesis and analysis of inputs gathered from participants at the Aamchi Mumbai Citizen Risk Clinic, using the instruments described above. The patterns, signals, and inferences drawn from them are our own.</p>
+
+    <div class="s3-nav-name-hd">Nasim</div>
+    <div class="s3-nav-role-sub">Gig Delivery Rider</div>
+    <p class="s3-mapped-by">Mapped by Abhishek Fullton (UNICEF), Dishant Parmar (YUVA), Dulari Parmar (YUVA), and Myron Mendes (INECC)</p>
+
+    <div class="s3-rc-label">Risk Cascades</div>
+    <p class="s3-rc-intro">Risks interact and compound: each stress event triggers a chain of consequences across health, income, platform terms, and household stability that may loop back on itself and deepens with every cycle.</p>
+    <p class="s3-rc-note">Items in <strong>bold</strong> are direct participant contributions from the clinic.</p>
+
+    <div id="s3-term-tabs">
+      <button class="s3-term-tab active" data-tab="s3-immediate">Immediate Term</button>
+      <button class="s3-term-tab" data-tab="s3-medium">Medium Term</button>
+      <button class="s3-term-tab" data-tab="s3-long">Long Term</button>
+    </div>
+
+    <div class="s3-term-content active" id="s3-immediate">
+      <div class="s3-cascade-box">
+        <div class="s3-cascade-box-label">Immediate</div>
+        <div class="s3-cascade-chain"><strong>Increase in delivery orders as people are home more</strong> → Increased pressure from app of lost income if he takes breaks → Suffers heatstrokes from being in the sun → Has to take breaks during the day to recover and continue → Loss of income → Increase pressure to earn money → Increased need to take orders with heat wave → Loops back to the top</div>
+      </div>
+    </div>
+
+    <div class="s3-term-content" id="s3-medium">
+      <div class="s3-cascade-box">
+        <div class="s3-cascade-box-label">Medium</div>
+        <div class="s3-cascade-chain"><strong>Heat exposure necessitates him to take a break during an order</strong> → delays a delivery → Food spoils or arrives late → Bad review, rating drops → Algorithm deactivates him at a low rating for 48 hours → 48 hours no income, no appeal → Increased financial pressure → Returns to work regardless of continued heat wave → Higher risk of next health incident → Higher risk of next delayed delivery</div>
+      </div>
+    </div>
+
+    <div class="s3-term-content" id="s3-long">
+      <div class="s3-cascade-box">
+        <div class="s3-cascade-box-label">Long</div>
+        <div class="s3-cascade-chain">Bike bought on loan → Cannot exit platform with loan remaining → Platform sets terms (10-min targets, rating thresholds) → <strong>Nasim cannot refuse conditions set by the platform even during a heatwave</strong> → Increase in delivery orders as people are home more → Conditions remain dangerous leading to more necessitated breaks → Loss of income → Increase pressure to earn money to service the loan → Cannot accumulate savings to exit loan</div>
+      </div>
+    </div>
+  </div>
+
 </div>
 
 <script>
@@ -917,6 +979,15 @@ document.querySelectorAll('.s3-tab').forEach(function(tab){
   tab.addEventListener('click', function(){
     document.querySelectorAll('.s3-tab').forEach(t => t.classList.remove('active'));
     document.querySelectorAll('.s3-content').forEach(c => c.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById(tab.dataset.tab).classList.add('active');
+  });
+});
+
+document.querySelectorAll('.s3-term-tab').forEach(function(tab){
+  tab.addEventListener('click', function(){
+    document.querySelectorAll('.s3-term-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.s3-term-content').forEach(c => c.classList.remove('active'));
     tab.classList.add('active');
     document.getElementById(tab.dataset.tab).classList.add('active');
   });
