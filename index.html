@@ -163,7 +163,7 @@ body.show-priya #section3{ background:#5533ff; }
 .s3-cri-table th{ font-family:'Archivo',sans-serif; font-size:clamp(11px,0.85vw,13px); font-weight:700; color:#000; text-align:left; padding:10px 16px; border-top:1.5px solid rgba(0,0,0,0.2); border-bottom:1.5px solid rgba(0,0,0,0.2); background:rgba(0,0,0,0.06); }
 .s3-cri-table td{ font-family:'Archivo',sans-serif; font-size:clamp(11px,0.85vw,13px); font-weight:300; color:#000; line-height:1.55; padding:14px 16px; border-bottom:1.5px solid rgba(0,0,0,0.15); vertical-align:top; width:50%; }
 .s3-cri-td-name{ font-family:'Unbounded',sans-serif; font-size:clamp(13px,1.1vw,17px); font-weight:400; letter-spacing:-0.01em; display:block; margin-bottom:8px; }
-.s3-cri-td-desc{ display:block; }
+.s3-cri-td-desc{ font-family:'Archivo',sans-serif; font-size:clamp(11px,0.85vw,13px); font-weight:300; line-height:1.5; display:block; }
 .s3-cri-signal-main{ color:#000; display:block; margin-bottom:6px; }
 .s3-cri-signal-impl{ color:rgba(0,0,0,0.5); display:block; font-size:clamp(10px,0.78vw,12px); }
 /* CRI card grid & flip */
@@ -179,10 +179,11 @@ body.show-priya #section3{ background:#5533ff; }
 .cri-card-wrap:hover .cri-card{ transform:rotateY(180deg); }
 .cri-card-front,.cri-card-back{ position:absolute; inset:0; backface-visibility:hidden; -webkit-backface-visibility:hidden; padding:14px; display:flex; flex-direction:column; justify-content:flex-start; overflow:hidden; }
 .cri-card-front{ border:1.5px solid rgba(0,0,0,0.2); background:rgba(0,0,0,0.04); }
+.cri-card-front::before{ content:'Intelligence'; font-family:'Unbounded',sans-serif; font-size:clamp(7px,0.6vw,8px); letter-spacing:0.18em; text-transform:uppercase; color:rgba(0,0,0,0.35); display:block; margin-bottom:10px; }
 .cri-card-back{ transform:rotateY(180deg); background:#000; }
 .cri-card-back-label{ font-family:'Unbounded',sans-serif; font-size:clamp(7px,0.6vw,8px); letter-spacing:0.18em; text-transform:uppercase; color:rgba(245,240,220,0.35); margin-bottom:10px; }
-.cri-card-back .s3-cri-signal-main{ color:rgba(245,240,220,0.9); font-family:'Archivo',sans-serif; font-size:clamp(10px,0.82vw,13px); font-weight:300; line-height:1.5; margin-bottom:8px; }
-.cri-card-back .s3-cri-signal-impl{ color:rgba(245,240,220,0.45); font-family:'Archivo',sans-serif; font-size:clamp(9px,0.72vw,11px); font-weight:300; line-height:1.5; }
+.cri-card-back .s3-cri-signal-main{ font-family:'Unbounded',sans-serif; font-size:clamp(11px,0.9vw,14px); font-weight:300; letter-spacing:-0.01em; color:rgba(245,240,220,0.9); line-height:1.35; margin-bottom:10px; }
+.cri-card-back .s3-cri-signal-impl{ color:rgba(245,240,220,0.5); font-family:'Archivo',sans-serif; font-size:clamp(11px,0.85vw,13px); font-weight:300; line-height:1.5; }
 .cri-list-view{ display:none; }
 .cri-list-view.active{ display:block; }
 
