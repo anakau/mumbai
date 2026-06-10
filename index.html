@@ -121,7 +121,7 @@ body.show-priya #section3::before{ background-image: radial-gradient(circle, rgb
 .s3-instrument-hd{ display:flex; align-items:baseline; justify-content:space-between; gap:12px; margin-bottom:6px; }
 .s3-instrument-name{ font-family:'Archivo',sans-serif; font-size:clamp(15px,1.2vw,18px); font-weight:700; color:#000; margin:0; }
 .s3-instrument-desc{ font-family:'Archivo',sans-serif; font-size:clamp(15px,1.2vw,18px); font-weight:300; color:#000; line-height:1.6; margin:0; }
-.s3-dl-btn{ display:inline-block; font-family:'Archivo',sans-serif; font-size:clamp(9px,0.7vw,10px); letter-spacing:0.14em; text-transform:uppercase; color:#000; background:transparent; border:none; padding:0; text-decoration:none; white-space:nowrap; flex-shrink:0; transition:color 0.2s; }
+.s3-dl-btn{ display:inline-block; font-family:'Archivo',sans-serif; font-size:clamp(9px,0.7vw,10px); font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:#000; background:transparent; border:none; padding:0; text-decoration:none; white-space:nowrap; flex-shrink:0; transition:color 0.2s; }
 .s3-dl-btn::before{ content:'['; }
 .s3-dl-btn::after{ content:']'; position:static; width:auto; height:auto; background:none; transform:none; transition:none; }
 .s3-dl-btn:hover{ color:rgba(0,0,0,0.5); }
@@ -226,12 +226,16 @@ body.show-priya #section3::before{ background-image: radial-gradient(circle, rgb
 #field-hunches{ display:contents; }
 #ctx-participants{
   grid-column:1; grid-row:3; align-self:start;
-  padding-top:16px;
+  padding:14px 10px 14px 10px;
   border-top:1.5px solid rgba(245,240,220,0.12);
   font-family:'Archivo',sans-serif;
   font-size:clamp(9px,0.7vw,11px);
-  color:rgba(245,240,220,0.3);
+  color:rgba(245,240,220,0.5);
   line-height:1.55;
+  background:#000;
+  position:relative;
+  margin:0 -10px;
+  width:calc(100% + 20px);
 }
 #hunch-nav{
   grid-column:2 / 4; grid-row:3; align-self:start;
