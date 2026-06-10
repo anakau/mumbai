@@ -288,7 +288,7 @@ body.show-priya{ background:#f0f4fd; }
 .hunch-toggle.on{ background:rgba(245,240,220,0.55); }
 .hunch-toggle-thumb{ position:absolute; top:3.5px; left:3.5px; width:18px; height:18px; border-radius:50%; background:rgba(245,240,220,0.9); box-shadow:0 1px 3px rgba(0,0,0,0.22); transition:transform 0.28s cubic-bezier(0.34,1.56,0.64,1); pointer-events:none; }
 .hunch-toggle.on .hunch-toggle-thumb{ transform:translateX(17px); }
-.hunch-slide-text{ font-family:'Unbounded',sans-serif; font-size:clamp(28px,2.6vw,40px); font-weight:300; color:rgba(245,240,220,0.9); line-height:1.35; letter-spacing:-0.02em; cursor:pointer; text-align:left; }
+.hunch-slide-text{ font-family:'Unbounded',sans-serif; font-size:clamp(28px,2.6vw,40px); font-weight:300; color:rgba(245,240,220,0.9); line-height:1.35; letter-spacing:-0.02em; cursor:pointer; text-align:left; white-space:pre-line; }
 .hunch-dots{ display:flex; gap:14px; }
 .hunch-dot{ font-family:'Archivo',sans-serif; font-size:clamp(11px,1vw,14px); letter-spacing:0.1em; color:rgba(245,240,220,0.25); cursor:pointer; transition:color 0.3s; user-select:none; }
 .hunch-dot.active{ color:rgba(245,240,220,0.9); }
@@ -725,11 +725,11 @@ window.addEventListener('touchend', onTouchEnd, {passive:true});
       <div class="hunch-slide-text" id="hunch-slide-text"></div>
     </div>
     <ul class="hunch-list" id="hunch-list-view">
-      <li class="hunch-item">Climate risk in Mumbai is chronic, not episodic. It is embodied, continuous, longitudinal, and carried in lived memory.</li>
+      <li class="hunch-item">Climate risk in Mumbai is chronic, not episodic.<br>It is embodied, continuous, longitudinal, and carried in lived memory.</li>
       <li class="hunch-item">The most exposed citizens are not passive, but are forced to adapt at any cost because of class, caste, location, invisibility in the system, and Mumbai's urban identity as an expensive city of dreams that people come to at any cost to succeed.</li>
-      <li class="hunch-item">Vulnerability is not a characteristic of people. It is produced by structural choices (such as loan structures, rental enforcement, political power differentials, the language of governance, etc.) and deepens cyclically.</li>
-      <li class="hunch-item">Citizens already hold deep insight into the risks they live with, held in their minds, bodies, and social networks. What is missing is the institutional flow back in the form of formal information, subsidies, insurance, anticipatory support articulated in multiple languages, designed for their needs, and accessible before crisis hits.</li>
-      <li class="hunch-item">Risks are compounded by their interaction with each other. Single-issue risk tools actively misrepresent that compounding by making each risk appear manageable in isolation.</li>
+      <li class="hunch-item">Vulnerability is not a characteristic of people.<br>It is produced by structural choices (such as loan structures, rental enforcement, political power differentials, the language of governance, etc.) and deepens cyclically.</li>
+      <li class="hunch-item">Citizens already hold deep insight into the risks they live with, held in their minds, bodies, and social networks.<br>What is missing is the institutional flow back in the form of formal information, subsidies, insurance, anticipatory support articulated in multiple languages, designed for their needs, and accessible before crisis hits.</li>
+      <li class="hunch-item">Risks are compounded by their interaction with each other.<br>Single-issue risk tools actively misrepresent that compounding by making each risk appear manageable in isolation.</li>
       <li class="hunch-item">Long social cascades (such as identity erosion, intergenerational trauma, slow breakdown of dignity and routine) accumulate silently.</li>
       <li class="hunch-item">The city may appear functional because vulnerable populations continuously absorb instability through individual coping mechanisms, and create the illusion of resilience.</li>
     </ul>
@@ -750,13 +750,13 @@ document.querySelectorAll('.ctx-tab').forEach(function(tab){
 <script>
 (function(){
   var HUNCHES = [
-    'Climate risk in Mumbai is chronic, not episodic. It is embodied, continuous, longitudinal, and carried in lived memory.',
-    'The most exposed citizens are not passive, but are forced to adapt at any cost because of class, caste, location, invisibility in the system, and Mumbai’s urban identity as an expensive city of dreams that people come to at any cost to succeed.',
-    'Vulnerability is not a characteristic of people. It is produced by structural choices (such as loan structures, rental enforcement, political power differentials, the language of governance, etc.) and deepens cyclically.',
-    'Citizens already hold deep insight into the risks they live with, held in their minds, bodies, and social networks. What is missing is the institutional flow back in the form of formal information, subsidies, insurance, anticipatory support articulated in multiple languages, designed for their needs, and accessible before crisis hits.',
-    'Risks are compounded by their interaction with each other. Single-issue risk tools actively misrepresent that compounding by making each risk appear manageable in isolation.',
-    'Long social cascades (such as identity erosion, intergenerational trauma, slow breakdown of dignity and routine) accumulate silently.',
-    'The city may appear functional because vulnerable populations continuously absorb instability through individual coping mechanisms, and create the illusion of resilience.'
+    ‘Climate risk in Mumbai is chronic, not episodic.\nIt is embodied, continuous, longitudinal, and carried in lived memory.’,
+    ‘The most exposed citizens are not passive, but are forced to adapt at any cost because of class, caste, location, invisibility in the system, and Mumbai’s urban identity as an expensive city of dreams that people come to at any cost to succeed.’,
+    ‘Vulnerability is not a characteristic of people.\nIt is produced by structural choices (such as loan structures, rental enforcement, political power differentials, the language of governance, etc.) and deepens cyclically.’,
+    ‘Citizens already hold deep insight into the risks they live with, held in their minds, bodies, and social networks.\nWhat is missing is the institutional flow back in the form of formal information, subsidies, insurance, anticipatory support articulated in multiple languages, designed for their needs, and accessible before crisis hits.’,
+    ‘Risks are compounded by their interaction with each other.\nSingle-issue risk tools actively misrepresent that compounding by making each risk appear manageable in isolation.’,
+    ‘Long social cascades (such as identity erosion, intergenerational trauma, slow breakdown of dignity and routine) accumulate silently.’,
+    ‘The city may appear functional because vulnerable populations continuously absorb instability through individual coping mechanisms, and create the illusion of resilience.’
   ];
   var slideText = document.getElementById('hunch-slide-text');
   var dotsWrap  = document.getElementById('hunch-dots');
