@@ -284,17 +284,6 @@ body.show-priya{ background:#f0f4fd; }
 #hunch-slide-view{ grid-column:2; grid-row:2; }
 #hunch-list-view{ grid-column:2; grid-row:2; display:none; }
 
-#hint{
-  position:fixed;bottom:2rem;left:50%;
-  transform:translateX(-50%);
-  font-size:12px;font-weight:300;
-  letter-spacing:0.2em;color:#888880;
-  text-transform:uppercase;
-  animation:pu 2.8s ease-in-out infinite;
-  transition:opacity 0.5s;
-  z-index:20;
-}
-@keyframes pu{0%,100%{opacity:.4}50%{opacity:1}}
 
 
 
@@ -470,12 +459,10 @@ body.show-priya{ background:#f0f4fd; }
   <button class="nav-btn active" data-nav="nasim">Nasim</button>
   <button class="nav-btn" data-nav="priya">Priya</button>
 </div>
-<div id="hint">scroll</div>
 
 <script>
 const loops      = Array.from({length:6}, (_,i)=>document.getElementById('l'+i));
 const priyaLoops = Array.from({length:6}, (_,i)=>document.getElementById('ph'+i));
-const hint  = document.getElementById('hint');
 let current = -1;
 
 function activeNav(){ return document.querySelector('.nav-btn.active').dataset.nav; }
@@ -496,7 +483,6 @@ function onWheel(e){
     document.getElementById('priya-hero-profile').classList.add('on');
   }
   current = loops.length - 1;
-  hint.style.opacity = '0';
   window.removeEventListener('wheel', onWheel);
   window.removeEventListener('touchend', onTouchEnd);
   document.body.style.overflowY = 'auto';
@@ -516,7 +502,6 @@ document.querySelectorAll('.nav-btn').forEach(function(btn){
     document.getElementById('nasim-profile').classList.remove('on');
     document.getElementById('priya-hero-profile').classList.remove('on');
     current = -1;
-    hint.style.opacity = '1';
     document.body.style.overflowY = 'hidden';
     document.documentElement.style.overflowY = 'hidden';
     window.addEventListener('wheel', onWheel, {passive:false});
@@ -549,7 +534,6 @@ document.getElementById('stage').addEventListener('click', function(){
   window.removeEventListener('touchend', onTouchEnd);
   document.body.style.overflowY = 'auto';
   document.documentElement.style.overflowY = 'auto';
-  hint.style.opacity = '0';
 });
 
 
