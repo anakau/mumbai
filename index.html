@@ -156,7 +156,7 @@ body.show-priya #section3::before{ background:#fff; }
 .cri-card-front,.cri-card-back{ position:absolute; inset:0; backface-visibility:hidden; -webkit-backface-visibility:hidden; padding:18px; display:flex; flex-direction:column; justify-content:flex-start; overflow:hidden; }
 .cri-card-front{ border:none; background:#fff; }
 .cri-card-front::before{ content:'Intelligence'; font-family:'Archivo Mono',monospace; font-size:clamp(7px,0.6vw,8px); letter-spacing:0.18em; text-transform:uppercase; color:rgba(0,0,0,0.35); display:block; margin-bottom:12px; }
-.cri-card-back{ transform:rotateY(180deg); background:#c4971a; }
+.cri-card-back{ transform:rotateY(180deg); background:#e84800; }
 .cri-card-back-label{ font-family:'Archivo Mono',monospace; font-size:clamp(7px,0.6vw,8px); letter-spacing:0.18em; text-transform:uppercase; color:rgba(0,0,0,0.4); margin-bottom:12px; }
 .cri-card-back .s3-cri-signal-main{ font-family:'Unbounded',sans-serif; font-size:clamp(16px,1.4vw,22px); font-weight:400; letter-spacing:-0.01em; color:#000; line-height:1.35; margin-bottom:12px; }
 .cri-card-back .s3-cri-signal-main.s3-signal-sm{ font-size:clamp(11px,0.95vw,14px); }
@@ -234,7 +234,7 @@ body.show-priya #section3::before{ background:#fff; }
   position:absolute;
   bottom:-1px;left:0;
   width:100%;height:1px;
-  background:#c4971a;
+  background:#e84800;
   transform:scaleX(0);
   transform-origin:left;
   transition:transform 0.3s ease;
@@ -335,7 +335,7 @@ body.show-priya #section3::before{ background:#fff; }
   opacity:0;
   transition:max-height 0.9s cubic-bezier(0.16,1,0.3,1), opacity 0.7s ease;
   margin-left:24px;
-  border-left:1.5px solid #c4971a;
+  border-left:1.5px solid #e84800;
   padding-left:14px;
   margin-top:0;
   margin-bottom:0;
@@ -351,7 +351,7 @@ body.show-priya #section3::before{ background:#fff; }
   font-size:14.5px;
   font-weight:400;
   line-height:1.75;
-  color:#c4971a;
+  color:#e84800;
   text-align:left;
   letter-spacing:0.01em;
   padding:2px 0 4px;
@@ -714,7 +714,7 @@ function tick(ts){
       o.x=W*(d.cx+d.ax*Math.sin(2*Math.PI*d.fx*el+d.px));
       o.y=H*(d.cy+d.ay*Math.sin(2*Math.PI*d.fy*el+d.py));
     }
-    if(o===pausedOrb){
+    if(pausedOrb){
       o.hl=1;
     }else{
       const tgt=o.drag?1:0;
