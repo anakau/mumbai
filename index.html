@@ -592,8 +592,8 @@ const orbs=[
   {id:'p',label:'Priya', x:0,y:0,hl:0,drag:false},
 ];
 const DRIFT=[
-  {cx:0.32,cy:0.44,ax:0.20,ay:0.26,fx:1/44000,fy:1/51000,px:0,  py:1.9},
-  {cx:0.68,cy:0.56,ax:0.18,ay:0.24,fx:1/38000,fy:1/45000,px:2.3,py:0  },
+  {cx:0.32,cy:0.44,ax:0.20,ay:0.26,fx:1/92000,fy:1/108000,px:0,  py:1.9},
+  {cx:0.68,cy:0.56,ax:0.18,ay:0.24,fx:1/80000,fy:1/95000, px:2.3,py:0  },
 ];
 
 // ── Layout helpers ─────────────────────────────────────────────────────────
@@ -675,10 +675,10 @@ function drawOrb(o){
   const R=ORB_R*2;
   const g=ctx.createRadialGradient(o.x,o.y,0,o.x,o.y,R);
   if(o.id==='n'){
-    g.addColorStop(0,  'rgba(255,60,10,0.90)');
-    g.addColorStop(0.4,'rgba(220,20,105,0.72)');
-    g.addColorStop(0.7,'rgba(185,10,75,0.28)');
-    g.addColorStop(1,  'rgba(170,0,60,0)');
+    g.addColorStop(0,  'rgba(220,20,105,0.90)');
+    g.addColorStop(0.4,'rgba(255,60,10,0.72)');
+    g.addColorStop(0.7,'rgba(255,90,0,0.28)');
+    g.addColorStop(1,  'rgba(255,80,0,0)');
   }else{
     g.addColorStop(0,  'rgba(90,40,255,0.90)');
     g.addColorStop(0.4,'rgba(35,75,240,0.72)');
@@ -697,22 +697,30 @@ function drawOrb(o){
 
 // ── Loop ──────────────────────────────────────────────────────────────────
 let t0=null,dragOrb=null,dOff={x:0,y:0};
+let pausedOrb=null,pauseStartTs=null,pauseOffset=0;
+let mdPos=null,mdMoved=false;
 
 function tick(ts){
   if(!t0)t0=ts;
-  const el=ts-t0;
+  // elapsed excludes paused time so orbs resume smoothly
+  const frozenMs=pauseStartTs?(ts-pauseStartTs):0;
+  const el=ts-t0-pauseOffset-frozenMs;
   const isPriya=document.body.classList.contains('show-priya');
   ctx.fillStyle=isPriya?'#f0f4fd':'#fdf0e8';
   ctx.fillRect(0,0,W,H);
   orbs.forEach((o,i)=>{
-    if(!o.drag){
+    if(!o.drag&&!pausedOrb){
       const d=DRIFT[i];
       o.x=W*(d.cx+d.ax*Math.sin(2*Math.PI*d.fx*el+d.px));
       o.y=H*(d.cy+d.ay*Math.sin(2*Math.PI*d.fy*el+d.py));
     }
-    const tgt=o.drag?1:0;
-    o.hl+=(tgt-o.hl)*(o.drag?0.14:0.05);
-    o.hl=Math.max(0,Math.min(1,o.hl));
+    if(o===pausedOrb){
+      o.hl=1;
+    }else{
+      const tgt=o.drag?1:0;
+      o.hl+=(tgt-o.hl)*(o.drag?0.14:0.05);
+      o.hl=Math.max(0,Math.min(1,o.hl));
+    }
   });
   layout();
   drawWords();
@@ -732,24 +740,60 @@ function hitOrb(p){
   for(const o of orbs)if(Math.hypot(p.x-o.x,p.y-o.y)<ORB_R*2+12)return o;
   return null;
 }
+function setPause(orb,ts){
+  if(orb&&orb===pausedOrb){
+    // toggle off
+    if(pauseStartTs){pauseOffset+=ts-pauseStartTs;pauseStartTs=null;}
+    pausedOrb=null;
+  }else{
+    // unpause previous if any
+    if(pausedOrb&&pauseStartTs){pauseOffset+=ts-pauseStartTs;pauseStartTs=null;}
+    pausedOrb=orb;
+    if(orb)pauseStartTs=ts;
+  }
+}
 cv.addEventListener('mousedown',e=>{
-  const p=evXY(e),o=hitOrb(p);
+  const p=evXY(e);mdPos=p;mdMoved=false;
+  const o=hitOrb(p);
   if(o){o.drag=true;dragOrb=o;dOff={x:p.x-o.x,y:p.y-o.y};}
 });
 window.addEventListener('mousemove',e=>{
   if(dragOrb){const p=evXY(e);dragOrb.x=p.x-dOff.x;dragOrb.y=p.y-dOff.y;}
+  if(mdPos){const p=evXY(e);if(Math.hypot(p.x-mdPos.x,p.y-mdPos.y)>6)mdMoved=true;}
   const p=evXY(e);cv.style.cursor=dragOrb?'grabbing':hitOrb(p)?'grab':'default';
 });
-window.addEventListener('mouseup',()=>{if(dragOrb){dragOrb.drag=false;dragOrb=null;}});
+window.addEventListener('mouseup',e=>{
+  if(dragOrb){
+    if(!mdMoved){
+      // it's a click — toggle pause
+      const ts=performance.now();
+      const hit=hitOrb(evXY(e));
+      if(hit)setPause(hit,ts);
+      else if(pausedOrb)setPause(null,ts);
+    }
+    dragOrb.drag=false;dragOrb=null;
+  } else if(!mdMoved&&pausedOrb){
+    // click on empty canvas area — unpause
+    setPause(null,performance.now());
+  }
+  mdPos=null;
+});
 cv.addEventListener('touchstart',e=>{e.preventDefault();
-  const p=evXY(e),o=hitOrb(p);
+  const p=evXY(e);mdPos=p;mdMoved=false;
+  const o=hitOrb(p);
   if(o){o.drag=true;dragOrb=o;dOff={x:p.x-o.x,y:p.y-o.y};}
 },{passive:false});
 window.addEventListener('touchmove',e=>{
   if(!dragOrb)return;e.preventDefault();
   const p=evXY(e);dragOrb.x=p.x-dOff.x;dragOrb.y=p.y-dOff.y;
+  mdMoved=true;
 },{passive:false});
-window.addEventListener('touchend',()=>{if(dragOrb){dragOrb.drag=false;dragOrb=null;}});
+window.addEventListener('touchend',e=>{
+  if(dragOrb){
+    if(!mdMoved){const ts=performance.now();const hit=hitOrb(evXY(e));if(hit)setPause(hit,ts);}
+    dragOrb.drag=false;dragOrb=null;
+  }
+});
 
 // ── Resize ────────────────────────────────────────────────────────────────
 function resize(){
