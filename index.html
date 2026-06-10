@@ -144,12 +144,12 @@ body.show-priya #section3{ background:#5533ff; }
 .s3-term-content{ display:none; animation:ctxFade 0.35s ease; }
 .s3-term-content.active{ display:block; }
 .s3-cascade-label-top{ font-family:'Archivo',sans-serif; font-size:clamp(10px,0.8vw,12px); font-style:italic; font-weight:300; color:rgba(0,0,0,0.5); margin:0 0 10px 0; }
-.s3-flow{ display:flex; flex-direction:column; }
-.s3-flow-node{ border:1px solid rgba(0,0,0,0.25); padding:9px 13px; background:rgba(255,255,255,0.2); font-family:'Archivo',sans-serif; font-size:clamp(11px,0.85vw,13px); font-weight:300; color:#000; line-height:1.45; }
-.s3-flow-node.contrib{ background:rgba(0,0,0,0.07); }
+.s3-flow{ display:flex; flex-wrap:wrap; align-items:center; row-gap:8px; }
+.s3-flow-node{ background:transparent; border:1px solid rgba(0,0,0,0.3); padding:6px 11px; font-family:'Archivo',sans-serif; font-size:clamp(11px,0.85vw,13px); font-weight:300; color:#000; line-height:1.45; flex-shrink:0; }
+.s3-flow-node.contrib{ border-width:1.5px; }
 .s3-flow-node strong{ font-weight:700; }
-.s3-flow-node.loop-back{ font-style:italic; color:rgba(0,0,0,0.5); border-style:dashed; background:transparent; text-align:center; }
-.s3-flow-arrow{ text-align:center; padding:3px 0; color:rgba(0,0,0,0.35); font-size:13px; line-height:1; }
+.s3-flow-node.loop-back{ font-style:italic; color:rgba(0,0,0,0.6); border-style:dashed; }
+.s3-flow-arrow{ flex-shrink:0; padding:0 6px; color:rgba(0,0,0,0.4); font-size:13px; line-height:1; }
 
 #section-clinic{
   position:relative;
@@ -868,17 +868,17 @@ window.addEventListener('touchend', onTouchEnd, {passive:true});
       <div class="s3-cascade-label-top">Immediate</div>
       <div class="s3-flow">
         <div class="s3-flow-node contrib"><strong>Increase in delivery orders as people are home more</strong></div>
-        <div class="s3-flow-arrow">↓</div>
+        <div class="s3-flow-arrow">→</div>
         <div class="s3-flow-node">Increased pressure from app of lost income if he takes breaks</div>
-        <div class="s3-flow-arrow">↓</div>
+        <div class="s3-flow-arrow">→</div>
         <div class="s3-flow-node">Suffers heatstrokes from being in the sun</div>
-        <div class="s3-flow-arrow">↓</div>
+        <div class="s3-flow-arrow">→</div>
         <div class="s3-flow-node">Has to take breaks during the day to recover and continue</div>
-        <div class="s3-flow-arrow">↓</div>
+        <div class="s3-flow-arrow">→</div>
         <div class="s3-flow-node">Loss of income</div>
-        <div class="s3-flow-arrow">↓</div>
+        <div class="s3-flow-arrow">→</div>
         <div class="s3-flow-node">Increase pressure to earn money</div>
-        <div class="s3-flow-arrow">↓</div>
+        <div class="s3-flow-arrow">→</div>
         <div class="s3-flow-node">Increased need to take orders with heat wave</div>
         <div class="s3-flow-arrow">↺</div>
         <div class="s3-flow-node loop-back">Loops back to the top</div>
@@ -889,23 +889,23 @@ window.addEventListener('touchend', onTouchEnd, {passive:true});
       <div class="s3-cascade-label-top">Medium</div>
       <div class="s3-flow">
         <div class="s3-flow-node contrib"><strong>Heat exposure necessitates him to take a break during an order</strong></div>
-        <div class="s3-flow-arrow">↓</div>
+        <div class="s3-flow-arrow">→</div>
         <div class="s3-flow-node">Delays a delivery</div>
-        <div class="s3-flow-arrow">↓</div>
+        <div class="s3-flow-arrow">→</div>
         <div class="s3-flow-node">Food spoils or arrives late</div>
-        <div class="s3-flow-arrow">↓</div>
+        <div class="s3-flow-arrow">→</div>
         <div class="s3-flow-node">Bad review, rating drops</div>
-        <div class="s3-flow-arrow">↓</div>
+        <div class="s3-flow-arrow">→</div>
         <div class="s3-flow-node">Algorithm deactivates him at a low rating for 48 hours</div>
-        <div class="s3-flow-arrow">↓</div>
+        <div class="s3-flow-arrow">→</div>
         <div class="s3-flow-node">48 hours no income, no appeal</div>
-        <div class="s3-flow-arrow">↓</div>
+        <div class="s3-flow-arrow">→</div>
         <div class="s3-flow-node">Increased financial pressure</div>
-        <div class="s3-flow-arrow">↓</div>
+        <div class="s3-flow-arrow">→</div>
         <div class="s3-flow-node">Returns to work regardless of continued heat wave</div>
-        <div class="s3-flow-arrow">↓</div>
+        <div class="s3-flow-arrow">→</div>
         <div class="s3-flow-node">Higher risk of next health incident</div>
-        <div class="s3-flow-arrow">↓</div>
+        <div class="s3-flow-arrow">→</div>
         <div class="s3-flow-node">Higher risk of next delayed delivery</div>
       </div>
     </div>
@@ -914,21 +914,21 @@ window.addEventListener('touchend', onTouchEnd, {passive:true});
       <div class="s3-cascade-label-top">Long</div>
       <div class="s3-flow">
         <div class="s3-flow-node">Bike bought on loan</div>
-        <div class="s3-flow-arrow">↓</div>
+        <div class="s3-flow-arrow">→</div>
         <div class="s3-flow-node">Cannot exit platform with loan remaining</div>
-        <div class="s3-flow-arrow">↓</div>
+        <div class="s3-flow-arrow">→</div>
         <div class="s3-flow-node">Platform sets terms (10-min targets, rating thresholds)</div>
-        <div class="s3-flow-arrow">↓</div>
+        <div class="s3-flow-arrow">→</div>
         <div class="s3-flow-node contrib"><strong>Nasim cannot refuse conditions set by the platform even during a heatwave</strong></div>
-        <div class="s3-flow-arrow">↓</div>
+        <div class="s3-flow-arrow">→</div>
         <div class="s3-flow-node">Increase in delivery orders as people are home more</div>
-        <div class="s3-flow-arrow">↓</div>
+        <div class="s3-flow-arrow">→</div>
         <div class="s3-flow-node">Conditions remain dangerous leading to more necessitated breaks</div>
-        <div class="s3-flow-arrow">↓</div>
+        <div class="s3-flow-arrow">→</div>
         <div class="s3-flow-node">Loss of income</div>
-        <div class="s3-flow-arrow">↓</div>
+        <div class="s3-flow-arrow">→</div>
         <div class="s3-flow-node">Increase pressure to earn money to service the loan</div>
-        <div class="s3-flow-arrow">↓</div>
+        <div class="s3-flow-arrow">→</div>
         <div class="s3-flow-node">Cannot accumulate savings to exit loan</div>
       </div>
     </div>
