@@ -166,6 +166,25 @@ body.show-priya #section3{ background:#5533ff; }
 .s3-cri-td-desc{ display:block; }
 .s3-cri-signal-main{ color:#000; display:block; margin-bottom:6px; }
 .s3-cri-signal-impl{ color:rgba(0,0,0,0.5); display:block; font-size:clamp(10px,0.78vw,12px); }
+/* CRI card grid & flip */
+.cri-header-row{ display:flex; align-items:flex-start; justify-content:space-between; gap:24px; margin-bottom:24px; }
+.cri-header-row .s3-rc-intro{ margin:0; flex:1; }
+.cri-view-btns{ display:flex; gap:0; flex-shrink:0; padding-top:6px; }
+.cri-view-btn{ font-family:'Unbounded',sans-serif; font-size:clamp(7px,0.65vw,9px); font-weight:400; letter-spacing:0.16em; text-transform:uppercase; color:rgba(0,0,0,0.35); background:none; border:none; cursor:pointer; padding:0 0 0 14px; position:relative; transition:color 0.25s; }
+.cri-view-btn.active{ color:#000; }
+.cri-cards-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:10px; }
+.cri-cards-grid.hidden{ display:none; }
+.cri-card-wrap{ perspective:1000px; height:220px; }
+.cri-card{ width:100%; height:100%; position:relative; transform-style:preserve-3d; transition:transform 0.55s cubic-bezier(0.4,0,0.2,1); }
+.cri-card-wrap:hover .cri-card{ transform:rotateY(180deg); }
+.cri-card-front,.cri-card-back{ position:absolute; inset:0; backface-visibility:hidden; -webkit-backface-visibility:hidden; padding:14px; display:flex; flex-direction:column; justify-content:flex-start; overflow:hidden; }
+.cri-card-front{ border:1.5px solid rgba(0,0,0,0.2); background:rgba(0,0,0,0.04); }
+.cri-card-back{ transform:rotateY(180deg); background:#000; }
+.cri-card-back-label{ font-family:'Unbounded',sans-serif; font-size:clamp(7px,0.6vw,8px); letter-spacing:0.18em; text-transform:uppercase; color:rgba(245,240,220,0.35); margin-bottom:10px; }
+.cri-card-back .s3-cri-signal-main{ color:rgba(245,240,220,0.9); font-family:'Archivo',sans-serif; font-size:clamp(10px,0.82vw,13px); font-weight:300; line-height:1.5; margin-bottom:8px; }
+.cri-card-back .s3-cri-signal-impl{ color:rgba(245,240,220,0.45); font-family:'Archivo',sans-serif; font-size:clamp(9px,0.72vw,11px); font-weight:300; line-height:1.5; }
+.cri-list-view{ display:none; }
+.cri-list-view.active{ display:block; }
 
 #section-clinic{
   position:relative;
@@ -959,53 +978,191 @@ window.addEventListener('touchend', onTouchEnd, {passive:true});
 
     <!-- Panel: Citizen Risk Intelligence -->
     <div class="s3-c2-panel" id="s3-cri-panel">
-      <p class="s3-rc-intro">The experience of navigating risk at this intensity produces intelligence with profound implications for policy and investment.</p>
-      <table class="s3-cri-table">
-        <thead>
-          <tr>
-            <th>Intelligence</th>
-            <th>Signal</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><span class="s3-cri-td-name">Heat topology</span><span class="s3-cri-td-desc">Live map of which neighbourhoods are hotspots and how conditions shift across routes throughout the day</span></td>
-            <td><span class="s3-cri-signal-main">Street-level data that ground-truths satellite heat maps.</span><span class="s3-cri-signal-impl">This can inform ward-level cooling infrastructure deployment and Heat Action Plan resource allocation.</span></td>
-          </tr>
-          <tr>
-            <td><span class="s3-cri-td-name">Route passability</span><span class="s3-cri-td-desc">Which roads and infrastructure hold under heat and flood, and what each route costs him physically</span></td>
-            <td><span class="s3-cri-signal-main">Real-time intelligence on how mobility infrastructure performs under climate stress.</span><span class="s3-cri-signal-impl">Rider-mapped infrastructure failure points can feed into municipal maintenance priorities and flood-resilience investment.</span></td>
-          </tr>
-          <tr>
-            <td><span class="s3-cri-td-name">Platform risk calculus</span><span class="s3-cri-td-desc">Which risks to absorb and which to avoid, weighted against rating, income, and the cost of not delivering</span></td>
-            <td><span class="s3-cri-signal-main">Occupational climate exposure mapped at the level of individual decision-making.</span><span class="s3-cri-signal-impl">This decision map is the evidence base for minimum climate protection standards in platform contracts and gig worker insurance products.</span></td>
-          </tr>
-          <tr>
-            <td><span class="s3-cri-td-name">Informal cooling infrastructure</span><span class="s3-cri-td-desc">Which restaurants, dhabas, and stops will offer rest, water, or a fan</span></td>
-            <td><span class="s3-cri-signal-main">A distributed adaptation network already operating at scale.</span><span class="s3-cri-signal-impl">Formal recognition and targeted investment can activate existing infrastructure rather than building from scratch.</span></td>
-          </tr>
-          <tr>
-            <td><span class="s3-cri-td-name">Rider-to-rider network</span><span class="s3-cri-td-desc">The peer-to-peer information and mutual aid system that moves route warnings, risk updates, and support across riders in real time</span></td>
-            <td><span class="s3-cri-signal-main">Social cohesion is climate adaptation infrastructure: decentralised, trust-based, self-organising, and already functioning as an early warning and mutual aid system.</span><span class="s3-cri-signal-impl">Investing in people and relational networks is one of the highest-leverage, lowest-cost climate adaptation moves available.</span></td>
-          </tr>
-          <tr>
-            <td><span class="s3-cri-td-name">Seasonal patterning</span><span class="s3-cri-td-desc">When the worst conditions hit across the day, week, and season, and how to pace himself across a monsoon month versus a heat month</span></td>
-            <td><span class="s3-cri-signal-main">Longitudinal pattern intelligence accumulated in the body and in peer networks.</span><span class="s3-cri-signal-impl">Community-held temporal patterns can calibrate the timing and frequency of early warning alerts.</span></td>
-          </tr>
-          <tr>
-            <td><span class="s3-cri-td-name">Financial cascade mapping</span><span class="s3-cri-td-desc">How a bad day cascades into loan repayment risk, rental risk, and household instability</span></td>
-            <td><span class="s3-cri-signal-main">Climate exposure and financial vulnerability traced together at household level.</span><span class="s3-cri-signal-impl">Anticipatory social protection and microinsurance can be timed and targeted to reach people before the cascade completes.</span></td>
-          </tr>
-          <tr>
-            <td><span class="s3-cri-td-name">Cumulative health monitoring</span><span class="s3-cri-td-desc">Ongoing internal calibration of how much physical stress he is absorbing, and how hard he can push before long-term damage accumulates</span></td>
-            <td><span class="s3-cri-signal-main">Longitudinal health data held in the body.</span><span class="s3-cri-signal-impl">This data makes the case for occupational climate exposure as a qualifying condition for health coverage, disability support, and pension entitlements.</span></td>
-          </tr>
-          <tr>
-            <td><span class="s3-cri-td-name">Dignity navigation</span><span class="s3-cri-td-desc">Managing customer interactions, complaints, and platform ratings under conditions of physical stress</span></td>
-            <td><span class="s3-cri-signal-main">The cognitive and emotional labour of climate risk absorption, made visible.</span><span class="s3-cri-signal-impl">Social protection design can expand to treat dignity, mental health, and identity as climate vulnerabilities that deserve direct investment.</span></td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="cri-header-row">
+        <p class="s3-rc-intro">The experience of navigating risk at this intensity produces intelligence with profound implications for policy and investment.</p>
+        <div class="cri-view-btns">
+          <button class="cri-view-btn active" data-cri-view="cards">Cards</button>
+          <button class="cri-view-btn" data-cri-view="list">List</button>
+        </div>
+      </div>
+
+      <!-- Card grid (default) -->
+      <div class="cri-cards-grid" id="cri-cards-grid">
+
+        <div class="cri-card-wrap">
+          <div class="cri-card">
+            <div class="cri-card-front">
+              <span class="s3-cri-td-name">Heat topology</span>
+              <span class="s3-cri-td-desc">Live map of which neighbourhoods are hotspots and how conditions shift across routes throughout the day</span>
+            </div>
+            <div class="cri-card-back">
+              <div class="cri-card-back-label">Signal</div>
+              <span class="s3-cri-signal-main">Street-level data that ground-truths satellite heat maps.</span>
+              <span class="s3-cri-signal-impl">This can inform ward-level cooling infrastructure deployment and Heat Action Plan resource allocation.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="cri-card-wrap">
+          <div class="cri-card">
+            <div class="cri-card-front">
+              <span class="s3-cri-td-name">Route passability</span>
+              <span class="s3-cri-td-desc">Which roads and infrastructure hold under heat and flood, and what each route costs him physically</span>
+            </div>
+            <div class="cri-card-back">
+              <div class="cri-card-back-label">Signal</div>
+              <span class="s3-cri-signal-main">Real-time intelligence on how mobility infrastructure performs under climate stress.</span>
+              <span class="s3-cri-signal-impl">Rider-mapped infrastructure failure points can feed into municipal maintenance priorities and flood-resilience investment.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="cri-card-wrap">
+          <div class="cri-card">
+            <div class="cri-card-front">
+              <span class="s3-cri-td-name">Platform risk calculus</span>
+              <span class="s3-cri-td-desc">Which risks to absorb and which to avoid, weighted against rating, income, and the cost of not delivering</span>
+            </div>
+            <div class="cri-card-back">
+              <div class="cri-card-back-label">Signal</div>
+              <span class="s3-cri-signal-main">Occupational climate exposure mapped at the level of individual decision-making.</span>
+              <span class="s3-cri-signal-impl">This decision map is the evidence base for minimum climate protection standards in platform contracts and gig worker insurance products.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="cri-card-wrap">
+          <div class="cri-card">
+            <div class="cri-card-front">
+              <span class="s3-cri-td-name">Informal cooling infrastructure</span>
+              <span class="s3-cri-td-desc">Which restaurants, dhabas, and stops will offer rest, water, or a fan</span>
+            </div>
+            <div class="cri-card-back">
+              <div class="cri-card-back-label">Signal</div>
+              <span class="s3-cri-signal-main">A distributed adaptation network already operating at scale.</span>
+              <span class="s3-cri-signal-impl">Formal recognition and targeted investment can activate existing infrastructure rather than building from scratch.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="cri-card-wrap">
+          <div class="cri-card">
+            <div class="cri-card-front">
+              <span class="s3-cri-td-name">Rider-to-rider network</span>
+              <span class="s3-cri-td-desc">The peer-to-peer information and mutual aid system that moves route warnings, risk updates, and support across riders in real time</span>
+            </div>
+            <div class="cri-card-back">
+              <div class="cri-card-back-label">Signal</div>
+              <span class="s3-cri-signal-main">Social cohesion is climate adaptation infrastructure: decentralised, trust-based, self-organising, and already functioning as an early warning and mutual aid system.</span>
+              <span class="s3-cri-signal-impl">Investing in people and relational networks is one of the highest-leverage, lowest-cost climate adaptation moves available.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="cri-card-wrap">
+          <div class="cri-card">
+            <div class="cri-card-front">
+              <span class="s3-cri-td-name">Seasonal patterning</span>
+              <span class="s3-cri-td-desc">When the worst conditions hit across the day, week, and season, and how to pace himself across a monsoon month versus a heat month</span>
+            </div>
+            <div class="cri-card-back">
+              <div class="cri-card-back-label">Signal</div>
+              <span class="s3-cri-signal-main">Longitudinal pattern intelligence accumulated in the body and in peer networks.</span>
+              <span class="s3-cri-signal-impl">Community-held temporal patterns can calibrate the timing and frequency of early warning alerts.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="cri-card-wrap">
+          <div class="cri-card">
+            <div class="cri-card-front">
+              <span class="s3-cri-td-name">Financial cascade mapping</span>
+              <span class="s3-cri-td-desc">How a bad day cascades into loan repayment risk, rental risk, and household instability</span>
+            </div>
+            <div class="cri-card-back">
+              <div class="cri-card-back-label">Signal</div>
+              <span class="s3-cri-signal-main">Climate exposure and financial vulnerability traced together at household level.</span>
+              <span class="s3-cri-signal-impl">Anticipatory social protection and microinsurance can be timed and targeted to reach people before the cascade completes.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="cri-card-wrap">
+          <div class="cri-card">
+            <div class="cri-card-front">
+              <span class="s3-cri-td-name">Cumulative health monitoring</span>
+              <span class="s3-cri-td-desc">Ongoing internal calibration of how much physical stress he is absorbing, and how hard he can push before long-term damage accumulates</span>
+            </div>
+            <div class="cri-card-back">
+              <div class="cri-card-back-label">Signal</div>
+              <span class="s3-cri-signal-main">Longitudinal health data held in the body.</span>
+              <span class="s3-cri-signal-impl">This data makes the case for occupational climate exposure as a qualifying condition for health coverage, disability support, and pension entitlements.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="cri-card-wrap">
+          <div class="cri-card">
+            <div class="cri-card-front">
+              <span class="s3-cri-td-name">Dignity navigation</span>
+              <span class="s3-cri-td-desc">Managing customer interactions, complaints, and platform ratings under conditions of physical stress</span>
+            </div>
+            <div class="cri-card-back">
+              <div class="cri-card-back-label">Signal</div>
+              <span class="s3-cri-signal-main">The cognitive and emotional labour of climate risk absorption, made visible.</span>
+              <span class="s3-cri-signal-impl">Social protection design can expand to treat dignity, mental health, and identity as climate vulnerabilities that deserve direct investment.</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- List view -->
+      <div class="cri-list-view" id="cri-list-view">
+        <table class="s3-cri-table">
+          <thead>
+            <tr><th>Intelligence</th><th>Signal</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="s3-cri-td-name">Heat topology</span><span class="s3-cri-td-desc">Live map of which neighbourhoods are hotspots and how conditions shift across routes throughout the day</span></td>
+              <td><span class="s3-cri-signal-main">Street-level data that ground-truths satellite heat maps.</span><span class="s3-cri-signal-impl">This can inform ward-level cooling infrastructure deployment and Heat Action Plan resource allocation.</span></td>
+            </tr>
+            <tr>
+              <td><span class="s3-cri-td-name">Route passability</span><span class="s3-cri-td-desc">Which roads and infrastructure hold under heat and flood, and what each route costs him physically</span></td>
+              <td><span class="s3-cri-signal-main">Real-time intelligence on how mobility infrastructure performs under climate stress.</span><span class="s3-cri-signal-impl">Rider-mapped infrastructure failure points can feed into municipal maintenance priorities and flood-resilience investment.</span></td>
+            </tr>
+            <tr>
+              <td><span class="s3-cri-td-name">Platform risk calculus</span><span class="s3-cri-td-desc">Which risks to absorb and which to avoid, weighted against rating, income, and the cost of not delivering</span></td>
+              <td><span class="s3-cri-signal-main">Occupational climate exposure mapped at the level of individual decision-making.</span><span class="s3-cri-signal-impl">This decision map is the evidence base for minimum climate protection standards in platform contracts and gig worker insurance products.</span></td>
+            </tr>
+            <tr>
+              <td><span class="s3-cri-td-name">Informal cooling infrastructure</span><span class="s3-cri-td-desc">Which restaurants, dhabas, and stops will offer rest, water, or a fan</span></td>
+              <td><span class="s3-cri-signal-main">A distributed adaptation network already operating at scale.</span><span class="s3-cri-signal-impl">Formal recognition and targeted investment can activate existing infrastructure rather than building from scratch.</span></td>
+            </tr>
+            <tr>
+              <td><span class="s3-cri-td-name">Rider-to-rider network</span><span class="s3-cri-td-desc">The peer-to-peer information and mutual aid system that moves route warnings, risk updates, and support across riders in real time</span></td>
+              <td><span class="s3-cri-signal-main">Social cohesion is climate adaptation infrastructure: decentralised, trust-based, self-organising, and already functioning as an early warning and mutual aid system.</span><span class="s3-cri-signal-impl">Investing in people and relational networks is one of the highest-leverage, lowest-cost climate adaptation moves available.</span></td>
+            </tr>
+            <tr>
+              <td><span class="s3-cri-td-name">Seasonal patterning</span><span class="s3-cri-td-desc">When the worst conditions hit across the day, week, and season, and how to pace himself across a monsoon month versus a heat month</span></td>
+              <td><span class="s3-cri-signal-main">Longitudinal pattern intelligence accumulated in the body and in peer networks.</span><span class="s3-cri-signal-impl">Community-held temporal patterns can calibrate the timing and frequency of early warning alerts.</span></td>
+            </tr>
+            <tr>
+              <td><span class="s3-cri-td-name">Financial cascade mapping</span><span class="s3-cri-td-desc">How a bad day cascades into loan repayment risk, rental risk, and household instability</span></td>
+              <td><span class="s3-cri-signal-main">Climate exposure and financial vulnerability traced together at household level.</span><span class="s3-cri-signal-impl">Anticipatory social protection and microinsurance can be timed and targeted to reach people before the cascade completes.</span></td>
+            </tr>
+            <tr>
+              <td><span class="s3-cri-td-name">Cumulative health monitoring</span><span class="s3-cri-td-desc">Ongoing internal calibration of how much physical stress he is absorbing, and how hard he can push before long-term damage accumulates</span></td>
+              <td><span class="s3-cri-signal-main">Longitudinal health data held in the body.</span><span class="s3-cri-signal-impl">This data makes the case for occupational climate exposure as a qualifying condition for health coverage, disability support, and pension entitlements.</span></td>
+            </tr>
+            <tr>
+              <td><span class="s3-cri-td-name">Dignity navigation</span><span class="s3-cri-td-desc">Managing customer interactions, complaints, and platform ratings under conditions of physical stress</span></td>
+              <td><span class="s3-cri-signal-main">The cognitive and emotional labour of climate risk absorption, made visible.</span><span class="s3-cri-signal-impl">Social protection design can expand to treat dignity, mental health, and identity as climate vulnerabilities that deserve direct investment.</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 
@@ -1031,6 +1188,15 @@ document.querySelectorAll('.s3-c2-tab').forEach(function(tab){
     document.querySelectorAll('.s3-c2-panel').forEach(p => p.classList.remove('active'));
     tab.classList.add('active');
     document.getElementById(tab.dataset.c2).classList.add('active');
+  });
+});
+document.querySelectorAll('.cri-view-btn').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    document.querySelectorAll('.cri-view-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    var isCards = btn.dataset.criView === 'cards';
+    document.getElementById('cri-cards-grid').classList.toggle('hidden', !isCards);
+    document.getElementById('cri-list-view').classList.toggle('active', !isCards);
   });
 });
 </script>
