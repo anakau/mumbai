@@ -762,18 +762,32 @@ window.addEventListener('mousemove',e=>{
   if(mdPos){const p=evXY(e);if(Math.hypot(p.x-mdPos.x,p.y-mdPos.y)>6)mdMoved=true;}
   const p=evXY(e);cv.style.cursor=dragOrb?'grabbing':hitOrb(p)?'grab':'default';
 });
+function anchorDrift(o){
+  // re-centre the drift path on the orb's current position so it doesn't snap back
+  const i=orbs.indexOf(o);
+  const d=DRIFT[i];
+  const now=performance.now();
+  const frozenMs=pauseStartTs?(now-pauseStartTs):0;
+  const el=t0?now-t0-pauseOffset-frozenMs:0;
+  // clamp centre so the ±amplitude stays on screen
+  d.cx=Math.min(Math.max(o.x/W,d.ax),1-d.ax);
+  d.cy=Math.min(Math.max(o.y/H,d.ay),1-d.ay);
+  // set phases so sin=0 right now → orb stays put on first tick
+  d.px=-(2*Math.PI*d.fx*el);
+  d.py=-(2*Math.PI*d.fy*el);
+}
 window.addEventListener('mouseup',e=>{
   if(dragOrb){
     if(!mdMoved){
-      // it's a click — toggle pause
       const ts=performance.now();
       const hit=hitOrb(evXY(e));
       if(hit)setPause(hit,ts);
       else if(pausedOrb)setPause(null,ts);
+    } else {
+      anchorDrift(dragOrb);
     }
     dragOrb.drag=false;dragOrb=null;
   } else if(!mdMoved&&pausedOrb){
-    // click on empty canvas area — unpause
     setPause(null,performance.now());
   }
   mdPos=null;
@@ -791,6 +805,7 @@ window.addEventListener('touchmove',e=>{
 window.addEventListener('touchend',e=>{
   if(dragOrb){
     if(!mdMoved){const ts=performance.now();const hit=hitOrb(evXY(e));if(hit)setPause(hit,ts);}
+    else anchorDrift(dragOrb);
     dragOrb.drag=false;dragOrb=null;
   }
 });
