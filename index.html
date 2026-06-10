@@ -103,6 +103,17 @@ body.show-priya{ background:#f0f4fd; }
   column-gap:6vw; row-gap:48px; padding:100px var(--lm); box-sizing:border-box; flex-shrink:0;
 }
 body.show-priya #section3{ background:#5533ff; }
+#section3::before{
+  content:''; position:absolute; top:0; left:0; pointer-events:none;
+  width:calc(var(--lm) + (100% - 2*var(--lm) - 12vw) / 3);
+  height:100%;
+  background-color:#c4971a;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.18) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.18) 1px, transparent 1px);
+  background-size:22px 22px;
+}
+body.show-priya #section3::before{ background-color:#5533ff; }
 #s3-panel{ grid-column:1; grid-row:1; }
 #s3-col2{ grid-column:2 / 4; grid-row:1; }
 #s3-bold-note{ grid-column:2 / 4; grid-row:2; }
@@ -146,7 +157,7 @@ body.show-priya #section3{ background:#5533ff; }
 .s3-term-content.active{ display:block; }
 .s3-cascade-label-top{ font-family:'Archivo',sans-serif; font-size:clamp(10px,0.8vw,12px); font-style:italic; font-weight:300; color:rgba(0,0,0,0.5); margin:0 0 10px 0; }
 .s3-flow{ display:flex; flex-wrap:wrap; align-items:center; row-gap:8px; }
-.s3-flow-node{ background:transparent; border:1.5px solid rgba(0,0,0,0.3); padding:6px 11px; font-family:'Archivo',sans-serif; font-size:clamp(11px,0.85vw,13px); font-weight:300; color:#000; line-height:1.45; flex-shrink:0; }
+.s3-flow-node{ background:transparent; border:1.5px dashed rgba(0,0,0,0.3); padding:6px 11px; font-family:'Archivo',sans-serif; font-size:clamp(11px,0.85vw,13px); font-weight:300; color:#000; line-height:1.45; flex-shrink:0; }
 .s3-flow-node.contrib{ border-width:1.5px; }
 .s3-flow-node strong{ font-weight:700; }
 .s3-flow-node.loop-back{ font-style:italic; color:rgba(0,0,0,0.6); border-style:dashed; }
@@ -201,6 +212,16 @@ body.show-priya #section3{ background:#5533ff; }
   padding:100px var(--lm);
   box-sizing:border-box;
   flex-shrink:0;
+}
+#section-clinic::before{
+  content:''; position:absolute; top:0; left:0; pointer-events:none;
+  width:calc(var(--lm) + (100% - 2*var(--lm) - 12vw) / 3);
+  height:100%;
+  background-color:rgba(196,151,26,0.32);
+  background-image:
+    linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px);
+  background-size:22px 22px;
 }
 #context-panel{ display:contents; }
 #field-hunches{ display:contents; }
