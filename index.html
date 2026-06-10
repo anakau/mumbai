@@ -37,42 +37,6 @@ body.show-priya{ background:#f0f4fd; }
   z-index:10;
 }
 
-#navigator-toggle{
-  position:fixed;
-  top:1.4rem;
-  right:var(--lm);
-  display:flex;
-  gap:0;
-  z-index:50;
-}
-.nav-btn{
-  font-family:'Archivo Mono',monospace;
-  font-size:clamp(9px,0.85vw,12px);
-  font-weight:400;
-  letter-spacing:0.12em;
-  text-transform:uppercase;
-  color:rgba(26,26,24,0.35);
-  background:none;
-  border:none;
-  cursor:pointer;
-  padding:0 0 2px 0;
-  margin-left:20px;
-  position:relative;
-  transition:color 0.3s ease;
-}
-.nav-btn::after{
-  content:'';
-  position:absolute;
-  bottom:-1px;left:0;
-  width:100%;height:1px;
-  background:#1a1a18;
-  transform:scaleX(0);
-  transform-origin:left;
-  transition:transform 0.3s ease;
-}
-.nav-btn.active{ color:#1a1a18; }
-.nav-btn.active::after{ transform:scaleX(1); }
-
 #poem-priya{
   display:none;
   flex-direction:column;
@@ -423,11 +387,12 @@ body.show-priya #section3::before{ background-image: radial-gradient(circle, rgb
 
 
 #heatmap{
-  position:fixed;
+  position:absolute;
   top:0;left:0;
-  width:100vw;height:100vh;
-  pointer-events:none;
-  z-index:0;
+  width:100%;height:100%;
+  pointer-events:auto;
+  z-index:1;
+  display:block;
 }
 
 
@@ -483,15 +448,6 @@ body.show-priya #section3::before{ background-image: radial-gradient(circle, rgb
   flex-shrink:0;
 }
 body.show-priya #section1{ background:#f0f4fd; }
-#section1::before{
-  content:'';
-  position:absolute;
-  inset:0;
-  z-index:1;
-  pointer-events:none;
-  background-image:radial-gradient(circle, rgba(26,26,24,0.1) 1px, transparent 1px);
-  background-size:32px 32px;
-}
 
 #logo{
   position:fixed;
@@ -513,78 +469,6 @@ body.show-priya #section1{ background:#f0f4fd; }
 <body>
 
 <div id="section1">
-<div id="stage">
-  <div id="poem">
-    <div class="row">
-      <div class="pl">Mumbai hungers more when it is burning</div>
-      <div class="loop" id="l0"><div class="loop-inner">As temperature rises, people stay indoors<br>Orders multiply — the app does not pause<br>Mumbai feeds itself through him</div></div>
-    </div>
-    <div class="row">
-      <div class="pl">Hot asphalt sticks to everything it touches</div>
-      <div class="loop" id="l1"><div class="loop-inner">39°C felt like 47 with humidity<br>Tin roofs and asphalt reached 65°C<br>Exposure accumulates — the body keeps the record</div></div>
-    </div>
-    <div class="row">
-      <div class="pl">User ratings and my stomach — drop</div>
-      <div class="loop" id="l2"><div class="loop-inner">Heat slows the delivery — food spoils or arrives late<br>Rating edges toward 4.2 — below it: 48 hours deactivated<br>No income, no appeal</div></div>
-    </div>
-    <div class="row">
-      <div class="pl">The sun does not owe anyone any money</div>
-      <div class="loop" id="l3"><div class="loop-inner">Bike on a loan — EMI ₹4,500 a month<br>Platform sets the terms — debt holds the door shut<br>He cannot stop — the loan does not sweat</div></div>
-    </div>
-    <div class="row">
-      <div class="pl">I return before I am ready</div>
-      <div class="loop" id="l4"><div class="loop-inner">A heatstroke means rest — rest means no orders<br>No orders means the loan goes unpaid<br>So he rides back — body less than yesterday</div></div>
-    </div>
-    <div class="row">
-      <div class="pl">I always return before I am ready</div>
-      <div class="loop" id="l5"><div class="loop-inner">Each summer starts where the last one left off<br>No recovery window — no off-season<br>Night shifts, less orders — my body tired</div></div>
-      <div id="nasim-profile">
-        <div id="nasim-profile-wrap">
-          <div id="nasim-text">
-            <div class="profile-name">Nasim, 27</div>
-            <div class="profile-text">Gig Delivery Rider<br>Andheri East<br>Mumbai</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div id="poem-priya">
-    <div class="row">
-      <div class="pl">Mumbai does not know she arrived eight months ago</div>
-      <div class="loop" id="ph0"><div class="loop-inner">She moved from Nashik for college<br>The city did not register her arrival<br>The flood did not wait to find out</div></div>
-    </div>
-    <div class="row">
-      <div class="pl">The damp comes through the walls regardless</div>
-      <div class="loop" id="ph1"><div class="loop-inner">Mould enters every monsoon<br>Landlord does not act — no legal compulsion<br>She buys plants, N95s, dehumidifiers out of her own pocket</div></div>
-    </div>
-    <div class="row">
-      <div class="pl">Her lungs keep the record the landlord does not</div>
-      <div class="loop" id="ph2"><div class="loop-inner">Asthma since she was ten<br>Each season arrives with a body already compromised<br>The landlord's position remains entirely stable</div></div>
-    </div>
-    <div class="row">
-      <div class="pl">She hides the worst of it so she can stay</div>
-      <div class="loop" id="ph3"><div class="loop-inner">If her parents find out she was hospitalised<br>They will make her move back to Nashik<br>She will lose eight months, her networks, her future here</div></div>
-    </div>
-    <div class="row">
-      <div class="pl">I manage alone before I am found out</div>
-      <div class="loop" id="ph4"><div class="loop-inner">College shifts online, inconsistently<br>Power cuts make continuity impossible<br>She falls behind — health, money, and academia at once</div></div>
-    </div>
-    <div class="row">
-      <div class="pl">I always manage alone before I am found out</div>
-      <div class="loop" id="ph5"><div class="loop-inner">The cost of getting sick in Mumbai is reverse migration<br>Every loop she manages alone is the city failing her<br>She carries that failure invisibly so she can stay</div></div>
-      <div id="priya-hero-profile">
-        <div class="profile-name">Priya, 20</div>
-        <div class="profile-text">College Student<br>Bhandup → Andheri<br>Mumbai</div>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
-
-
-
 <canvas id="heatmap"></canvas>
 
   <div id="nasim-details">
@@ -594,92 +478,7 @@ body.show-priya #section1{ background:#f0f4fd; }
 </div>
 
 <div id="logo">RiskSense</div>
-<div id="navigator-toggle">
-  <button class="nav-btn active" data-nav="nasim">Nasim</button>
-  <button class="nav-btn" data-nav="priya">Priya</button>
-</div>
 
-<script>
-const loops      = Array.from({length:6}, (_,i)=>document.getElementById('l'+i));
-const priyaLoops = Array.from({length:6}, (_,i)=>document.getElementById('ph'+i));
-let current = -1;
-
-function activeNav(){ return document.querySelector('.nav-btn.active').dataset.nav; }
-
-let wheelLock = false;
-function onWheel(e){
-  e.preventDefault();
-  if(wheelLock) return;
-  if(e.deltaY <= 0) return;
-  wheelLock = true;
-  setTimeout(()=>{ wheelLock=false; }, 600);
-
-  if(activeNav() === 'nasim'){
-    loops.forEach(el => el.classList.add('on'));
-    document.getElementById('nasim-profile').classList.add('on');
-  } else {
-    priyaLoops.forEach(el => el.classList.add('on'));
-    document.getElementById('priya-hero-profile').classList.add('on');
-  }
-  current = loops.length - 1;
-  window.removeEventListener('wheel', onWheel);
-  window.removeEventListener('touchend', onTouchEnd);
-  document.body.style.overflowY = 'auto';
-  document.documentElement.style.overflowY = 'auto';
-}
-
-document.querySelectorAll('.nav-btn').forEach(function(btn){
-  btn.addEventListener('click', function(e){
-    e.stopPropagation();
-    if(btn.classList.contains('active')) return;
-    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    const isNasim = btn.dataset.nav === 'nasim';
-    document.body.classList.toggle('show-priya', !isNasim);
-    loops.forEach(el => el.classList.remove('on'));
-    priyaLoops.forEach(el => el.classList.remove('on'));
-    document.getElementById('nasim-profile').classList.remove('on');
-    document.getElementById('priya-hero-profile').classList.remove('on');
-    current = -1;
-    document.body.style.overflowY = 'hidden';
-    document.documentElement.style.overflowY = 'hidden';
-    window.addEventListener('wheel', onWheel, {passive:false});
-    window.addEventListener('touchend', onTouchEnd, {passive:true});
-  });
-});
-
-let touchStartY = 0;
-function onTouchStart(e){ touchStartY = e.touches[0].clientY; }
-function onTouchEnd(e){
-  const dy = touchStartY - e.changedTouches[0].clientY;
-  if(Math.abs(dy) < 10) return;
-  onWheel({preventDefault:()=>{}, deltaY:dy});
-}
-
-window.addEventListener('wheel', onWheel, {passive:false});
-
-// click anywhere in stage to open ALL loops at once
-document.getElementById('stage').addEventListener('click', function(){
-  if(current >= loops.length - 1) return;
-  if(activeNav() === 'nasim'){
-    loops.forEach(el => el.classList.add('on'));
-    document.getElementById('nasim-profile').classList.add('on');
-  } else {
-    priyaLoops.forEach(el => el.classList.add('on'));
-    document.getElementById('priya-hero-profile').classList.add('on');
-  }
-  current = loops.length - 1;
-  window.removeEventListener('wheel', onWheel);
-  window.removeEventListener('touchend', onTouchEnd);
-  document.body.style.overflowY = 'auto';
-  document.documentElement.style.overflowY = 'auto';
-});
-
-
-
-window.addEventListener('touchstart', onTouchStart, {passive:true});
-window.addEventListener('touchend', onTouchEnd, {passive:true});
-</script>
 
 
 
@@ -702,115 +501,269 @@ window.addEventListener('touchend', onTouchEnd, {passive:true});
 
 <script>
 (function(){
-  const canvas = document.getElementById('heatmap');
-  const ctx    = canvas.getContext('2d');
-  let W, H, blobs=[], mouse={x:-9999,y:-9999};
-  let startTime = null;
+// ── Text content ─────────────────────────────────────────────────────────
+const N_LINES=[
+  "Mumbai hungers more when it is burning.",
+  "As temperature rises people stay indoors.",
+  "Orders multiply. The app does not pause.",
+  "Mumbai feeds itself through him.",
+  "Hot asphalt sticks to everything it touches.",
+  "39 degrees felt like 47 with humidity.",
+  "Tin roofs and asphalt reached 65 degrees.",
+  "Exposure accumulates. The body keeps the record.",
+  "User ratings and my stomach drop.",
+  "Heat slows the delivery. Food spoils or arrives late.",
+  "Rating edges toward 4.2. Below it: 48 hours deactivated.",
+  "No income, no appeal.",
+  "The sun does not owe anyone any money.",
+  "Bike on a loan. EMI 4,500 rupees a month.",
+  "Platform sets the terms. Debt holds the door shut.",
+  "He cannot stop. The loan does not sweat.",
+  "I return before I am ready.",
+  "A heatstroke means rest. Rest means no orders.",
+  "No orders means the loan goes unpaid.",
+  "So he rides back. Body less than yesterday.",
+  "I always return before I am ready.",
+  "Each summer starts where the last one left off.",
+  "No recovery window. No off-season.",
+  "Night shifts, less orders. My body tired.",
+  "The city does not cool between deliveries.",
+  "Rain doubles demand and halves visibility.",
+  "Every platform update adjusts the terms. Never in his favour.",
+  "Heat advisory: stay indoors. He cannot.",
+  "The debt is in rupees. The cost is in years.",
+  "He knows the shade patterns of every route.",
+  "The platform does not track heat. It tracks speed.",
+  "His body is the insurance the app does not provide.",
+];
+const P_LINES=[
+  "Mumbai does not know she arrived eight months ago.",
+  "She moved from Nashik for college.",
+  "The city did not register her arrival.",
+  "The flood did not wait to find out.",
+  "The damp comes through the walls regardless.",
+  "Mould enters every monsoon.",
+  "Landlord does not act. No legal compulsion.",
+  "She buys plants, N95s, dehumidifiers. Out of her own pocket.",
+  "Her lungs keep the record the landlord does not.",
+  "Asthma since she was ten.",
+  "Each season arrives with a body already compromised.",
+  "The landlord's position remains entirely stable.",
+  "She hides the worst of it so she can stay.",
+  "If her parents find out she was hospitalised.",
+  "They will make her move back to Nashik.",
+  "She will lose eight months, her networks, her future here.",
+  "I manage alone before I am found out.",
+  "College shifts online, inconsistently.",
+  "Power cuts make continuity impossible.",
+  "She falls behind. Health, money, and academia at once.",
+  "I always manage alone before I am found out.",
+  "The cost of getting sick in Mumbai is reverse migration.",
+  "Every loop she manages alone is the city failing her.",
+  "She carries that failure invisibly so she can stay.",
+  "The landlord has not seen the mould. The mould has seen everything.",
+  "Mumbai in monsoon is beautiful if you can keep the water out.",
+  "She does not tell her parents about the hospital bill.",
+  "The scholarship does not cover the cost of staying well.",
+  "She studies between power cuts.",
+  "The city asked her to be here. The city will not help her stay.",
+  "Adaptation means not being found out.",
+  "Every season arrives with a body already tested.",
+];
 
-  function buildBlobs(){
-    blobs=[];
-    const cols=6, rows=4;
-    for(let r=0;r<rows;r++){
-      for(let c=0;c<cols;c++){
-        const jx=(Math.random()-0.5)*0.12;
-        const jy=(Math.random()-0.5)*0.14;
-        blobs.push({
-          fx: (c+0.5)/cols + jx,
-          fy: (r+0.5)/rows + jy,
-          fr: 0.22 + Math.random()*0.14,
-          phase:  Math.random()*Math.PI*2,
-          // very slow period: 8–14 seconds per cycle
-          period: 8000 + Math.random()*6000,
-        });
+// Build interleaved word list
+const BASE=[];
+const ML=Math.max(N_LINES.length,P_LINES.length);
+for(let i=0;i<ML;i++){
+  if(i<N_LINES.length) N_LINES[i].split(' ').filter(Boolean).forEach(w=>BASE.push({t:w,a:'n'}));
+  if(i<P_LINES.length) P_LINES[i].split(' ').filter(Boolean).forEach(w=>BASE.push({t:w,a:'p'}));
+}
+const WORDS=[...BASE,...BASE]; // doubled for large screens
+
+// ── Canvas ────────────────────────────────────────────────────────────────
+const cv=document.getElementById('heatmap');
+const ctx=cv.getContext('2d');
+let W=0,H=0,PX=60,PY=100;
+let WIDTHS=[];
+const FONT='300 15px Archivo';
+const LINE_H=27;
+const WGAP=5;
+const ORB_R=70;
+
+// ── Orbs ──────────────────────────────────────────────────────────────────
+const orbs=[
+  {id:'n',label:'Nasim',x:0,y:0,hl:0,drag:false},
+  {id:'p',label:'Priya', x:0,y:0,hl:0,drag:false},
+];
+const DRIFT=[
+  {cx:0.32,cy:0.44,ax:0.20,ay:0.26,fx:1/44000,fy:1/51000,px:0,  py:1.9},
+  {cx:0.68,cy:0.56,ax:0.18,ay:0.24,fx:1/38000,fy:1/45000,px:2.3,py:0  },
+];
+
+// ── Layout helpers ─────────────────────────────────────────────────────────
+function getExcls(y){
+  const ex=[];
+  for(const o of orbs){
+    const dy=Math.abs(y+LINE_H/2-o.y);
+    const R=ORB_R*2+14;
+    if(dy<R){const dx=Math.sqrt(R*R-dy*dy);ex.push([o.x-dx,o.x+dx]);}
+  }
+  ex.sort((a,b)=>a[0]-b[0]);
+  const m=[];
+  for(const e of ex){
+    if(m.length&&e[0]<m[m.length-1][1])m[m.length-1][1]=Math.max(m[m.length-1][1],e[1]);
+    else m.push([...e]);
+  }
+  return m;
+}
+function getSegs(ex){
+  const s=[];let c=PX;
+  for(const [a,b] of ex){
+    if(a>c)s.push([c,Math.min(a,W-PX)]);
+    c=Math.max(c,b);
+  }
+  if(c<W-PX)s.push([c,W-PX]);
+  return s.filter(sg=>sg[1]-sg[0]>24);
+}
+
+// ── Word placement (rebuilt each frame) ───────────────────────────────────
+let placed=[];
+function layout(){
+  const res=[];
+  let wi=0,y=PY;
+  const L=WORDS.length;
+  while(y<H-PY){
+    const segs=getSegs(getExcls(y));
+    for(const [sl,sr] of segs){
+      let x=sl;
+      while(wi<L*2){
+        const idx=wi%L;
+        const ww=WIDTHS[idx];
+        if(x+ww>sr)break;
+        res.push({t:WORDS[idx].t,a:WORDS[idx].a,x,y:y+15});
+        x+=ww+WGAP;wi++;
       }
     }
+    y+=LINE_H;
   }
+  placed=res;
+}
 
-  function cNasim(t, a){
-    t=Math.max(0,Math.min(1,t));
+function measure(){
+  ctx.font=FONT;
+  WIDTHS=WORDS.map(w=>ctx.measureText(w.t).width);
+}
+
+// ── Render ────────────────────────────────────────────────────────────────
+const BC=[26,26,24];
+const NC=[232,72,0];
+const PC=[85,51,255];
+function lrp(a,b,t){return a+(b-a)*t;}
+
+function drawWords(){
+  ctx.font=FONT;ctx.textAlign='left';ctx.textBaseline='alphabetic';
+  const hn=orbs[0].hl,hp=orbs[1].hl;
+  for(const w of placed){
     let r,g,b;
-    if(t<0.25){const s=t/0.25; r=255;g=Math.round(245-s*35);b=Math.round(215-s*155);}
-    else if(t<0.50){const s=(t-0.25)/0.25; r=255;g=Math.round(210-s*105);b=Math.round(60-s*55);}
-    else if(t<0.75){const s=(t-0.50)/0.25; r=255;g=Math.round(105-s*105);b=Math.round(5+s*80);}
-    else{const s=(t-0.75)/0.25; r=Math.round(255-s*20);g=0;b=Math.round(85+s*145);}
-    return `rgba(${r},${g},${b},${Math.max(0,a).toFixed(3)})`;
+    if(w.a==='n'&&hn>0.002){
+      r=lrp(BC[0],NC[0],hn);g=lrp(BC[1],NC[1],hn);b=lrp(BC[2],NC[2],hn);
+    }else if(w.a==='p'&&hp>0.002){
+      r=lrp(BC[0],PC[0],hp);g=lrp(BC[1],PC[1],hp);b=lrp(BC[2],PC[2],hp);
+    }else{r=BC[0];g=BC[1];b=BC[2];}
+    ctx.fillStyle=`rgb(${Math.round(r)},${Math.round(g)},${Math.round(b)})`;
+    ctx.fillText(w.t,w.x,w.y);
   }
-  function cPriya(t, a){
-    t=Math.max(0,Math.min(1,t));
-    let r,g,b;
-    if(t<0.25){const s=t/0.25;r=Math.round(180+s*20);g=Math.round(220-s*40);b=255;}
-    else if(t<0.50){const s=(t-0.25)/0.25;r=Math.round(200-s*120);g=Math.round(180-s*80);b=255;}
-    else if(t<0.75){const s=(t-0.50)/0.25;r=Math.round(80-s*50);g=Math.round(100-s*60);b=255;}
-    else{const s=(t-0.75)/0.25;r=Math.round(30+s*20);g=Math.round(40-s*20);b=255;}
-    return `rgba(${r},${g},${b},${Math.max(0,a).toFixed(3)})`;
+}
+
+function drawOrb(o){
+  const R=ORB_R*2;
+  const g=ctx.createRadialGradient(o.x,o.y,0,o.x,o.y,R);
+  if(o.id==='n'){
+    g.addColorStop(0,  'rgba(255,60,10,0.90)');
+    g.addColorStop(0.4,'rgba(220,20,105,0.72)');
+    g.addColorStop(0.7,'rgba(185,10,75,0.28)');
+    g.addColorStop(1,  'rgba(170,0,60,0)');
+  }else{
+    g.addColorStop(0,  'rgba(90,40,255,0.90)');
+    g.addColorStop(0.4,'rgba(35,75,240,0.72)');
+    g.addColorStop(0.7,'rgba(20,55,200,0.28)');
+    g.addColorStop(1,  'rgba(10,40,185,0)');
   }
-  function cStr(t, a){
-    return document.body.classList.contains('show-priya') ? cPriya(t,a) : cNasim(t,a);
-  }
+  ctx.fillStyle=g;
+  ctx.beginPath();ctx.arc(o.x,o.y,R,0,Math.PI*2);ctx.fill();
+  ctx.save();
+  ctx.font='400 9px "Archivo Mono"';
+  ctx.textAlign='center';ctx.textBaseline='middle';
+  ctx.fillStyle='rgba(255,255,255,0.92)';
+  ctx.fillText(o.label.toUpperCase(),o.x,o.y);
+  ctx.restore();
+}
 
-  function drawBlob(b, elapsed){
-    const cx=b.fx*W, cy=b.fy*H;
+// ── Loop ──────────────────────────────────────────────────────────────────
+let t0=null,dragOrb=null,dOff={x:0,y:0};
 
-    // smooth sine — period in ms, no speed multiplier tricks
-    const t_sin = Math.sin((elapsed / b.period) * Math.PI*2 + b.phase);
-    // map sin (-1..1) → pulse (0.92..1.08) — very gentle size breath
-    const pulse  = 1 + 0.08 * t_sin;
-    const radius = b.fr * Math.min(W,H) * pulse;
+function tick(ts){
+  if(!t0)t0=ts;
+  const el=ts-t0;
+  const isPriya=document.body.classList.contains('show-priya');
+  ctx.fillStyle=isPriya?'#f0f4fd':'#fdf0e8';
+  ctx.fillRect(0,0,W,H);
+  orbs.forEach((o,i)=>{
+    if(!o.drag){
+      const d=DRIFT[i];
+      o.x=W*(d.cx+d.ax*Math.sin(2*Math.PI*d.fx*el+d.px));
+      o.y=H*(d.cy+d.ay*Math.sin(2*Math.PI*d.fy*el+d.py));
+    }
+    const tgt=o.drag?1:0;
+    o.hl+=(tgt-o.hl)*(o.drag?0.14:0.05);
+    o.hl=Math.max(0,Math.min(1,o.hl));
+  });
+  layout();
+  drawWords();
+  orbs.forEach(drawOrb);
+  requestAnimationFrame(tick);
+}
 
-    // base heat breathes between 0.05 and 0.16
-    const baseHeat = 0.105 + 0.055 * t_sin;
+// ── Input ─────────────────────────────────────────────────────────────────
+function evXY(e){
+  const rect=cv.getBoundingClientRect();
+  const sx=W/rect.width,sy=H/rect.height;
+  const ex=e.touches?e.touches[0].clientX:e.clientX;
+  const ey=e.touches?e.touches[0].clientY:e.clientY;
+  return{x:(ex-rect.left)*sx,y:(ey-rect.top)*sy};
+}
+function hitOrb(p){
+  for(const o of orbs)if(Math.hypot(p.x-o.x,p.y-o.y)<ORB_R*2+12)return o;
+  return null;
+}
+cv.addEventListener('mousedown',e=>{
+  const p=evXY(e),o=hitOrb(p);
+  if(o){o.drag=true;dragOrb=o;dOff={x:p.x-o.x,y:p.y-o.y};}
+});
+window.addEventListener('mousemove',e=>{
+  if(dragOrb){const p=evXY(e);dragOrb.x=p.x-dOff.x;dragOrb.y=p.y-dOff.y;}
+  const p=evXY(e);cv.style.cursor=dragOrb?'grabbing':hitOrb(p)?'grab':'default';
+});
+window.addEventListener('mouseup',()=>{if(dragOrb){dragOrb.drag=false;dragOrb=null;}});
+cv.addEventListener('touchstart',e=>{e.preventDefault();
+  const p=evXY(e),o=hitOrb(p);
+  if(o){o.drag=true;dragOrb=o;dOff={x:p.x-o.x,y:p.y-o.y};}
+},{passive:false});
+window.addEventListener('touchmove',e=>{
+  if(!dragOrb)return;e.preventDefault();
+  const p=evXY(e);dragOrb.x=p.x-dOff.x;dragOrb.y=p.y-dOff.y;
+},{passive:false});
+window.addEventListener('touchend',()=>{if(dragOrb){dragOrb.drag=false;dragOrb=null;}});
 
-    // mouse proximity
-    const dx=(mouse.x-cx)/W, dy=(mouse.y-cy)/H;
-    const dist=Math.sqrt(dx*dx+dy*dy);
-    const prox=Math.max(0, 1-dist/0.38);
-    const heat = baseHeat + prox*0.85;
-
-    const g=ctx.createRadialGradient(cx,cy,0.01,cx,cy,radius);
-    g.addColorStop(0,    cStr(heat,       0.32));
-    g.addColorStop(0.30, cStr(heat*0.78,  0.22));
-    g.addColorStop(0.60, cStr(heat*0.46,  0.13));
-    g.addColorStop(0.85, cStr(heat*0.20,  0.06));
-    g.addColorStop(1.0,  cStr(0,          0));
-
-    ctx.globalCompositeOperation = 'source-over';
-    ctx.fillStyle=g;
-    ctx.beginPath();
-    ctx.arc(cx,cy,radius,0,Math.PI*2);
-    ctx.fill();
-  }
-
-  function loop(ts){
-    if(!startTime) startTime=ts;
-    const elapsed = ts - startTime;
-
-    const priya = document.body.classList.contains('show-priya');
-    ctx.globalCompositeOperation = 'source-over';
-    ctx.fillStyle = priya ? 'rgba(240,244,253,0.18)' : 'rgba(253,240,232,0.18)';
-    ctx.fillRect(0,0,W,H);
-
-    blobs.forEach(b=>drawBlob(b, elapsed));
-
-    requestAnimationFrame(loop);
-  }
-
-  function resize(){
-    W=canvas.width=window.innerWidth;
-    H=canvas.height=window.innerHeight;
-    ctx.fillStyle=document.body.classList.contains('show-priya')?'#f0f4fd':'#fdf0e8';
-    ctx.fillRect(0,0,W,H);
-    buildBlobs();
-  }
-
-  window.addEventListener('mousemove',e=>{mouse.x=e.clientX;mouse.y=e.clientY;});
-  window.addEventListener('touchmove',e=>{
-    mouse.x=e.touches[0].clientX;mouse.y=e.touches[0].clientY;
-  },{passive:true});
-
-  canvas.style.opacity='1';
-  resize();
-  window.addEventListener('resize',resize);
-  requestAnimationFrame(loop);
+// ── Resize ────────────────────────────────────────────────────────────────
+function resize(){
+  W=cv.width=cv.offsetWidth;
+  H=cv.height=cv.offsetHeight;
+  PX=Math.round(W*0.038);
+  measure();
+}
+window.addEventListener('resize',resize);
+document.fonts.ready.then(()=>{resize();requestAnimationFrame(tick);});
 })();
 </script>
 
