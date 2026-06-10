@@ -119,11 +119,10 @@ body.show-priya #section3::before{ background:#fff; }
 #section3.s3-priya .s3-term-tab::after,#section3.s3-priya .s3-term-tab-p::after{ background:#5533ff; }
 .s3-term-icon{ height:0.72em; width:auto; vertical-align:middle; margin-right:7px; display:inline-block; }
 /* ── Section 3 persona toggle ─────────────────────────────────────────────── */
-#s3-persona-toggle{ display:flex; gap:0; margin-bottom:28px; }
-.s3-ptab{ font-family:'Archivo Mono',monospace; font-size:10px; font-weight:400; letter-spacing:0.12em; text-transform:uppercase; background:transparent; border:1.5px solid rgba(0,0,0,0.25); padding:6px 16px; cursor:pointer; color:rgba(0,0,0,0.4); transition:background 0.15s,color 0.15s,border-color 0.15s; }
-.s3-ptab:first-child{ border-right:none; }
-.s3-ptab.active[data-persona="nasim"]{ background:#e84800; color:#fff; border-color:#e84800; }
-.s3-ptab.active[data-persona="priya"]{ background:#5533ff; color:#fff; border-color:#5533ff; }
+#s3-persona-toggle{ display:flex; gap:4px; margin-bottom:32px; }
+.s3-ptab{ font-family:'Archivo Mono',monospace; font-size:13px; font-weight:400; letter-spacing:0.10em; text-transform:uppercase; background:#fff; border:none; padding:13px 36px; cursor:pointer; color:rgba(0,0,0,0.5); transition:background 0.15s,color 0.15s; }
+.s3-ptab.active[data-persona="nasim"]{ background:#e84800; color:#fff; }
+.s3-ptab.active[data-persona="priya"]{ background:#5533ff; color:#fff; }
 /* Zigzag icon accent colour */
 .s3-term-icon{ color:#e84800; }
 #section3.s3-priya .s3-term-icon{ color:#5533ff; }
@@ -702,7 +701,7 @@ function drawOrb(o){
   ctx.fillStyle=g;
   ctx.beginPath();ctx.arc(o.x,o.y,R,0,Math.PI*2);ctx.fill();
   ctx.save();
-  ctx.font='300 14px Archivo';
+  ctx.font='400 12px "Archivo Mono"';
   ctx.textAlign='center';ctx.textBaseline='middle';
   ctx.fillStyle='rgba(255,255,255,0.92)';
   ctx.fillText(o.label.toUpperCase(),o.x,o.y);
@@ -942,10 +941,6 @@ document.fonts.ready.then(()=>{resize();requestAnimationFrame(tick);});
 
     <!-- ── Nasim content ── -->
     <div class="s3-persona-content" id="s3-nasim-content">
-    <div class="s3-col2-hd">
-      <div class="s3-nav-name-hd">Nasim</div>
-      <div class="s3-nav-role-sub">Gig Delivery Rider</div>
-    </div>
     <p class="s3-mapped-by">Mapped by Abhishek Fullton (UNICEF), Dishant Parmar (YUVA), Dulari Parmar (YUVA), and Myron Mendes (INECC)</p>
 
     <!-- Top-level section toggle -->
@@ -1225,10 +1220,6 @@ document.fonts.ready.then(()=>{resize();requestAnimationFrame(tick);});
 
     <!-- ── Priya content ── -->
     <div class="s3-persona-content" id="s3-priya-content" style="display:none">
-    <div class="s3-col2-hd">
-      <div class="s3-nav-name-hd">Priya</div>
-      <div class="s3-nav-role-sub">Student, Migrant Tenant</div>
-    </div>
     <p class="s3-mapped-by">Mapped by Abhishek Fullton (UNICEF), Dishant Parmar (YUVA), Dulari Parmar (YUVA), and Myron Mendes (INECC)</p>
 
     <div id="s3-c2-tabs-p">
